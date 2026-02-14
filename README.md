@@ -1,1 +1,0 @@
-# Viking-Rise-Tool
