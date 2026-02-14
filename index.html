@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Viking Rise - Forge Tool</title>
+    <style>
+        body {
+            background-color: #121212;
+            color: white;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 900px;
+            background-color: #1a1a1a;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+        }
+
+        h1 {
+            color: #d4af37;
+            text-align: center;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .selectors {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 25px;
+        }
+
+        .select-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            color: #a9a9a9;
+            font-size: 12px;
+            margin-bottom: 5px;
+        }
+
+        select {
+            background-color: #222;
+            color: white;
+            border: 1px solid #444;
+            padding: 8px;
+            border-radius: 4px;
+        }
+
+        .table-container {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        th {
+            text-align: center;
+            padding: 10px;
+            font-size: 14px;
+        }
+
+        th.mat-head { text-align: left; color: #d4af37; }
+        .r0 { color: gray; }
+        .r1 { color: limegreen; }
+        .r2 { color: deepskyblue; }
+        .r3 { color: mediumorchid; }
+        .r4 { color: gold; }
+
+        td {
+            padding: 5px;
+            border-bottom: 1px solid #333;
+        }
+
+        input[type="number"] {
+            width: 80%;
+            background-color: #222;
+            color: white;
+            border: 1px solid #444;
+            padding: 5px;
+            text-align: center;
+            border-radius: 3px;
+        }
+
+        input[type="number"]:focus {
+            outline: none;
+            border-color: #d4af37;
+        }
+
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        .calc-btn {
+            width: 100%;
+            background-color: #d4af37;
+            color: black;
+            border: none;
+            padding: 12px;
+            font-weight: bold;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: background 0.3s;
+        }
+
+        .calc-btn:hover {
+            background-color: #b8962e;
+        }
+
+        #resultBorder {
+            display: none;
+            margin-top: 20px;
+            background-color: #121212;
+            border: 1px solid #d4af37;
+            border-radius: 5px;
+            padding: 15px;
+            position: relative;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: #444;
+            color: white;
+            border: none;
+            padding: 2px 8px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+
+        #resultOutput {
+            font-family: 'Courier New', Courier, monospace;
+            white-space: pre-wrap;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>SCHMIEDE-RECHNER</h1>
+
+    <div class="selectors">
+        <div class="select-group">
+            <label>Ausrüstung:</label>
+            <select id="itemSelector">
+                <option value="Waffe">Waffe</option>
+                <option value="Helm">Helm</option>
+                <option value="Rüstung">Rüstung</option>
+                <option value="Schuhe">Schuhe</option>
+            </select>
+        </div>
+        <div class="select-group">
+            <label>Ziel-Stufe:</label>
+            <select id="targetSelector">
+                <option value="0">Grau (Herstellung)</option>
+                <option value="1">Grün (Upgrade)</option>
+                <option value="2">Blau (Upgrade)</option>
+                <option value="3">Lila (Upgrade)</option>
+                <option value="4" selected>Gold (Upgrade)</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th class="mat-head">Material</th>
+                    <th class="r0">Grau</th>
+                    <th class="r1">Grün</th>
+                    <th class="r2">Blau</th>
+                    <th class="r3">Lila</th>
+                    <th class="r4">Gold</th>
+                </tr>
+            </thead>
+            <tbody id="materialBody">
+            </tbody>
+        </table>
+    </div>
+
+    <button class="calc-btn" onclick="calculate()">BERECHNEN</button>
+
+    <div id="resultBorder">
+        <button class="close-btn" onclick="closeResult()">Schließen</button>
+        <div id="resultOutput"></div>
+    </div>
+</div>
+
+<script>
+    const materialNames = ["Spider Silk", "Divine Blood", "Tanned Leather", "Stardust", "Asboth Mithril"];
+    const rarities = ["Grau", "Grün", "Blau", "Lila", "Gold"];
+    const baseRequirements = {
+        "Waffe": [17, 11, 13, 16, 11],
+        "Helm": [11, 14, 13, 11, 10],
+        "Rüstung": [10, 11, 13, 11, 14],
+        "Schuhe": [11, 13, 10, 11, 14]
+    };
+
+    function initTable() {
+        const body = document.getElementById('materialBody');
+        materialNames.forEach((name, index) => {
+            const tr = document.createElement('tr');
+            tr.innerHTML = `
+                <td>${name}</td>
+                ${[0,1,2,3,4].map(r => `<td><input type="number" id="mat-${index}-${r}" value="0" onfocus="handleFocus(this)" onblur="handleBlur(this)"></td>`).join('')}
+            `;
+            body.appendChild(tr);
+        });
+    }
+
+    function handleFocus(el) { if(el.value === "0") el.value = ""; }
+    function handleBlur(el) { if(el.value === "") el.value = "0"; }
+
+    function calculate() {
+        const item = document.getElementById('itemSelector').value;
+        const targetIdx = parseInt(document.getElementById('targetSelector').value);
+        const neededArr = baseRequirements[item];
+        let report = `ZIEL: ${item} -> ${rarities[targetIdx].toUpperCase()}\n${"-".repeat(40)}\n`;
+
+        materialNames.forEach((name, i) => {
+            let ownedPoints = 0;
+            for(let r = 0; r < 5; r++) {
+                const val = parseInt(document.getElementById(`mat-${i}-${r}`).value) || 0;
+                ownedPoints += val * Math.pow(4, r);
+            }
+
+            const targetPoints = neededArr[i] * Math.pow(4, targetIdx);
+            const diff = targetPoints - ownedPoints;
+
+            if(diff <= 0) {
+                report += `[✔] ${name.padEnd(15)}: BEREIT\n`;
+            } else {
+                report += `[✘] ${name.padEnd(15)}: FEHLT:\n    -> ${formatMissing(diff, targetIdx)}\n`;
+            }
+        });
+
+        document.getElementById('resultOutput').innerText = report;
+        document.getElementById('resultBorder').style.display = 'block';
+    }
+
+    function formatMissing(points, targetIdx) {
+        let options = [];
+        for(let i = targetIdx; i >= 0; i--) {
+            options.push(`${Math.ceil(points / Math.pow(4, i))} ${rarities[i]}`);
+        }
+        return options.join(" / ");
+    }
+
+    function closeResult() {
+        document.getElementById('resultBorder').style.display = 'none';
+    }
+
+    initTable();
+</script>
+
+</body>
+</html>
