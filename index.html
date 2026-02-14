@@ -217,11 +217,11 @@
 
     <div class="selectors">
         <div class="select-group">
-            <label id="ui-label-item">Ausrüstung:</label>
+            <label id="ui-label-item">Ausrüstung wählen:</label>
             <select id="itemSelector" onchange="calculateIfVisible()"></select>
         </div>
         <div class="select-group">
-            <label id="ui-label-target">Ziel-Stufe:</label>
+            <label id="ui-label-target">Ziel-Stufe (Upgrade):</label>
             <select id="targetSelector" onchange="calculateIfVisible()"></select>
         </div>
     </div>
@@ -266,6 +266,7 @@
             rarities: ["Grau", "Grün", "Blau", "Lila", "Gold"],
             materials: ["Spinnenseide", "Göttliches Blut", "Gegerbtes Leder", "Sternenstaub", "Asboth Mithril"],
             resTitle: "ZIEL",
+            resRequired: "Benötigt (Basis):",
             resReady: "BEREIT",
             resMissing: "FEHLT",
             resOr: "ODER"
@@ -282,6 +283,7 @@
             rarities: ["Gray", "Green", "Blue", "Purple", "Gold"],
             materials: ["Spider Silk", "Divine Blood", "Tanned Leather", "Stardust", "Asboth Mithril"],
             resTitle: "TARGET",
+            resRequired: "Required (Base):",
             resReady: "READY",
             resMissing: "MISSING",
             resOr: "OR"
@@ -353,6 +355,9 @@
         const targetIdx = parseInt(document.getElementById('targetSelector').value);
         const neededArr = baseRequirements[itemIdx];
         
+        const reqRarityIdx = targetIdx > 0 ? targetIdx - 1 : 0;
+        const reqRarityName = t.rarities[reqRarityIdx];
+
         let report = `${t.resTitle}: ${t.items[itemIdx]} -> ${t.rarities[targetIdx].toUpperCase()}\n${"=".repeat(60)}\n\n`;
 
         t.materials.forEach((name, i) => {
@@ -365,12 +370,15 @@
             const targetPoints = neededArr[i] * Math.pow(4, targetIdx);
             const diff = targetPoints - ownedPoints;
 
+            report += `${name.toUpperCase()}\n`;
+            report += `> ${t.resRequired} ${neededArr[i]}x ${reqRarityName}\n`;
+
             if(diff <= 0) {
-                report += `[✔] ${name.padEnd(20)}: ${t.resReady}\n`;
+                report += `[✔] STATUS: ${t.resReady}\n`;
             } else {
-                report += `[✘] ${name.padEnd(20)}: ${t.resMissing}:\n    >> ${formatMissing(diff, targetIdx, t)}\n`;
+                report += `[✘] STATUS: ${t.resMissing}:\n    >> ${formatMissing(diff, targetIdx, t)}\n`;
             }
-            report += "\n";
+            report += "-".repeat(30) + "\n";
         });
 
         document.getElementById('resultOutput').innerText = report;
