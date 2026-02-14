@@ -266,7 +266,7 @@
             rarities: ["Grau", "Grün", "Blau", "Lila", "Gold"],
             materials: ["Spinnenseide", "Göttliches Blut", "Gegerbtes Leder", "Sternenstaub", "Asboth Mithril"],
             resTitle: "ZIEL",
-            resRequired: "Benötigt (Basis):",
+            resRequired: "BASIS-BEDARF",
             resReady: "BEREIT",
             resMissing: "FEHLT",
             resOr: "ODER"
@@ -283,7 +283,7 @@
             rarities: ["Gray", "Green", "Blue", "Purple", "Gold"],
             materials: ["Spider Silk", "Divine Blood", "Tanned Leather", "Stardust", "Asboth Mithril"],
             resTitle: "TARGET",
-            resRequired: "Required (Base):",
+            resRequired: "BASE REQUIREMENT",
             resReady: "READY",
             resMissing: "MISSING",
             resOr: "OR"
@@ -358,7 +358,14 @@
         const reqRarityIdx = targetIdx > 0 ? targetIdx - 1 : 0;
         const reqRarityName = t.rarities[reqRarityIdx];
 
-        let report = `${t.resTitle}: ${t.items[itemIdx]} -> ${t.rarities[targetIdx].toUpperCase()}\n${"=".repeat(60)}\n\n`;
+        let report = `${t.resTitle}: ${t.items[itemIdx].toUpperCase()} -> ${t.rarities[targetIdx].toUpperCase()}\n`;
+        report += `${t.resRequired} (${reqRarityName}):\n`;
+        
+        t.materials.forEach((name, i) => {
+            report += `${neededArr[i]}x ${name} | `;
+        });
+        report = report.slice(0, -3); // Letztes " | " entfernen
+        report += `\n${"=".repeat(80)}\n\n`;
 
         t.materials.forEach((name, i) => {
             let ownedPoints = 0;
@@ -371,7 +378,6 @@
             const diff = targetPoints - ownedPoints;
 
             report += `${name.toUpperCase()}\n`;
-            report += `> ${t.resRequired} ${neededArr[i]}x ${reqRarityName}\n`;
 
             if(diff <= 0) {
                 report += `[✔] STATUS: ${t.resReady}\n`;
