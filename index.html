@@ -41,17 +41,18 @@
 
         header {
             width: 100%;
-            padding: 120px 0 140px;
+            /* Massiv vergrößertes Padding für maximale Bild-Sichtbarkeit */
+            padding: 220px 0 280px; 
             text-align: center;
-            background: linear-gradient(rgba(5, 7, 9, 0.4), rgba(5, 7, 9, 0.9)), 
+            background: linear-gradient(rgba(5, 7, 9, 0.1), rgba(5, 7, 9, 0.8)), 
                         url('viking-bg.png'); 
             background-size: cover;
-            background-position: center 20%; 
+            background-position: center center; 
             background-attachment: fixed;
             position: relative;
-            border-bottom: 2px solid var(--gold);
-            clip-path: polygon(0 0, 100% 0, 100% 88%, 50% 100%, 0 88%);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+            border-bottom: 3px solid var(--gold);
+            clip-path: polygon(0 0, 100% 0, 100% 90%, 50% 100%, 0 90%);
+            box-shadow: 0 15px 50px rgba(0,0,0,0.9);
         }
 
         .lang-switch {
@@ -62,7 +63,7 @@
         }
 
         .lang-btn {
-            background: rgba(0,0,0,0.7);
+            background: rgba(0,0,0,0.8);
             color: var(--gold);
             border: 1px solid var(--gold);
             padding: 10px 18px;
@@ -75,7 +76,8 @@
         }
 
         .lang-btn:hover {
-            background: rgba(212, 175, 55, 0.2);
+            background: var(--gold);
+            color: black;
         }
 
         .lang-btn.active {
@@ -86,28 +88,33 @@
 
         h1 {
             font-family: 'Cinzel', serif;
-            font-size: clamp(32px, 7vw, 64px);
+            font-size: clamp(35px, 8vw, 75px);
             color: var(--gold);
             margin: 0;
             text-transform: uppercase;
-            letter-spacing: 6px;
-            text-shadow: 3px 3px 10px rgba(0,0,0,0.9);
+            letter-spacing: 8px;
+            /* Extra starker Schatten für Lesbarkeit auf dem helleren Bild */
+            text-shadow: 0 0 30px rgba(0,0,0,1), 4px 4px 15px rgba(0,0,0,1);
         }
 
         .subtitle {
             font-family: 'MedievalSharp', cursive;
-            font-size: 24px;
+            font-size: 26px;
             color: #fff;
-            margin-top: 15px;
-            letter-spacing: 1.5px;
-            text-shadow: 2px 2px 5px rgba(0,0,0,0.8);
+            margin-top: 20px;
+            letter-spacing: 2px;
+            text-shadow: 0 0 15px rgba(0,0,0,1), 2px 2px 8px rgba(0,0,0,1);
+            background: rgba(0,0,0,0.3);
+            display: inline-block;
+            padding: 8px 30px;
+            border-radius: 50px;
         }
 
         .container {
             width: 100%;
             max-width: 1200px;
             padding: 0 20px;
-            margin-top: -50px;
+            margin-top: -80px;
             z-index: 15;
         }
 
