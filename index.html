@@ -41,7 +41,6 @@
 
         header {
             width: 100%;
-            /* Massiv vergrößertes Padding für maximale Bild-Sichtbarkeit */
             padding: 220px 0 280px; 
             text-align: center;
             background: linear-gradient(rgba(5, 7, 9, 0.1), rgba(5, 7, 9, 0.8)), 
@@ -93,7 +92,6 @@
             margin: 0;
             text-transform: uppercase;
             letter-spacing: 8px;
-            /* Extra starker Schatten für Lesbarkeit auf dem helleren Bild */
             text-shadow: 0 0 30px rgba(0,0,0,1), 4px 4px 15px rgba(0,0,0,1);
         }
 
@@ -265,6 +263,15 @@
             </div>
             <span class="btn" id="card4-b">Bald verfügbar</span>
         </a>
+
+        <a href="migration.html" class="card">
+            <div>
+                <span class="icon">⛵</span>
+                <h2 id="card5-h">Migration & Kosten</h2>
+                <p id="card5-p">Informationen zum Königreich-Wechsel und eine Übersicht der benötigten Migrations-Pässe.</p>
+            </div>
+            <span class="btn" id="card5-b">Migration</span>
+        </a>
     </div>
 </div>
 
@@ -292,6 +299,9 @@
             c4h: "Tipps & Tricks",
             c4p: "Alles über Ressourcen-Management, Macht-Aufbau und tägliche Aufgaben.",
             c4b: "Bald verfügbar",
+            c5h: "Migration & Kosten",
+            c5p: "Informationen zum Königreich-Wechsel und eine Übersicht der benötigten Migrations-Pässe.",
+            c5b: "Migration",
             legal: "<strong>Rechtlicher Disclaimer:</strong><br>Dies ist eine inoffizielle Webseite von Fans für Fans. Diese Seite steht in keiner Verbindung zu IGG (I Got Games) oder den offiziellen Entwicklern von Viking Rise. Alle Markennamen, Grafiken und Spielinhalte sind Eigentum der jeweiligen Inhaber. Diese Seite dient ausschließlich Informations- und Unterhaltungszwecken."
         },
         en: {
@@ -309,6 +319,9 @@
             c4h: "Tips & Tricks",
             c4p: "All about resource management, power building and daily tasks.",
             c4b: "Coming Soon",
+            c5h: "Migration & Costs",
+            c5p: "Information on switching kingdoms and an overview of required migration passes.",
+            c5b: "Migration",
             legal: "<strong>Legal Disclaimer:</strong><br>This is an unofficial fan website. This site is not affiliated with IGG (I Got Games) or the official developers of Viking Rise. All brand names, graphics and game content are property of their respective owners. This site is for informational and entertainment purposes only."
         }
     };
@@ -328,6 +341,9 @@
         document.getElementById('card4-h').innerText = content[lang].c4h;
         document.getElementById('card4-p').innerText = content[lang].c4p;
         document.getElementById('card4-b').innerText = content[lang].c4b;
+        document.getElementById('card5-h').innerText = content[lang].c5h;
+        document.getElementById('card5-p').innerText = content[lang].c5p;
+        document.getElementById('card5-b').innerText = content[lang].c5b;
         document.getElementById('footer-text').innerHTML = content[lang].legal;
 
         document.getElementById('btn-de').classList.toggle('active', lang === 'de');
