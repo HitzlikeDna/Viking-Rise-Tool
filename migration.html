@@ -31,18 +31,21 @@
             position: relative;
         }
 
-        .lang-switch {
-            position: absolute; top: 20px; right: 20px;
-            display: flex; gap: 10px;
+        .nav-controls {
+            position: absolute; top: 20px; width: 95%; display: flex; justify-content: space-between; left: 2.5%;
         }
 
-        .lang-btn {
+        .back-btn, .lang-btn {
             background: rgba(0,0,0,0.5); border: 1px solid var(--gold);
-            color: var(--gold); padding: 5px 10px; cursor: pointer;
+            color: var(--gold); padding: 5px 15px; cursor: pointer;
             font-family: 'Cinzel', serif; font-size: 12px; transition: 0.3s;
+            text-decoration: none; display: inline-block;
         }
 
+        .back-btn:hover, .lang-btn:hover { background: var(--gold); color: black; }
         .lang-btn.active { background: var(--gold); color: black; }
+
+        .lang-switch { display: flex; gap: 10px; }
 
         h1 { font-family: 'Cinzel', serif; color: var(--gold); letter-spacing: 4px; }
 
@@ -97,9 +100,12 @@
 <body>
 
 <header>
-    <div class="lang-switch">
-        <button class="lang-btn active" onclick="setLanguage('de')">DE</button>
-        <button class="lang-btn" onclick="setLanguage('en')">EN</button>
+    <div class="nav-controls">
+        <a href="index.html" class="back-btn" id="nav-back">Zurück</a>
+        <div class="lang-switch">
+            <button class="lang-btn active" onclick="setLanguage('de')">DE</button>
+            <button class="lang-btn" onclick="setLanguage('en')">EN</button>
+        </div>
     </div>
     <h1 id="main-title">Königreich Migration</h1>
 </header>
@@ -108,7 +114,9 @@
     <div class="info-box">
         <h2 id="info-h2" style="font-family: 'Cinzel', serif; color: var(--gold);">Voraussetzungen & Informationen</h2>
         <p id="info-p">
-            Die Migrationskosten richten sich nach der aktuellen Macht deines Charakters und dem Status des Ziel-Königreichs. Pässe können im Stammes-shop oder durch Pakete erworben werden.
+            Die Migrationskosten richten sich nach der aktuellen Macht deines Charakters und dem Status des Ziel-Königreichs. Pässe können im Stamm-Shop oder durch Pakete erworben werden.
+            <br><br>
+            Wichtig zu beachten ist, dass du beim Migrieren alle Ressourcen verlierst, die sich nicht im Rucksack befinden, sondern in der oberen Leiste angezeigt werden.
         </p>
     </div>
 
@@ -123,7 +131,7 @@
         <table id="migration-table">
             <thead>
                 <tr>
-                    <th class="power-col" id="th-power">Macht (Power)</th>
+                    <th class="power-col" id="th-power">Macht</th>
                     <th id="th-wk">Warring Kingdom</th>
                     <th id="th-s1">Season 1</th>
                     <th id="th-s2">Season 2</th>
@@ -137,7 +145,7 @@
     </div>
 
     <div class="info-box" style="margin-top: 40px; border-left: 4px solid #444; background: rgba(20,20,20,0.5);">
-        <p><strong id="today-label">Stand heute:</strong> <span id="today-date">22. Februar 2026</span></p>
+        <p><strong id="today-label">Stand:</strong> <span id="today-date">22. Februar 2026</span></p>
     </div>
 </div>
 
@@ -153,24 +161,26 @@
 
     const translations = {
         de: {
+            back: "Zurück",
             title: "Königreich Migration",
             infoH2: "Voraussetzungen & Informationen",
-            infoP: "Die Migrationskosten richten sich nach der aktuellen Macht deines Charakters und dem Status des Ziel-Königreichs. Pässe können im Stammes-Shop oder durch Pakete erworben werden.",
-            thPower: "Macht (Power)",
+            infoP: "Die Migrationskosten richten sich nach der aktuellen Macht deines Charakters und dem Status des Ziel-Königreichs. Pässe können im Stamm-Shop oder durch Pakete erworben werden.<br><br>Wichtig zu beachten ist, dass du beim Migrieren alle Ressourcen verlierst, die sich nicht im Rucksack befinden, sondern in der oberen Leiste angezeigt werden.",
+            thPower: "Macht",
             thWk: "Warring Kingdom",
             thS1: "Season 1",
             thS2: "Season 2",
             thS3: "Season 3",
             thCs: "Conquest Season",
-            today: "Stand heute:",
+            today: "Stand:",
             footer: "Dies ist eine inoffizielle Fan-Seite. Alle Werte ohne Gewähr.",
             date: "22. Februar 2026"
         },
         en: {
+            back: "Back",
             title: "Kingdom Migration",
             infoH2: "Requirements & Information",
-            infoP: "Migration costs are based on your character's current power and the status of the destination kingdom. Migration scrolls can be purchased in the Tribe Shop or through packs.",
-            thPower: "Power",
+            infoP: "Migration costs are based on your character's current might and the status of the destination kingdom. Migration scrolls can be purchased in the Tribe Shop or through packs.<br><br>It is important to note that when you migrate, you will lose all resources that are not in your backpack but are displayed in the top resource bar.",
+            thPower: "Might",
             thWk: "Warring Kingdom",
             thS1: "Season 1",
             thS2: "Season 2",
@@ -239,9 +249,10 @@
             btn.classList.toggle('active', btn.innerText.toLowerCase() === lang);
         });
 
+        document.getElementById('nav-back').innerText = translations[lang].back;
         document.getElementById('main-title').innerText = translations[lang].title;
         document.getElementById('info-h2').innerText = translations[lang].infoH2;
-        document.getElementById('info-p').innerText = translations[lang].infoP;
+        document.getElementById('info-p').innerHTML = translations[lang].infoP;
         document.getElementById('th-power').innerText = translations[lang].thPower;
         document.getElementById('th-wk').innerText = translations[lang].thWk;
         document.getElementById('th-s1').innerText = translations[lang].thS1;
