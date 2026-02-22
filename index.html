@@ -20,37 +20,53 @@
             margin: 0;
             padding: 0;
             line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
         /* Hero Header */
         header {
-            padding: 80px 20px;
+            width: 100%;
+            padding: 60px 0;
             text-align: center;
-            background: linear-gradient(rgba(10, 12, 14, 0.8), rgba(10, 12, 14, 1)), 
+            background: linear-gradient(rgba(10, 12, 14, 0.7), rgba(10, 12, 14, 1)), 
                         url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=1200&q=80');
             background-size: cover;
             background-position: center;
             border-bottom: 2px solid var(--gold);
+            position: relative;
         }
 
-        .badge {
-            display: inline-block;
-            border: 1px solid #ff4444;
-            color: #ff4444;
-            padding: 4px 12px;
+        .lang-switch {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+        }
+
+        .lang-btn {
+            background: #333;
+            color: white;
+            border: 1px solid var(--gold);
+            padding: 5px 10px;
+            cursor: pointer;
             border-radius: 4px;
-            font-size: 12px;
-            text-transform: uppercase;
+            margin-left: 5px;
             font-weight: bold;
-            margin-bottom: 15px;
+        }
+
+        .lang-btn.active {
+            background: var(--gold);
+            color: black;
         }
 
         h1 {
-            font-size: clamp(24px, 5vw, 42px);
+            font-size: 42px;
             color: var(--gold);
             margin: 0;
             text-transform: uppercase;
             letter-spacing: 3px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
         }
 
         .subtitle {
@@ -59,28 +75,30 @@
             margin-top: 10px;
         }
 
-        /* Main Content */
-        main {
-            max-width: 1200px;
-            margin: -40px auto 60px;
-            padding: 0 20px;
+        /* Container & Grid */
+        .container {
+            width: 100%;
+            max-width: 1100px;
+            padding: 40px 20px;
+            margin-top: -30px;
         }
 
         .grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 20px;
         }
 
         .card {
             background: var(--card-bg);
-            border: 1px solid #222;
-            border-radius: 8px;
+            border: 2px solid #333;
+            border-radius: 12px;
             padding: 30px;
             text-align: center;
-            transition: transform 0.3s ease, border-color 0.3s ease;
+            transition: all 0.3s ease;
             text-decoration: none;
             color: inherit;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
             display: flex;
             flex-direction: column;
             justify-content: space-between;
@@ -89,112 +107,181 @@
         .card:hover {
             transform: translateY(-5px);
             border-color: var(--gold);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+            background: #1c2127;
         }
 
         .icon {
-            font-size: 40px;
+            font-size: 45px;
             margin-bottom: 15px;
             display: block;
         }
 
         h2 {
-            font-size: 22px;
+            font-size: 20px;
             margin: 10px 0;
             color: var(--gold);
+            text-transform: uppercase;
         }
 
         .card p {
             font-size: 14px;
             color: var(--text-muted);
             margin-bottom: 20px;
+            min-height: 60px;
         }
 
         .btn {
             background: var(--gold);
             color: #000;
-            padding: 10px 20px;
-            border-radius: 4px;
-            font-weight: bold;
+            padding: 12px 20px;
+            border-radius: 6px;
+            font-weight: 900;
             text-transform: uppercase;
-            font-size: 13px;
+            font-size: 14px;
+            display: inline-block;
+            transition: background 0.2s;
         }
 
-        /* Footer */
+        .card:hover .btn {
+            background: #f0c84c;
+        }
+
+        /* Footer Section */
         footer {
+            width: 100%;
             background: #050505;
             padding: 40px 20px;
             text-align: center;
             color: #555;
-            font-size: 12px;
-            border-top: 1px solid #111;
+            font-size: 13px;
+            border-top: 1px solid #222;
+            margin-top: 50px;
         }
 
         .legal-box {
-            max-width: 800px;
-            margin: 20px auto 0;
-            border: 1px solid #222;
-            padding: 15px;
-            border-radius: 4px;
+            max-width: 900px;
+            margin: 0 auto;
+            line-height: 1.5;
         }
     </style>
 </head>
 <body>
 
 <header>
-    <div class="badge">Fan-Projekt</div>
-    <h1>Viking Rise - Inoffizielle Fan-Seite</h1>
-    <p class="subtitle">Strategien, Tools und Guides für aufstrebende Häuptlinge.</p>
+    <div class="lang-switch">
+        <button id="btn-de" class="lang-btn active" onclick="setLang('de')">DE</button>
+        <button id="btn-en" class="lang-btn" onclick="setLang('en')">EN</button>
+    </div>
+    <h1 id="main-title">Viking Rise - Inoffizielle Fan-Seite</h1>
+    <p id="main-sub" class="subtitle">Strategien, Tools und Guides für aufstrebende Häuptlinge.</p>
 </header>
 
-<main>
+<div class="container">
     <div class="grid">
-        <a href="calculator.html" class="card">
+        <a href="MythicCalc.html" class="card">
             <div>
                 <span class="icon">⚒️</span>
-                <h2>Schmiede-Rechner</h2>
-                <p>Optimiere deine legendäre Ausrüstung. Berechne Materialien inklusive der 2:1 Tausch-Funktion.</p>
+                <h2 id="card1-h">Schmiede-Rechner</h2>
+                <p id="card1-p">Optimiere deine legendäre Ausrüstung. Berechne Materialien inklusive der 2:1 Tausch-Funktion.</p>
             </div>
-            <span class="btn">Tool starten</span>
+            <span class="btn" id="card1-b">Tool starten</span>
         </a>
 
         <a href="#" class="card">
             <div>
                 <span class="icon">🛡️</span>
-                <h2>Helden-Datenbank</h2>
-                <p>Übersicht aller Helden, ihrer besten Fähigkeiten und Talentbaum-Empfehlungen.</p>
+                <h2 id="card2-h">Helden-Datenbank</h2>
+                <p id="card2-p">Übersicht aller Helden, ihrer besten Fähigkeiten und Talentbaum-Empfehlungen.</p>
             </div>
-            <span class="btn">Bald verfügbar</span>
+            <span class="btn" id="card2-b">Bald verfügbar</span>
         </a>
 
         <a href="#" class="card">
             <div>
                 <span class="icon">⚔️</span>
-                <h2>KvK Strategien</h2>
-                <p>Tipps für den Kampf um das Zentrum und effektives Zusammenspiel in der Allianz.</p>
+                <h2 id="card3-h">KvK Strategien</h2>
+                <p id="card3-p">Tipps für den Kampf um das Zentrum und effektives Zusammenspiel in der Allianz.</p>
             </div>
-            <span class="btn">Bald verfügbar</span>
+            <span class="btn" id="card3-b">Bald verfügbar</span>
         </a>
 
         <a href="#" class="card">
             <div>
                 <span class="icon">📜</span>
-                <h2>Tipps & Tricks</h2>
-                <p>Alles über Ressourcen-Management, Macht-Aufbau und tägliche Aufgaben.</p>
+                <h2 id="card4-h">Tipps & Tricks</h2>
+                <p id="card4-p">Alles über Ressourcen-Management, Macht-Aufbau und tägliche Aufgaben.</p>
             </div>
-            <span class="btn">Bald verfügbar</span>
+            <span class="btn" id="card4-b">Bald verfügbar</span>
         </a>
     </div>
-</main>
+</div>
 
 <footer>
-    <p>&copy; 2026 Viking Rise Fan-Portal</p>
-    <div class="legal-box">
+    <div class="legal-box" id="footer-text">
         <strong>Rechtlicher Disclaimer:</strong><br>
-        Dies ist eine inoffizielle Webseite von Fans für Fans. Diese Seite steht in keiner Verbindung zu IGG (I Got Games) oder den offiziellen Entwicklern von Viking Rise. 
-        Alle Markennamen, Grafiken und Spielinhalte sind Eigentum der jeweiligen Inhaber. Diese Seite dient ausschließlich Informations- und Unterhaltungszwecken.
+        Dies ist eine inoffizielle Webseite von Fans für Fans. Diese Seite steht in keiner Verbindung zu IGG (I Got Games) oder den offiziellen Entwicklern von Viking Rise. Alle Markennamen, Grafiken und Spielinhalte sind Eigentum der jeweiligen Inhaber. Diese Seite dient ausschließlich Informations- und Unterhaltungszwecken.
     </div>
 </footer>
+
+<script>
+    const content = {
+        de: {
+            title: "Viking Rise - Inoffizielle Fan-Seite",
+            sub: "Strategien, Tools und Guides für aufstrebende Häuptlinge.",
+            c1h: "Schmiede-Rechner",
+            c1p: "Optimiere deine legendäre Ausrüstung. Berechne Materialien inklusive der 2:1 Tausch-Funktion.",
+            c1b: "Tool starten",
+            c2h: "Helden-Datenbank",
+            c2p: "Übersicht aller Helden, ihrer besten Fähigkeiten und Talentbaum-Empfehlungen.",
+            c2b: "Bald verfügbar",
+            c3h: "KvK Strategien",
+            c3p: "Tipps für den Kampf um das Zentrum und effektives Zusammenspiel in der Allianz.",
+            c3b: "Bald verfügbar",
+            c4h: "Tipps & Tricks",
+            c4p: "Alles über Ressourcen-Management, Macht-Aufbau und tägliche Aufgaben.",
+            c4b: "Bald verfügbar",
+            legal: "<strong>Rechtlicher Disclaimer:</strong><br>Dies ist eine inoffizielle Webseite von Fans für Fans. Diese Seite steht in keiner Verbindung zu IGG (I Got Games) oder den offiziellen Entwicklern von Viking Rise. Alle Markennamen, Grafiken und Spielinhalte sind Eigentum der jeweiligen Inhaber. Diese Seite dient ausschließlich Informations- und Unterhaltungszwecken."
+        },
+        en: {
+            title: "Viking Rise - Unofficial Fan Page",
+            sub: "Strategies, tools and guides for aspiring chiefs.",
+            c1h: "Forge Calculator",
+            c1p: "Optimize your legendary gear. Calculate materials including the 2:1 conversion feature.",
+            c1b: "Start Tool",
+            c2h: "Hero Database",
+            c2p: "Overview of all heroes, their best skills and talent tree recommendations.",
+            c2b: "Coming Soon",
+            c3h: "KvK Strategies",
+            c3p: "Tips for the fight for the center and effective cooperation in the alliance.",
+            c3b: "Coming Soon",
+            c4h: "Tips & Tricks",
+            c4p: "All about resource management, power building and daily tasks.",
+            c4b: "Coming Soon",
+            legal: "<strong>Legal Disclaimer:</strong><br>This is an unofficial fan website. This site is not affiliated with IGG (I Got Games) or the official developers of Viking Rise. All brand names, graphics and game content are property of their respective owners. This site is for informational and entertainment purposes only."
+        }
+    };
+
+    function setLang(lang) {
+        document.getElementById('main-title').innerText = content[lang].title;
+        document.getElementById('main-sub').innerText = content[lang].sub;
+        document.getElementById('card1-h').innerText = content[lang].c1h;
+        document.getElementById('card1-p').innerText = content[lang].c1p;
+        document.getElementById('card1-b').innerText = content[lang].c1b;
+        document.getElementById('card2-h').innerText = content[lang].c2h;
+        document.getElementById('card2-p').innerText = content[lang].c2p;
+        document.getElementById('card2-b').innerText = content[lang].c2b;
+        document.getElementById('card3-h').innerText = content[lang].c3h;
+        document.getElementById('card3-p').innerText = content[lang].c3p;
+        document.getElementById('card3-b').innerText = content[lang].c3b;
+        document.getElementById('card4-h').innerText = content[lang].c4h;
+        document.getElementById('card4-p').innerText = content[lang].c4p;
+        document.getElementById('card4-b').innerText = content[lang].c4b;
+        document.getElementById('footer-text').innerHTML = content[lang].legal;
+
+        document.getElementById('btn-de').classList.toggle('active', lang === 'de');
+        document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+    }
+</script>
 
 </body>
 </html>
