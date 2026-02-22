@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Viking Rise - Forge Tool Pro</title>
+    <title>Viking Rise Tool</title>
     <style>
         body {
             background-color: #121212;
@@ -269,7 +269,9 @@
             resRequired: "BASIS-BEDARF",
             resReady: "BEREIT",
             resMissing: "FEHLT",
-            resOr: "ODER"
+            resOr: "ODER",
+            resSurplus: "ÜBERSCHUSS",
+            resConvert: "Vorschlag: Nutze Überschuss von"
         },
         en: {
             title: "Forge Calculator",
@@ -286,7 +288,9 @@
             resRequired: "BASE REQUIREMENT",
             resReady: "READY",
             resMissing: "MISSING",
-            resOr: "OR"
+            resOr: "OR",
+            resSurplus: "SURPLUS",
+            resConvert: "Tip: Use surplus from"
         }
     };
 
@@ -364,25 +368,50 @@
         t.materials.forEach((name, i) => {
             report += `${neededArr[i]}x ${name} | `;
         });
-        report = report.slice(0, -3); // Letztes " | " entfernen
+        report = report.slice(0, -3);
         report += `\n${"=".repeat(80)}\n\n`;
 
+        let results = [];
         t.materials.forEach((name, i) => {
             let ownedPoints = 0;
             for(let r = 0; r < 5; r++) {
                 const val = parseInt(document.getElementById(`mat-${i}-${r}`).value) || 0;
                 ownedPoints += val * Math.pow(4, r);
             }
-
             const targetPoints = neededArr[i] * Math.pow(4, targetIdx);
             const diff = targetPoints - ownedPoints;
+            results.push({ name, diff, targetPoints });
+        });
 
-            report += `${name.toUpperCase()}\n`;
-
-            if(diff <= 0) {
-                report += `[✔] STATUS: ${t.resReady}\n`;
+        results.forEach((res, i) => {
+            report += `${res.name.toUpperCase()}\n`;
+            if(res.diff <= 0) {
+                const surplusPoints = Math.abs(res.diff);
+                const surplusBase = Math.floor(surplusPoints / Math.pow(4, targetIdx));
+                report += `[✔] STATUS: ${t.resReady}`;
+                if(surplusBase > 0) report += ` (+${surplusBase} ${t.resSurplus})`;
+                report += `\n`;
             } else {
-                report += `[✘] STATUS: ${t.resMissing}:\n    >> ${formatMissing(diff, targetIdx, t)}\n`;
+                report += `[✘] STATUS: ${t.resMissing}:\n    >> ${formatMissing(res.diff, targetIdx, t)}\n`;
+                
+                let conversionTips = [];
+                results.forEach((other, oi) => {
+                    if(oi !== i && other.diff < 0) {
+                        const otherSurplusPoints = Math.abs(other.diff);
+                        if(otherSurplusPoints >= Math.pow(4, targetIdx)) {
+                            const availableForThis = Math.floor(otherSurplusPoints / Math.pow(4, targetIdx));
+                            const neededForThis = Math.ceil(res.diff / Math.pow(4, targetIdx));
+                            const canTake = Math.min(availableForThis, neededForThis);
+                            if(canTake > 0) {
+                                conversionTips.push(`${canTake}x ${other.name}`);
+                            }
+                        }
+                    }
+                });
+
+                if(conversionTips.length > 0) {
+                    report += `    💡 ${t.resConvert}: ${conversionTips.join(", ")}\n`;
+                }
             }
             report += "-".repeat(30) + "\n";
         });
