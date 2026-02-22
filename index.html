@@ -1,19 +1,216 @@
-<style>
-    header {
-        width: 100%;
-        padding: 120px 0 140px;
-        text-align: center;
-        background: linear-gradient(rgba(5, 7, 9, 0.4), rgba(5, 7, 9, 0.9)), 
-                    url('viking-bg.png'); 
-        background-size: cover;
-        background-position: center 20%; 
-        background-attachment: fixed;
-        position: relative;
-        border-bottom: 2px solid var(--gold);
-        clip-path: polygon(0 0, 100% 0, 100% 88%, 50% 100%, 0 88%);
-        box-shadow: 0 10px 30px rgba(0,0,0,0.8);
-    }
-</style>
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Viking Rise - Inoffizielle Fan-Seite</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=MedievalSharp&family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --gold: #d4af37;
+            --gold-bright: #f1c40f;
+            --viking-blue: #1a3a4a;
+            --dark-base: #050709;
+            --card-bg: rgba(15, 20, 25, 0.9);
+            --text-light: #f4f4f4;
+            --text-muted: #a0a0a0;
+            --rune-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
+        }
+
+        body {
+            background-color: var(--dark-base);
+            background-image: 
+                radial-gradient(circle at center, rgba(26, 58, 74, 0.15) 0%, transparent 80%),
+                url('https://www.transparenttextures.com/patterns/dark-matter.png');
+            color: var(--text-light);
+            font-family: 'Montserrat', sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        #snow {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none;
+            z-index: 10;
+        }
+
+        header {
+            width: 100%;
+            padding: 120px 0 140px;
+            text-align: center;
+            background: linear-gradient(rgba(5, 7, 9, 0.4), rgba(5, 7, 9, 0.9)), 
+                        url('viking-bg.png'); 
+            background-size: cover;
+            background-position: center 20%; 
+            background-attachment: fixed;
+            position: relative;
+            border-bottom: 2px solid var(--gold);
+            clip-path: polygon(0 0, 100% 0, 100% 88%, 50% 100%, 0 88%);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+        }
+
+        .lang-switch {
+            position: absolute;
+            top: 30px;
+            right: 40px;
+            z-index: 20;
+        }
+
+        .lang-btn {
+            background: rgba(0,0,0,0.7);
+            color: var(--gold);
+            border: 1px solid var(--gold);
+            padding: 10px 18px;
+            cursor: pointer;
+            font-family: 'Cinzel', serif;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            clip-path: polygon(15% 0, 100% 0, 85% 100%, 0 100%);
+            margin-left: 10px;
+        }
+
+        .lang-btn:hover {
+            background: rgba(212, 175, 55, 0.2);
+        }
+
+        .lang-btn.active {
+            background: var(--gold);
+            color: black;
+            box-shadow: var(--rune-shadow);
+        }
+
+        h1 {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(32px, 7vw, 64px);
+            color: var(--gold);
+            margin: 0;
+            text-transform: uppercase;
+            letter-spacing: 6px;
+            text-shadow: 3px 3px 10px rgba(0,0,0,0.9);
+        }
+
+        .subtitle {
+            font-family: 'MedievalSharp', cursive;
+            font-size: 24px;
+            color: #fff;
+            margin-top: 15px;
+            letter-spacing: 1.5px;
+            text-shadow: 2px 2px 5px rgba(0,0,0,0.8);
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            padding: 0 20px;
+            margin-top: -50px;
+            z-index: 15;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 35px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(212, 175, 55, 0.25);
+            position: relative;
+            padding: 45px 30px;
+            text-align: center;
+            transition: all 0.4s ease;
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.6);
+        }
+
+        .card::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: url('https://www.transparenttextures.com/patterns/handmade-paper.png');
+            opacity: 0.05;
+            pointer-events: none;
+        }
+
+        .card:hover {
+            transform: translateY(-12px);
+            border-color: var(--gold);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.9), 0 0 20px rgba(212, 175, 55, 0.1);
+        }
+
+        .icon {
+            font-size: 60px;
+            margin-bottom: 25px;
+            filter: drop-shadow(0 0 12px rgba(212, 175, 55, 0.3));
+        }
+
+        h2 {
+            font-family: 'Cinzel', serif;
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: var(--gold);
+            letter-spacing: 1px;
+        }
+
+        .card p {
+            font-size: 15px;
+            color: var(--text-muted);
+            margin-bottom: 30px;
+            line-height: 1.6;
+            min-height: 70px;
+        }
+
+        .btn {
+            background: linear-gradient(145deg, #b8860b 0%, #d4af37 50%, #b8860b 100%);
+            color: #000;
+            padding: 15px 20px;
+            font-weight: 900;
+            text-transform: uppercase;
+            font-size: 13px;
+            letter-spacing: 2px;
+            clip-path: polygon(10% 0, 100% 0, 90% 100%, 0 100%);
+            border: none;
+            transition: 0.3s;
+        }
+
+        .card:hover .btn {
+            background: var(--gold-bright);
+            box-shadow: 0 0 20px var(--gold);
+            transform: scale(1.05);
+        }
+
+        footer {
+            width: 100%;
+            background: #020304;
+            padding: 60px 20px;
+            text-align: center;
+            color: #666;
+            font-size: 13px;
+            border-top: 1px solid #1a1a1a;
+            margin-top: 100px;
+        }
+
+        .legal-box {
+            max-width: 900px;
+            margin: 0 auto;
+            line-height: 1.8;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+
+<canvas id="snow"></canvas>
 
 <header>
     <div class="lang-switch">
@@ -23,3 +220,152 @@
     <h1 id="main-title">Viking Rise - Inoffizielle Fan-Seite</h1>
     <p id="main-sub" class="subtitle">Strategien, Tools und Guides für aufstrebende Häuptlinge.</p>
 </header>
+
+<div class="container">
+    <div class="grid">
+        <a href="MythicCalc.html" class="card">
+            <div>
+                <span class="icon">⚒️</span>
+                <h2 id="card1-h">Schmiede-Rechner</h2>
+                <p id="card1-p">Optimiere deine legendäre Ausrüstung. Berechne Materialien inklusive der 2:1 Tausch-Funktion.</p>
+            </div>
+            <span class="btn" id="card1-b">Tool starten</span>
+        </a>
+
+        <a href="#" class="card">
+            <div>
+                <span class="icon">🛡️</span>
+                <h2 id="card2-h">Helden-Datenbank</h2>
+                <p id="card2-p">Übersicht aller Helden, ihrer besten Fähigkeiten und Talentbaum-Empfehlungen.</p>
+            </div>
+            <span class="btn" id="card2-b">Bald verfügbar</span>
+        </a>
+
+        <a href="#" class="card">
+            <div>
+                <span class="icon">⚔️</span>
+                <h2 id="card3-h">KvK Strategien</h2>
+                <p id="card3-p">Tipps für den Kampf um das Zentrum und effektives Zusammenspiel in der Allianz.</p>
+            </div>
+            <span class="btn" id="card3-b">Bald verfügbar</span>
+        </a>
+
+        <a href="#" class="card">
+            <div>
+                <span class="icon">📜</span>
+                <h2 id="card4-h">Tipps & Tricks</h2>
+                <p id="card4-p">Alles über Ressourcen-Management, Macht-Aufbau und tägliche Aufgaben.</p>
+            </div>
+            <span class="btn" id="card4-b">Bald verfügbar</span>
+        </a>
+    </div>
+</div>
+
+<footer>
+    <div class="legal-box" id="footer-text">
+        <strong>Rechtlicher Disclaimer:</strong><br>
+        Dies ist eine inoffizielle Webseite von Fans für Fans. Diese Seite steht in keiner Verbindung zu IGG (I Got Games) oder den offiziellen Entwicklern von Viking Rise. Alle Markennamen, Grafiken und Spielinhalte sind Eigentum der jeweiligen Inhaber. Diese Seite dient ausschließlich Informations- und Unterhaltungszwecken.
+    </div>
+</footer>
+
+<script>
+    const content = {
+        de: {
+            title: "Viking Rise - Inoffizielle Fan-Seite",
+            sub: "Strategien, Tools und Guides für aufstrebende Häuptlinge.",
+            c1h: "Schmiede-Rechner",
+            c1p: "Optimiere deine legendäre Ausrüstung. Berechne Materialien inklusive der 2:1 Tausch-Funktion.",
+            c1b: "Tool starten",
+            c2h: "Helden-Datenbank",
+            c2p: "Übersicht aller Helden, ihrer besten Fähigkeiten und Talentbaum-Empfehlungen.",
+            c2b: "Bald verfügbar",
+            c3h: "KvK Strategien",
+            c3p: "Tipps für den Kampf um das Zentrum und effektives Zusammenspiel in der Allianz.",
+            c3b: "Bald verfügbar",
+            c4h: "Tipps & Tricks",
+            c4p: "Alles über Ressourcen-Management, Macht-Aufbau und tägliche Aufgaben.",
+            c4b: "Bald verfügbar",
+            legal: "<strong>Rechtlicher Disclaimer:</strong><br>Dies ist eine inoffizielle Webseite von Fans für Fans. Diese Seite steht in keiner Verbindung zu IGG (I Got Games) oder den offiziellen Entwicklern von Viking Rise. Alle Markennamen, Grafiken und Spielinhalte sind Eigentum der jeweiligen Inhaber. Diese Seite dient ausschließlich Informations- und Unterhaltungszwecken."
+        },
+        en: {
+            title: "Viking Rise - Unofficial Fan Page",
+            sub: "Strategies, tools and guides for aspiring chiefs.",
+            c1h: "Forge Calculator",
+            c1p: "Optimize your legendary gear. Calculate materials including the 2:1 conversion feature.",
+            c1b: "Start Tool",
+            c2h: "Hero Database",
+            c2p: "Overview of all heroes, their best skills and talent tree recommendations.",
+            c2b: "Coming Soon",
+            c3h: "KvK Strategies",
+            c3p: "Tips for the fight for the center and effective cooperation in the alliance.",
+            c3b: "Coming Soon",
+            c4h: "Tips & Tricks",
+            c4p: "All about resource management, power building and daily tasks.",
+            c4b: "Coming Soon",
+            legal: "<strong>Legal Disclaimer:</strong><br>This is an unofficial fan website. This site is not affiliated with IGG (I Got Games) or the official developers of Viking Rise. All brand names, graphics and game content are property of their respective owners. This site is for informational and entertainment purposes only."
+        }
+    };
+
+    function setLang(lang) {
+        document.getElementById('main-title').innerText = content[lang].title;
+        document.getElementById('main-sub').innerText = content[lang].sub;
+        document.getElementById('card1-h').innerText = content[lang].c1h;
+        document.getElementById('card1-p').innerText = content[lang].c1p;
+        document.getElementById('card1-b').innerText = content[lang].c1b;
+        document.getElementById('card2-h').innerText = content[lang].c2h;
+        document.getElementById('card2-p').innerText = content[lang].c2p;
+        document.getElementById('card2-b').innerText = content[lang].c2b;
+        document.getElementById('card3-h').innerText = content[lang].c3h;
+        document.getElementById('card3-p').innerText = content[lang].c3p;
+        document.getElementById('card3-b').innerText = content[lang].c3b;
+        document.getElementById('card4-h').innerText = content[lang].c4h;
+        document.getElementById('card4-p').innerText = content[lang].c4p;
+        document.getElementById('card4-b').innerText = content[lang].c4b;
+        document.getElementById('footer-text').innerHTML = content[lang].legal;
+
+        document.getElementById('btn-de').classList.toggle('active', lang === 'de');
+        document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+    }
+
+    const canvas = document.getElementById('snow');
+    const ctx = canvas.getContext('2d');
+    let width, height, flakes = [];
+
+    function initSnow() {
+        width = window.innerWidth;
+        height = window.innerHeight;
+        canvas.width = width;
+        canvas.height = height;
+        flakes = [];
+        for(let i=0; i<100; i++) {
+            flakes.push({
+                x: Math.random()*width, y: Math.random()*height,
+                s: Math.random()*2+1, d: Math.random()*1
+            });
+        }
+    }
+
+    function drawSnow() {
+        ctx.clearRect(0,0,width,height);
+        ctx.fillStyle = "rgba(255,255,255,0.3)";
+        ctx.beginPath();
+        flakes.forEach(f => {
+            ctx.moveTo(f.x, f.y);
+            ctx.arc(f.x, f.y, f.s, 0, Math.PI*2);
+            f.y += f.s * 0.4;
+            f.x += Math.sin(f.d += 0.01) * 0.5;
+            if(f.y > height) f.y = -10;
+            if(f.x > width) f.x = 0;
+            if(f.x < 0) f.x = width;
+        });
+        ctx.fill();
+        requestAnimationFrame(drawSnow);
+    }
+
+    window.onresize = initSnow;
+    initSnow();
+    drawSnow();
+</script>
+
+</body>
+</html>
