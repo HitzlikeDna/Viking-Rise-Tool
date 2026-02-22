@@ -270,8 +270,8 @@
             resReady: "BEREIT",
             resMissing: "FEHLT",
             resOr: "ODER",
-            resSurplus: "ÜBERSCHUSS",
-            resConvert: "Vorschlag: Nutze Überschuss von"
+            resConvTitle: "MÖGLICHE KONVERTIERUNGEN (2:1):",
+            resConvLine: "Nutze 2x {0} für 1x {1}"
         },
         en: {
             title: "Forge Calculator",
@@ -289,8 +289,8 @@
             resReady: "READY",
             resMissing: "MISSING",
             resOr: "OR",
-            resSurplus: "SURPLUS",
-            resConvert: "Tip: Use surplus from"
+            resConvTitle: "POSSIBLE CONVERSIONS (2:1):",
+            resConvLine: "Use 2x {0} for 1x {1}"
         }
     };
 
@@ -358,9 +358,7 @@
         const itemIdx = document.getElementById('itemSelector').value;
         const targetIdx = parseInt(document.getElementById('targetSelector').value);
         const neededArr = baseRequirements[itemIdx];
-        
-        const reqRarityIdx = targetIdx > 0 ? targetIdx - 1 : 0;
-        const reqRarityName = t.rarities[reqRarityIdx];
+        const reqRarityName = t.rarities[targetIdx];
 
         let report = `${t.resTitle}: ${t.items[itemIdx].toUpperCase()} -> ${t.rarities[targetIdx].toUpperCase()}\n`;
         report += `${t.resRequired} (${reqRarityName}):\n`;
@@ -368,53 +366,58 @@
         t.materials.forEach((name, i) => {
             report += `${neededArr[i]}x ${name} | `;
         });
-        report = report.slice(0, -3);
-        report += `\n${"=".repeat(80)}\n\n`;
+        report = report.slice(0, -3) + `\n${"=".repeat(80)}\n\n`;
 
-        let results = [];
+        let matsData = [];
         t.materials.forEach((name, i) => {
-            let ownedPoints = 0;
+            let totalPoints = 0;
             for(let r = 0; r < 5; r++) {
-                const val = parseInt(document.getElementById(`mat-${i}-${r}`).value) || 0;
-                ownedPoints += val * Math.pow(4, r);
+                totalPoints += (parseInt(document.getElementById(`mat-${i}-${r}`).value) || 0) * Math.pow(4, r);
             }
             const targetPoints = neededArr[i] * Math.pow(4, targetIdx);
-            const diff = targetPoints - ownedPoints;
-            results.push({ name, diff, targetPoints });
+            const diffPoints = totalPoints - targetPoints;
+            matsData.push({ name, diffPoints, targetPoints });
         });
 
-        results.forEach((res, i) => {
-            report += `${res.name.toUpperCase()}\n`;
-            if(res.diff <= 0) {
-                const surplusPoints = Math.abs(res.diff);
-                const surplusBase = Math.floor(surplusPoints / Math.pow(4, targetIdx));
-                report += `[✔] STATUS: ${t.resReady}`;
-                if(surplusBase > 0) report += ` (+${surplusBase} ${t.resSurplus})`;
-                report += `\n`;
+        // Einzelliste
+        matsData.forEach(m => {
+            report += `${m.name.toUpperCase()}\n`;
+            if(m.diffPoints >= 0) {
+                report += `[✔] STATUS: ${t.resReady}\n`;
             } else {
-                report += `[✘] STATUS: ${t.resMissing}:\n    >> ${formatMissing(res.diff, targetIdx, t)}\n`;
-                
-                let conversionTips = [];
-                results.forEach((other, oi) => {
-                    if(oi !== i && other.diff < 0) {
-                        const otherSurplusPoints = Math.abs(other.diff);
-                        if(otherSurplusPoints >= Math.pow(4, targetIdx)) {
-                            const availableForThis = Math.floor(otherSurplusPoints / Math.pow(4, targetIdx));
-                            const neededForThis = Math.ceil(res.diff / Math.pow(4, targetIdx));
-                            const canTake = Math.min(availableForThis, neededForThis);
-                            if(canTake > 0) {
-                                conversionTips.push(`${canTake}x ${other.name}`);
-                            }
-                        }
-                    }
-                });
-
-                if(conversionTips.length > 0) {
-                    report += `    💡 ${t.resConvert}: ${conversionTips.join(", ")}\n`;
-                }
+                report += `[✘] STATUS: ${t.resMissing}:\n    >> ${formatMissing(Math.abs(m.diffPoints), targetIdx, t)}\n`;
             }
             report += "-".repeat(30) + "\n";
         });
+
+        // Konvertierungslogik (2:1)
+        let conversionLines = [];
+        let unitValue = Math.pow(4, targetIdx);
+
+        matsData.forEach((targetMat, i) => {
+            if(targetMat.diffPoints < 0) {
+                let stillNeeded = Math.ceil(Math.abs(targetMat.diffPoints) / unitValue);
+                
+                matsData.forEach((sourceMat, j) => {
+                    if(i !== j && sourceMat.diffPoints >= (unitValue * 2)) {
+                        let surplusUnits = Math.floor(sourceMat.diffPoints / unitValue);
+                        let pairsAvailable = Math.floor(surplusUnits / 2);
+                        
+                        if(pairsAvailable > 0 && stillNeeded > 0) {
+                            let takePairs = Math.min(pairsAvailable, stillNeeded);
+                            conversionLines.push(t.resConvLine.replace("{0}", `${takePairs*2}x ${sourceMat.name}`).replace("{1}", `${takePairs}x ${targetMat.name}`));
+                            stillNeeded -= takePairs;
+                            sourceMat.diffPoints -= (takePairs * 2 * unitValue); // Verbrauchten Überschuss abziehen für nächsten Loop
+                        }
+                    }
+                });
+            }
+        });
+
+        if(conversionLines.length > 0) {
+            report += `\n${t.resConvTitle}\n`;
+            conversionLines.forEach(line => report += `💡 ${line}\n`);
+        }
 
         document.getElementById('resultOutput').innerText = report;
         document.getElementById('resultBorder').style.display = 'block';
