@@ -19,9 +19,7 @@
 
         body {
             background-color: var(--dark-base);
-            background-image: 
-                linear-gradient(rgba(5, 7, 9, 0.6), rgba(5, 7, 9, 0.9)), 
-                url('viking-bg.png');
+            background-image: linear-gradient(rgba(5, 7, 9, 0.6), rgba(5, 7, 9, 0.9)), url('viking-bg.png');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
@@ -37,10 +35,9 @@
 
         header {
             width: 100%;
-            padding: 100px 0 120px; 
+            padding: 100px 0 120px;
             text-align: center;
-            background: linear-gradient(rgba(5, 7, 9, 0.3), rgba(5, 7, 9, 0.8)), 
-                        url('viking-bg.png'); 
+            background: linear-gradient(rgba(5, 7, 9, 0.3), rgba(5, 7, 9, 0.8)), url('viking-bg.png');
             background-size: cover;
             background-position: center center;
             position: relative;
@@ -99,6 +96,8 @@
             display: flex;
             justify-content: flex-start;
             z-index: 25;
+            padding: 0 20px;
+            box-sizing: border-box;
         }
 
         .back-btn {
@@ -346,7 +345,7 @@
 </div>
 
 <footer>
-    <div style="max-width: 900px; margin: 0 auto; line-height: 1.8; font-style: italic;">
+    <div id="ui-footer-legal" style="max-width: 900px; margin: 0 auto; line-height: 1.8; font-style: italic;">
         <strong>Rechtlicher Hinweis:</strong><br>
         Dies ist eine inoffizielle Fan-Seite zum Spiel "Viking Rise". Alle Markennamen sind Eigentum ihrer jeweiligen Inhaber.
     </div>
@@ -364,6 +363,7 @@
             thMat: "Material",
             btnCalc: "Bedarf berechnen",
             btnClose: "Schließen",
+            legal: "<strong>Rechtlicher Hinweis:</strong><br>Dies ist eine inoffizielle Fan-Seite zum Spiel 'Viking Rise'. Alle Markennamen sind Eigentum ihrer jeweiligen Inhaber.",
             items: ["Waffe", "Helm", "Rüstung", "Schuhe"],
             targets: ["Grau (Herstellung)", "Grün (Upgrade)", "Blau (Upgrade)", "Lila (Upgrade)", "Gold (Upgrade)"],
             rarities: ["Grau", "Grün", "Blau", "Lila", "Gold"],
@@ -384,6 +384,7 @@
             thMat: "Material",
             btnCalc: "Calculate Demand",
             btnClose: "Close",
+            legal: "<strong>Legal Notice:</strong><br>This is an unofficial fan site for the game 'Viking Rise'. All brand names are property of their respective owners.",
             items: ["Weapon", "Helm", "Armor", "Boots"],
             targets: ["Gray (Base)", "Green (Upgrade)", "Blue (Upgrade)", "Purple (Upgrade)", "Gold (Upgrade)"],
             rarities: ["Gray", "Green", "Blue", "Purple", "Gold"],
@@ -420,6 +421,7 @@
         document.getElementById('ui-label-target').innerText = t.labelTarget;
         document.getElementById('ui-th-mat').innerText = t.thMat;
         document.getElementById('ui-btn-calc').innerText = t.btnCalc;
+        document.getElementById('ui-footer-legal').innerHTML = t.legal;
 
         for(let i=0; i<5; i++) {
             document.getElementById(`ui-th-r${i}`).innerText = t.rarities[i];
@@ -437,16 +439,16 @@
 
         const body = document.getElementById('materialBody');
         const currentInputs = [];
-        translations['en'].materials.forEach((name, i) => {
+        for(let i=0; i<5; i++) {
             currentInputs[i] = [0,1,2,3,4].map(r => document.getElementById(`mat-${i}-${r}`)?.value || "0");
-        });
+        }
 
         body.innerHTML = '';
         t.materials.forEach((name, i) => {
             const tr = document.createElement('tr');
             tr.innerHTML = `
                 <td class="mat-name-td">${name}</td>
-                ${[0,1,2,3,4].map(r => `<td><input type="number" id="mat-${i}-${r}" value="${currentInputs[i] ? currentInputs[i][r] : '0'}" onfocus="handleFocus(this)" onblur="handleBlur(this)"></td>`).join('')}
+                ${[0,1,2,3,4].map(r => `<td><input type="number" id="mat-${i}-${r}" value="${currentInputs[i][r]}" onfocus="handleFocus(this)" onblur="handleBlur(this)"></td>`).join('')}
             `;
             body.appendChild(tr);
         });
