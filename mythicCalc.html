@@ -9,6 +9,7 @@
         :root {
             --gold: #d4af37;
             --gold-bright: #f1c40f;
+            --viking-blue: #1a3a4a;
             --dark-base: #050709;
             --card-bg: rgba(15, 20, 25, 0.95);
             --text-light: #f4f4f4;
@@ -42,49 +43,163 @@
             margin-bottom: 40px;
         }
 
-        .lang-switch { position: absolute; top: 30px; right: 40px; z-index: 20; }
-        .lang-btn {
-            background: rgba(0,0,0,0.8); color: var(--gold); border: 1px solid var(--gold);
-            padding: 10px 18px; cursor: pointer; font-family: 'Cinzel', serif;
-            clip-path: polygon(15% 0, 100% 0, 85% 100%, 0 100%); margin-left: 10px;
+        .lang-switch {
+            position: absolute;
+            top: 30px;
+            right: 40px;
+            z-index: 20;
         }
-        .lang-btn.active { background: var(--gold); color: black; box-shadow: var(--rune-shadow); }
 
-        .back-nav { width: 100%; max-width: 1100px; margin-bottom: 20px; padding: 0 20px; box-sizing: border-box; align-self: center; display: flex; }
-        .back-btn {
-            background: rgba(0,0,0,0.7); color: var(--gold); border: 1px solid var(--gold);
-            padding: 10px 20px; text-decoration: none; font-family: 'Cinzel', serif; font-weight: bold;
-            clip-path: polygon(10% 0, 100% 0, 90% 100%, 0 100%); transition: 0.3s;
+        .lang-btn {
+            background: rgba(0,0,0,0.8);
+            color: var(--gold);
+            border: 1px solid var(--gold);
+            padding: 10px 18px;
+            cursor: pointer;
+            font-family: 'Cinzel', serif;
+            font-weight: bold;
+            transition: 0.3s;
+            clip-path: polygon(15% 0, 100% 0, 85% 100%, 0 100%);
+            margin-left: 10px;
         }
-        .back-btn:hover { background: var(--gold); color: black; }
+
+        .lang-btn.active {
+            background: var(--gold);
+            color: black;
+            box-shadow: var(--rune-shadow);
+        }
+
+        .back-nav {
+            width: 100%;
+            max-width: 1100px;
+            margin-bottom: 20px;
+            padding: 0 20px;
+            box-sizing: border-box;
+            display: flex;
+        }
+
+        .back-btn {
+            background: rgba(0,0,0,0.7);
+            color: var(--gold);
+            border: 1px solid var(--gold);
+            padding: 10px 20px;
+            text-decoration: none;
+            font-family: 'Cinzel', serif;
+            font-weight: bold;
+            clip-path: polygon(10% 0, 100% 0, 90% 100%, 0 100%);
+            transition: 0.3s;
+        }
+
+        .back-btn:hover {
+            background: var(--gold);
+            color: black;
+        }
 
         .container {
-            width: 100%; max-width: 1100px; background: var(--card-bg);
-            padding: 40px; border: 1px solid rgba(212, 175, 55, 0.3);
-            box-sizing: border-box; margin-bottom: 60px; backdrop-filter: blur(15px);
+            width: 100%;
+            max-width: 1100px;
+            background: var(--card-bg);
+            padding: 40px;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            box-sizing: border-box;
+            margin-bottom: 60px;
+            backdrop-filter: blur(15px);
         }
 
-        h1 { font-family: 'Cinzel', serif; color: var(--gold); text-transform: uppercase; letter-spacing: 4px; margin: 0; }
-
-        .calc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
-        .input-section, .result-section { background: rgba(0,0,0,0.3); padding: 25px; border: 1px solid rgba(212, 175, 55, 0.1); }
-        h3 { font-family: 'Cinzel', serif; color: var(--gold); border-bottom: 1px solid var(--gold); padding-bottom: 10px; margin-top: 0; }
-        
-        .resource-row { display: flex; align-items: center; margin-bottom: 15px; justify-content: space-between; }
-        input { 
-            background: #000; border: 1px solid var(--gold); color: white; 
-            padding: 8px; width: 80px; text-align: center; font-family: 'Montserrat', sans-serif;
+        h1 {
+            font-family: 'Cinzel', serif;
+            color: var(--gold);
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            margin: 0;
+            font-size: clamp(24px, 5vw, 42px);
         }
-        
-        .result-item { margin-bottom: 15px; font-size: 16px; }
+
+        .calc-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-top: 20px;
+        }
+
+        .input-section, .result-section {
+            background: rgba(0,0,0,0.3);
+            padding: 30px;
+            border: 1px solid rgba(212, 175, 55, 0.1);
+        }
+
+        h3 {
+            font-family: 'Cinzel', serif;
+            color: var(--gold);
+            border-bottom: 1px solid var(--gold);
+            padding-bottom: 10px;
+            margin-top: 0;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .resource-row {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            justify-content: space-between;
+        }
+
+        .resource-row span {
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        input {
+            background: rgba(0,0,0,0.6);
+            border: 1px solid var(--gold);
+            color: white;
+            padding: 10px;
+            width: 100px;
+            text-align: center;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: bold;
+            outline: none;
+        }
+
+        input:focus {
+            box-shadow: 0 0 10px rgba(212, 175, 55, 0.4);
+        }
+
+        .result-item {
+            margin-bottom: 15px;
+            font-size: 15px;
+            padding: 10px;
+            background: rgba(255,255,255,0.03);
+            display: flex;
+            justify-content: space-between;
+        }
+
         .needed { color: #ff4444; font-weight: bold; }
         .excess { color: #44ff44; font-weight: bold; }
 
-        footer {
-            width: 100%; background: #020304; padding: 60px 20px; text-align: center;
-            color: #666; font-size: 13px; border-top: 1px solid #1a1a1a; box-sizing: border-box;
+        .summary-box {
+            margin-top: 30px;
+            padding: 20px;
+            background: rgba(212, 175, 55, 0.1);
+            border: 1px solid var(--gold);
+            text-align: center;
         }
-        @media (max-width: 768px) { .calc-grid { grid-template-columns: 1fr; } }
+
+        footer {
+            width: 100%;
+            background: #020304;
+            padding: 60px 20px;
+            text-align: center;
+            color: #666;
+            font-size: 13px;
+            border-top: 1px solid #1a1a1a;
+            box-sizing: border-box;
+        }
+
+        @media (max-width: 850px) {
+            .calc-grid { grid-template-columns: 1fr; }
+        }
     </style>
 </head>
 <body>
@@ -104,75 +219,114 @@
 <div class="container">
     <div class="calc-grid">
         <div class="input-section">
-            <h3 id="txt-input-h">Vorhandene Materialien</h3>
-            <div id="inputs">
-                <div class="resource-row"><span>Material A (Legendär):</span> <input type="number" id="matA" value="0" oninput="calc()"></div>
-                <div class="resource-row"><span>Material B (Legendär):</span> <input type="number" id="matB" value="0" oninput="calc()"></div>
-                <div class="resource-row"><span>Material C (Legendär):</span> <input type="number" id="matC" value="0" oninput="calc()"></div>
-                <div class="resource-row"><span>Material D (Legendär):</span> <input type="number" id="matD" value="0" oninput="calc()"></div>
-            </div>
-            <h3 style="margin-top:20px" id="txt-target-h">Ziel (Bedarf)</h3>
-            <div class="resource-row"><span>Zielmenge pro Material:</span> <input type="number" id="target" value="20" oninput="calc()"></div>
+            <h3 id="txt-input-h">Vorhanden (Legendär)</h3>
+            <div class="resource-row"><span>Material A:</span> <input type="number" id="matA" value="0" oninput="calc()"></div>
+            <div class="resource-row"><span>Material B:</span> <input type="number" id="matB" value="0" oninput="calc()"></div>
+            <div class="resource-row"><span>Material C:</span> <input type="number" id="matC" value="0" oninput="calc()"></div>
+            <div class="resource-row"><span>Material D:</span> <input type="number" id="matD" value="0" oninput="calc()"></div>
+            
+            <h3 style="margin-top:40px" id="txt-target-h">Ziel (Bedarf)</h3>
+            <div class="resource-row"><span id="txt-target-label">Menge pro Material:</span> <input type="number" id="target" value="20" oninput="calc()"></div>
         </div>
 
         <div class="result-section">
-            <h3 id="txt-result-h">Berechnung (2:1 Logik)</h3>
-            <div id="results">
+            <h3 id="txt-result-h">Berechnung</h3>
+            <div id="results"></div>
+            
+            <div class="summary-box" id="summary">
                 </div>
-            <div id="summary" style="margin-top: 20px; padding-top: 15px; border-top: 1px solid var(--gold);"></div>
         </div>
     </div>
 </div>
 
+<footer>
+    <p>© 2026 Tasaro Technologies GmbH. Alle Rechte vorbehalten.</p>
+</footer>
+
 <script>
     const trans = {
-        de: { back: "« Zurück zur Startseite", title: "MythicCalc Schmiede", inputH: "Vorhandene Materialien", targetH: "Ziel (Bedarf)", resultH: "Berechnung (2:1 Logik)" },
-        en: { back: "« Back to Home", title: "MythicCalc Smithy", inputH: "Available Materials", targetH: "Target (Required)", resultH: "Calculation (2:1 Logic)" }
+        de: {
+            back: "« Zurück zur Startseite",
+            title: "MythicCalc Schmiede",
+            inputH: "Vorhanden (Legendär)",
+            targetH: "Ziel (Bedarf)",
+            targetLabel: "Menge pro Material:",
+            resultH: "Berechnung",
+            needed: "Benötigt",
+            excess: "Überschuss",
+            totalMissing: "Noch zu sammeln:"
+        },
+        en: {
+            back: "« Back to Home",
+            title: "MythicCalc Smithy",
+            inputH: "Available (Legendary)",
+            targetH: "Target (Required)",
+            targetLabel: "Amount per Material:",
+            resultH: "Calculation",
+            needed: "Needed",
+            excess: "Excess",
+            totalMissing: "Still to collect:"
+        }
     };
 
+    let currentLang = 'de';
+
     function setLang(lang) {
+        currentLang = lang;
         document.getElementById('btn-de').classList.toggle('active', lang==='de');
         document.getElementById('btn-en').classList.toggle('active', lang==='en');
+        
         document.getElementById('txt-back').innerText = trans[lang].back;
         document.getElementById('txt-title').innerText = trans[lang].title;
         document.getElementById('txt-input-h').innerText = trans[lang].inputH;
         document.getElementById('txt-target-h').innerText = trans[lang].targetH;
+        document.getElementById('txt-target-label').innerText = trans[lang].targetLabel;
         document.getElementById('txt-result-h').innerText = trans[lang].resultH;
+        
+        calc();
     }
 
     function calc() {
         const target = parseInt(document.getElementById('target').value) || 0;
-        const ids = ['matA', 'matB', 'matC', 'matD'];
-        let materials = ids.map(id => ({ id: id, val: parseInt(document.getElementById(id).value) || 0 }));
-        
-        let excessPool = 0;
+        const mats = [
+            { id: 'A', val: parseInt(document.getElementById('matA').value) || 0 },
+            { id: 'B', val: parseInt(document.getElementById('matB').value) || 0 },
+            { id: 'C', val: parseInt(document.getElementById('matC').value) || 0 },
+            { id: 'D', val: parseInt(document.getElementById('matD').value) || 0 }
+        ];
+
+        let totalExcess = 0;
         let totalNeeded = 0;
         let html = "";
 
-        materials.forEach(m => {
+        mats.forEach(m => {
             let diff = m.val - target;
-            if(diff > 0) {
-                excessPool += diff;
-                html += `<div class="result-item">${m.id.replace('mat', 'Material ')}: <span class="excess">+${diff} Überschuss</span></div>`;
+            if (diff >= 0) {
+                totalExcess += diff;
+                html += `<div class="result-item"><span>Material ${m.id}</span> <span class="excess">+${diff} ${trans[currentLang].excess}</span></div>`;
             } else {
                 totalNeeded += Math.abs(diff);
-                html += `<div class="result-item">${m.id.replace('mat', 'Material ')}: <span class="needed">${diff} Benötigt</span></div>`;
+                html += `<div class="result-item"><span>Material ${m.id}</span> <span class="needed">${diff} ${trans[currentLang].needed}</span></div>`;
             }
         });
 
-        const convertBenefit = Math.floor(excessPool / 2);
-        const finalMissing = Math.max(0, totalNeeded - convertBenefit);
+        // 2:1 Logic: Each 2 excess can fill 1 need
+        const potentialFromSwap = Math.floor(totalExcess / 2);
+        const remainingMissing = Math.max(0, totalNeeded - potentialFromSwap);
 
         document.getElementById('results').innerHTML = html;
         document.getElementById('summary').innerHTML = `
-            <div>Überschuss-Pool: ${excessPool}</div>
-            <div>Möglich durch Tausch (2:1): <span class="excess">+${convertBenefit}</span></div>
-            <div style="font-size: 1.2em; font-weight: bold; color: var(--gold); margin-top:10px">
-                Noch zu sammeln: ${finalMissing}
+            <div style="margin-bottom: 10px;">${trans[currentLang].excess} Pool: <strong>${totalExcess}</strong></div>
+            <div style="margin-bottom: 10px;">Tausch-Bonus (2:1): <span class="excess">+${potentialFromSwap}</span></div>
+            <div style="font-size: 1.3em; color: var(--gold-bright); font-family: 'Cinzel', serif;">
+                ${trans[currentLang].totalMissing} ${remainingMissing}
             </div>
         `;
     }
+
+    // Init
     calc();
 </script>
+
 </body>
 </html>
