@@ -169,6 +169,15 @@
             border-top: 1px solid rgba(212, 175, 55, 0.1);
         }
 
+        .tip-content ol {
+            margin: 0;
+            padding-left: 20px;
+        }
+
+        .tip-content li {
+            margin-bottom: 8px;
+        }
+
         footer {
             width: 100%;
             max-width: 800px;
@@ -211,23 +220,16 @@
     
     <div class="tips-section" id="tips-container">
         <div class="tip-card">
-            <div class="tip-header" onclick="toggleTip(this)">Effizientes Farmen</div>
-            <div class="tip-content">
-                Nutze Helden mit Sammel-Talenten, um die Geschwindigkeit und Kapazität deiner Truppen zu erhöhen. Achte darauf, die passenden Truppentypen für die jeweiligen Ressourcenknoten zu senden.
-            </div>
-        </div>
-
-        <div class="tip-card">
-            <div class="tip-header" onclick="toggleTip(this)">Helden-Kombinationen</div>
-            <div class="tip-content">
-                Kombiniere Helden, deren Fähigkeiten sich gegenseitig verstärken. Ein defensiver Anführer gepaart mit einem Heiler sorgt für deutlich längeres Überleben in langwierigen Schlachten.
-            </div>
-        </div>
-
-        <div class="tip-card">
-            <div class="tip-header" onclick="toggleTip(this)">Stamm-Vorteile nutzen</div>
-            <div class="tip-content">
-                Sei immer in einem aktiven Stamm. Die Stammes-Hilfe verkürzt Bau- und Forschungszeiten massiv, und die Stammes-Geschenke bieten wertvolle Ressourcen für dein Wachstum.
+            <div class="tip-header" id="tip1-header" onclick="toggleTip(this)">Wie man 20%-25% Trainingsgeschwindigkeit erhält</div>
+            <div class="tip-content" id="tip1-content">
+                <ol>
+                    <li>Bereite T1-T3 Truppen vor (T3 empfohlen)</li>
+                    <li>Warte auf das Event "Vikings Reign"</li>
+                    <li>Besorge dir eine Trainingsgeschwindigkeits-Rune</li>
+                    <li>Gehe zur Wahrsagerei (Divination) und hole dir den Trainings-Speedup</li>
+                    <li>Nimm den Titel "Aristokrat" an</li>
+                    <li>Befördere die Truppen (Promote)</li>
+                </ol>
             </div>
         </div>
     </div>
@@ -255,7 +257,9 @@
             today: "Stand:",
             legalTitle: "Rechtlicher Hinweis:",
             legalText: "Dies ist eine inoffizielle Fan-Seite zum Spiel \"Viking Rise\". Wir stehen in keiner Verbindung zu den Entwicklern oder Publishern des Spiels. Alle Markennamen und Bilder sind Eigentum ihrer jeweiligen Inhaber. Die hier angegebenen Tipps dienen nur der Orientierung.",
-            date: "23. Februar 2026"
+            date: "23. Februar 2026",
+            tip1Title: "Wie man 20%-25% Trainingsgeschwindigkeit erhält",
+            tip1Body: "<ol><li>Bereite T1-T3 Truppen vor (T3 empfohlen)</li><li>Warte auf das Event 'Vikings Reign'</li><li>Besorge dir eine Trainingsgeschwindigkeits-Rune</li><li>Gehe zur Wahrsagerei (Divination) und hole dir den Trainings-Speedup</li><li>Nimm den Titel 'Aristokrat' an</li><li>Befördere die Truppen (Promote)</li></ol>"
         },
         en: {
             back: "« Back to Home",
@@ -263,7 +267,9 @@
             today: "Last updated:",
             legalTitle: "Legal Notice:",
             legalText: "This is an unofficial fan page for the game \"Viking Rise\". We are not affiliated with the game's developers or publishers. All brand names and images are the property of their respective owners. The tips provided here are for guidance only.",
-            date: "February 23, 2026"
+            date: "February 23, 2026",
+            tip1Title: "How to get 20%-25% Training Speed",
+            tip1Body: "<ol><li>Prepare t1-t3 troops (t3 recommended)</li><li>Wait for Vikings Reign</li><li>Get yourself a Training Speed Rune</li><li>Go to Divination and get yourself Training Speedup</li><li>Take the Title Aristocrat</li><li>Promote Troops</li></ol>"
         }
     };
 
@@ -283,6 +289,10 @@
         document.getElementById('today-date').innerText = translations[lang].date;
         document.getElementById('legal-title').innerText = translations[lang].legalTitle;
         document.getElementById('legal-text').innerText = translations[lang].legalText;
+        
+        // Update Tip Content
+        document.getElementById('tip1-header').innerText = translations[lang].tip1Title;
+        document.getElementById('tip1-content').innerHTML = translations[lang].tip1Body;
     }
 
     setLanguage('de');
