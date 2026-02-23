@@ -9,136 +9,255 @@
         :root {
             --gold: #d4af37;
             --gold-bright: #f1c40f;
+            --viking-blue: #1a3a4a;
             --dark-base: #050709;
-            --card-bg: rgba(15, 20, 25, 0.9);
+            --card-bg: rgba(15, 20, 25, 0.95);
             --text-light: #f4f4f4;
             --text-muted: #a0a0a0;
+            --rune-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
         }
 
         body {
             background-color: var(--dark-base);
-            background-image: radial-gradient(circle at center, rgba(26, 58, 74, 0.15) 0%, transparent 80%), url('https://www.transparenttextures.com/patterns/dark-matter.png');
+            background-image: 
+                linear-gradient(rgba(5, 7, 9, 0.6), rgba(5, 7, 9, 0.9)), 
+                url('viking-bg.png');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
             color: var(--text-light);
             font-family: 'Montserrat', sans-serif;
-            margin: 0; padding: 0;
-            display: flex; flex-direction: column; align-items: center;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            padding: 40px 20px;
             overflow-x: hidden;
         }
 
-        header {
-            width: 100%; padding: 60px 0; text-align: center;
-            background: linear-gradient(rgba(5, 7, 9, 0.8), rgba(5, 7, 9, 0.9)), url('viking-bg.png');
-            background-size: cover; border-bottom: 3px solid var(--gold);
+        /* Zurück Button Design von MythicCalc */
+        .back-nav {
+            width: 100%;
+            max-width: 1100px;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: flex-start;
+        }
+
+        .back-btn {
+            background: rgba(0,0,0,0.7);
+            color: var(--gold);
+            border: 1px solid var(--gold);
+            padding: 10px 20px;
+            text-decoration: none;
+            font-family: 'Cinzel', serif;
+            font-weight: bold;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            clip-path: polygon(10% 0, 100% 0, 90% 100%, 0 100%);
+        }
+
+        .back-btn:hover {
+            background: var(--gold);
+            color: black;
+            box-shadow: var(--rune-shadow);
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1100px;
+            background: var(--card-bg);
+            backdrop-filter: blur(15px);
+            padding: 40px;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.8);
             position: relative;
+            box-sizing: border-box;
         }
 
-        .nav-controls {
-            position: absolute; top: 20px; width: 90%; display: flex; justify-content: space-between; left: 5%;
+        .lang-switch {
+            position: absolute;
+            top: 25px;
+            right: 25px;
         }
 
-        .back-btn, .lang-btn {
-            background: rgba(0,0,0,0.5); border: 1px solid var(--gold);
-            color: var(--gold); padding: 5px 12px; cursor: pointer;
-            font-family: 'Cinzel', serif; font-size: 11px; transition: 0.3s;
-            text-decoration: none; display: inline-block;
+        .lang-btn {
+            background: rgba(0,0,0,0.5);
+            color: var(--gold);
+            border: 1px solid var(--gold);
+            padding: 8px 16px;
+            cursor: pointer;
+            font-family: 'Cinzel', serif;
+            font-weight: bold;
+            transition: 0.3s;
+            margin-left: 5px;
         }
 
-        .back-btn:hover, .lang-btn:hover { background: var(--gold); color: black; }
-        .lang-btn.active { background: var(--gold); color: black; }
+        .lang-btn.active {
+            background: var(--gold);
+            color: black;
+        }
 
-        .lang-switch { display: flex; gap: 8px; }
-
-        h1 { font-family: 'Cinzel', serif; color: var(--gold); letter-spacing: 2px; margin: 0; font-size: 1.8rem; }
-
-        .container { width: 100%; max-width: 1100px; padding: 20px; box-sizing: border-box; }
+        h1 {
+            font-family: 'Cinzel', serif;
+            color: var(--gold);
+            text-align: center;
+            font-size: 32px;
+            margin-bottom: 40px;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            border-bottom: 2px solid var(--gold);
+            padding-bottom: 20px;
+            text-shadow: 0 0 15px rgba(212, 175, 55, 0.2);
+        }
 
         .info-box {
-            background: var(--card-bg); padding: 20px; border-left: 4px solid var(--gold);
-            margin-bottom: 30px; line-height: 1.5; border-radius: 4px; font-size: 14px;
+            background: rgba(0,0,0,0.4);
+            padding: 20px;
+            border-left: 4px solid var(--gold);
+            margin-bottom: 30px;
+            line-height: 1.6;
+            font-size: 15px;
         }
 
         .tab-bar {
-            display: flex; justify-content: center; gap: 8px; margin-bottom: 25px;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 30px;
             flex-wrap: wrap;
         }
 
         .tab-btn {
-            background: rgba(0,0,0,0.6); color: var(--gold); border: 1px solid var(--gold);
-            padding: 10px 15px; cursor: pointer; font-family: 'Cinzel', serif;
-            font-weight: bold; transition: 0.3s; flex: 1; min-width: 120px; max-width: 200px;
+            background: rgba(0,0,0,0.6);
+            color: var(--gold);
+            border: 1px solid var(--gold);
+            padding: 12px 25px;
+            cursor: pointer;
+            font-family: 'Cinzel', serif;
+            font-weight: bold;
+            transition: 0.3s;
+            min-width: 160px;
+            clip-path: polygon(10% 0, 100% 0, 90% 100%, 0 100%);
         }
 
         .tab-btn:hover, .tab-btn.active {
-            background: var(--gold); color: black; box-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
+            background: var(--gold);
+            color: black;
+            box-shadow: var(--rune-shadow);
         }
 
         .table-container {
-            background: var(--card-bg); border: 1px solid rgba(212, 175, 55, 0.2);
-            padding: 15px; border-radius: 8px; width: 100%; box-sizing: border-box;
+            width: 100%;
             overflow: hidden;
+            margin-top: 20px;
         }
 
         .status-title {
-            font-family: 'Cinzel', serif; color: var(--gold-bright);
-            margin-bottom: 15px; text-align: center; font-size: 20px;
-            text-transform: uppercase; letter-spacing: 1px;
+            font-family: 'Cinzel', serif;
+            color: var(--gold-bright);
+            margin-bottom: 20px;
+            text-align: center;
+            font-size: 22px;
+            letter-spacing: 2px;
         }
 
-        table { width: 100%; border-collapse: collapse; table-layout: fixed; }
-        th, td { padding: 10px 2px; text-align: center; border-bottom: 1px solid rgba(255,255,255,0.1); font-size: 11px; word-wrap: break-word; }
-        th { color: var(--gold); font-family: 'Cinzel', serif; background: rgba(0,0,0,0.3); line-height: 1.2; }
-        
-        .power-col { text-align: left; font-weight: bold; color: var(--text-light); width: 22%; padding-left: 5px; }
-        .cost-val { color: var(--gold-bright); font-weight: 700; }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            table-layout: fixed;
+        }
 
-        tr:hover { background: rgba(255, 255, 255, 0.03); }
+        th, td {
+            padding: 12px 5px;
+            text-align: center;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            font-size: 13px;
+            word-wrap: break-word;
+        }
+
+        th {
+            color: var(--gold);
+            font-family: 'Cinzel', serif;
+            background: rgba(212, 175, 55, 0.1);
+            font-size: 12px;
+        }
+
+        .power-col {
+            text-align: left;
+            font-weight: bold;
+            color: var(--text-light);
+            width: 20%;
+            padding-left: 10px;
+        }
+
+        .cost-val {
+            color: var(--gold-bright);
+            font-weight: 700;
+        }
+
+        tr:hover {
+            background: rgba(212, 175, 55, 0.05);
+        }
 
         footer {
-            width: 100%; background: #020304; padding: 40px 20px;
-            text-align: center; color: #666; font-size: 12px; margin-top: 60px;
+            width: 100%;
+            max-width: 1100px;
+            margin-top: 50px;
+            padding: 30px;
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 12px;
+            background: var(--card-bg);
+            border: 1px solid rgba(212, 175, 55, 0.2);
             box-sizing: border-box;
         }
 
         .disclaimer-box {
-            max-width: 800px; margin: 20px auto 0; padding-top: 20px;
-            border-top: 1px solid #222; font-style: italic; line-height: 1.6;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-style: italic;
+            line-height: 1.5;
         }
 
-        @media (min-width: 768px) {
-            th, td { font-size: 14px; padding: 12px 10px; }
-            h1 { font-size: 2.5rem; letter-spacing: 4px; }
-            .info-box { padding: 30px; font-size: 16px; }
-            .status-title { font-size: 24px; }
+        @media (max-width: 768px) {
+            .container { padding: 20px; }
+            th, td { font-size: 10px; padding: 8px 2px; }
+            h1 { font-size: 22px; }
+            .tab-btn { min-width: 100px; font-size: 11px; padding: 10px 5px; }
+            .power-col { width: 25%; }
         }
     </style>
 </head>
 <body>
 
-<header>
-    <div class="nav-controls">
-        <a href="index.html" class="back-btn" id="nav-back">Zurück</a>
-        <div class="lang-switch">
-            <button class="lang-btn active" onclick="setLanguage('de')">DE</button>
-            <button class="lang-btn" onclick="setLanguage('en')">EN</button>
-        </div>
-    </div>
-    <h1 id="main-title">Königreich Migration</h1>
-</header>
+<div class="back-nav">
+    <a href="index.html" class="back-btn" id="nav-back">« Zurück zur Startseite</a>
+</div>
 
 <div class="container">
+    <div class="lang-switch">
+        <button id="btn-de" class="lang-btn active" onclick="setLanguage('de')">DE</button>
+        <button id="btn-en" class="lang-btn" onclick="setLanguage('en')">EN</button>
+    </div>
+
+    <h1 id="main-title">Königreich Migration</h1>
+
     <div class="info-box">
-        <h2 id="info-h2" style="font-family: 'Cinzel', serif; color: var(--gold); margin-top: 0;">Voraussetzungen & Informationen</h2>
+        <h2 id="info-h2" style="font-family: 'Cinzel', serif; color: var(--gold); margin-top: 0; font-size: 18px;">Voraussetzungen & Informationen</h2>
         <p id="info-p">
             Die Migrationskosten richten sich nach der aktuellen Macht deines Charakters und dem Status des Ziel-Königreichs. Pässe können im Stamm-Shop oder durch Pakete erworben werden.
             <br><br>
-            Wichtig zu beachten ist, dass du beim Migrieren alle Ressourcen verlierst, die sich nicht im Rucksack befinden, sondern in der oberen Leiste angezeigt werden.
+            Wichtig zu beachten ist, dass du beim Migrieren alle Ressourcen verlierst, die sich nicht im Rucksack befinden.
         </p>
     </div>
 
     <div class="tab-bar">
-        <button class="tab-btn active" id="btn-rec" onclick="updateView('recommended')">Recommended</button>
-        <button class="tab-btn" id="btn-com" onclick="updateView('common')">Common</button>
-        <button class="tab-btn" id="btn-str" onclick="updateView('strong')">Strong</button>
+        <button class="tab-btn active" id="tab-rec" onclick="updateView('recommended')">Recommended</button>
+        <button class="tab-btn" id="tab-com" onclick="updateView('common')">Common</button>
+        <button class="tab-btn" id="tab-str" onclick="updateView('strong')">Strong</button>
     </div>
 
     <div class="table-container">
@@ -154,22 +273,21 @@
                     <th id="th-cs">Conquest Season</th>
                 </tr>
             </thead>
-            <tbody id="table-body">
-            </tbody>
+            <tbody id="table-body"></tbody>
         </table>
     </div>
 
-    <div class="info-box" style="margin-top: 40px; border-left: 4px solid #444; background: rgba(20,20,20,0.5);">
-        <p><strong id="today-label">Stand:</strong> <span id="today-date">23. Februar 2026</span></p>
-    </div>
+    <p style="margin-top: 30px; font-size: 13px; color: var(--gold);"><strong id="today-label">Stand:</strong> <span id="today-date">23. Februar 2026</span></p>
 </div>
 
 <footer>
+    <div id="footer-text">
+        © 2026 Tasaro Technologies GmbH. Alle Rechte vorbehalten.
+    </div>
     <div class="disclaimer-box">
         <strong id="legal-title">Rechtlicher Hinweis:</strong><br>
         <span id="legal-text">
-            Dies ist eine inoffizielle Fan-Seite zum Spiel "Viking Rise". Wir stehen in keiner Verbindung zu den Entwicklern oder Publishern des Spiels. 
-            Alle Markennamen und Bilder sind Eigentum ihrer jeweiligen Inhaber. Die hier angegebenen Werte dienen nur der Orientierung und sind ohne Gewähr.
+            Dies ist eine inoffizielle Fan-Seite zum Spiel "Viking Rise". Wir stehen in keiner Verbindung zu den Entwicklern oder Publishern des Spiels. Alle Markennamen und Bilder sind Eigentum ihrer jeweiligen Inhaber. Die hier angegebenen Werte dienen nur der Orientierung und sind ohne Gewähr.
         </span>
     </div>
 </footer>
@@ -180,7 +298,7 @@
 
     const translations = {
         de: {
-            back: "Zurück",
+            back: "« Zurück zur Startseite",
             title: "Königreich Migration",
             infoH2: "Voraussetzungen & Informationen",
             infoP: "Die Migrationskosten richten sich nach der aktuellen Macht deines Charakters und dem Status des Ziel-Königreichs. Pässe können im Stamm-Shop oder durch Pakete erworben werden.<br><br>Wichtig zu beachten ist, dass du beim Migrieren alle Ressourcen verlierst, die sich nicht im Rucksack befinden, sondern in der oberen Leiste angezeigt werden.",
@@ -196,7 +314,7 @@
             date: "23. Februar 2026"
         },
         en: {
-            back: "Back",
+            back: "« Back to Home",
             title: "Kingdom Migration",
             infoH2: "Requirements & Information",
             infoP: "Migration costs are based on your character's current might and the status of the destination kingdom. Migration scrolls can be purchased in the Tribe Shop or through packs.<br><br>It is important to note that when you migrate, you will lose all resources that are not in your backpack but are displayed in the top resource bar.",
@@ -266,9 +384,8 @@
 
     function setLanguage(lang) {
         currentLang = lang;
-        document.querySelectorAll('.lang-btn').forEach(btn => {
-            btn.classList.toggle('active', btn.innerText.toLowerCase() === lang);
-        });
+        document.getElementById('btn-de').classList.toggle('active', lang === 'de');
+        document.getElementById('btn-en').classList.toggle('active', lang === 'en');
 
         document.getElementById('nav-back').innerText = translations[lang].back;
         document.getElementById('main-title').innerText = translations[lang].title;
@@ -292,9 +409,8 @@
         currentStatus = status;
         const body = document.getElementById('table-body');
         const label = document.getElementById('status-label');
-        const buttons = document.querySelectorAll('.tab-btn');
-
-        buttons.forEach(btn => {
+        
+        document.querySelectorAll('.tab-btn').forEach(btn => {
             btn.classList.toggle('active', btn.id.includes(status.substring(0,3)));
         });
 
