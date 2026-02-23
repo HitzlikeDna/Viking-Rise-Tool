@@ -231,8 +231,8 @@
 
 <header>
     <div class="lang-switch">
-        <button id="btn-de" class="lang-btn active" onclick="setLanguage('de')">DE</button>
-        <button id="btn-en" class="lang-btn" onclick="setLanguage('en')">EN</button>
+        <button id="btn-de" class="lang-btn active" onclick="setLang('de')">DE</button>
+        <button id="btn-en" class="lang-btn" onclick="setLang('en')">EN</button>
     </div>
     <h1 id="main-title">Königreich Migration</h1>
 </header>
@@ -280,11 +280,8 @@
 </div>
 
 <footer>
-    <div class="disclaimer-box">
-        <strong id="legal-title">Rechtlicher Hinweis:</strong><br>
-        <span id="legal-text">
-            Dies ist eine inoffizielle Fan-Seite zum Spiel "Viking Rise". Wir stehen in keiner Verbindung zu den Entwicklern oder Publishern des Spiels. Alle Markennamen und Bilder sind Eigentum ihrer jeweiligen Inhaber. Die hier angegebenen Werte dienen nur der Orientierung und sind ohne Gewähr.
-        </span>
+    <div class="disclaimer-box" id="footer-text">
+        <!-- Populated by script -->
     </div>
 </footer>
 
@@ -305,8 +302,7 @@
             thS3: "Saison 3",
             thCs: "Eroberungs-Saison",
             today: "Stand:",
-            legalTitle: "Rechtlicher Hinweis:",
-            legalText: "Dies ist eine inoffizielle Fan-Seite zum Spiel \"Viking Rise\". Wir stehen in keiner Verbindung zu den Entwicklern oder Publishern des Spiels. Alle Markennamen und Bilder sind Eigentum ihrer jeweiligen Inhaber. Die hier angegebenen Werte dienen nur der Orientierung und sind ohne Gewähr.",
+            legal: "<strong>Rechtlicher Disclaimer:</strong><br>Dies ist eine inoffizielle Webseite von Fans für Fans und steht in keiner Verbindung zu IGG (I Got Games) oder den offiziellen Entwicklern von Viking Rise. Alle Markennamen, Grafiken und Spielinhalte sind Eigentum der jeweiligen Inhaber. Die hier bereitgestellten Informationen und Tools dienen ausschließlich Informationszwecken und sind ohne Gewähr.",
             date: "23. Februar 2026",
             statusLabel: "Status: ",
             tabs: { empfohlen: "Empfohlen", gewöhnlich: "Gewöhnlich", stark: "Stark" }
@@ -323,8 +319,7 @@
             thS3: "Season 3",
             thCs: "Conquest Season",
             today: "Last updated:",
-            legalTitle: "Legal Notice:",
-            legalText: "This is an unofficial fan page for the game \"Viking Rise\". We are not affiliated with the game's developers or publishers. All brand names and images are the property of their respective owners. The values provided here are for guidance only and are without guarantee.",
+            legal: "<strong>Legal Disclaimer:</strong><br>This is an unofficial fan website and is not affiliated with IGG (I Got Games) or the official developers of Viking Rise. All brand names, graphics, and game content are the property of their respective owners. The information and tools provided here are for informational purposes only and are without guarantee.",
             date: "February 23, 2026",
             statusLabel: "Status: ",
             tabs: { empfohlen: "Recommended", gewöhnlich: "Common", stark: "Strong" }
@@ -382,7 +377,7 @@
         ]
     };
 
-    function setLanguage(lang) {
+    function setLang(lang) {
         currentLang = lang;
         document.getElementById('btn-de').classList.toggle('active', lang === 'de');
         document.getElementById('btn-en').classList.toggle('active', lang === 'en');
@@ -400,8 +395,7 @@
         document.getElementById('th-cs').innerText = t.thCs;
         document.getElementById('today-label').innerText = t.today;
         document.getElementById('today-date').innerText = t.date;
-        document.getElementById('legal-title').innerText = t.legalTitle;
-        document.getElementById('legal-text').innerText = t.legalText;
+        document.getElementById('footer-text').innerHTML = t.legal;
 
         document.getElementById('tab-emp').innerText = t.tabs.empfohlen;
         document.getElementById('tab-gew').innerText = t.tabs.gewöhnlich;
@@ -437,7 +431,7 @@
         });
     }
 
-    setLanguage('de');
+    setLang(currentLang); // Initial call
 </script>
 
 </body>

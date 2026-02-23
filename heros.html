@@ -285,19 +285,17 @@
 
 <footer>
     <div class="legal-box" id="footer-text">
-        <strong>Rechtlicher Disclaimer:</strong><br>
-        Dies ist eine inoffizielle Webseite von Fans für Fans. Diese Seite steht in keiner Verbindung zu IGG (I Got Games) oder den offiziellen Entwicklern von Viking Rise. Alle Markennamen, Grafiken und Spielinhalte sind Eigentum der jeweiligen Inhaber. Diese Seite dient ausschließlich Informations- und Unterhaltungszwecken.
     </div>
 </footer>
 
 <script>
-    const trans = {
+    const translations = {
         de: {
             title: "Helden Übersicht",
             back: "« Zurück zur Startseite",
             notAvail: "Noch nicht verfügbar",
             skill: "Fähigkeit",
-            legal: "<strong>Rechtlicher Disclaimer:</strong><br>Dies ist eine inoffizielle Webseite von Fans für Fans. Diese Seite steht in keiner Verbindung zu IGG (I Got Games) oder den offiziellen Entwicklern von Viking Rise. Alle Markennamen, Grafiken und Spielinhalte sind Eigentum der jeweiligen Inhaber. Diese Seite dient ausschließlich Informations- und Unterhaltungszwecken.",
+            legal: "<strong>Rechtlicher Disclaimer:</strong><br>Dies ist eine inoffizielle Webseite von Fans für Fans und steht in keiner Verbindung zu IGG (I Got Games) oder den offiziellen Entwicklern von Viking Rise. Alle Markennamen, Grafiken und Spielinhalte sind Eigentum der jeweiligen Inhaber. Die hier bereitgestellten Informationen und Tools dienen ausschließlich Informationszwecken und sind ohne Gewähr.",
             catPikes: "Speerkämpfer",
             catInf: "Infanterie",
             catArch: "Bogenschützen",
@@ -309,7 +307,7 @@
             back: "« Back to Home",
             notAvail: "Not available yet",
             skill: "Skill",
-            legal: "<strong>Legal Disclaimer:</strong><br>This is an unofficial fan website. This site is not affiliated with IGG (I Got Games) or the official developers of Viking Rise. All brand names, graphics and game content are property of their respective owners. This site is for informational and entertainment purposes only.",
+            legal: "<strong>Legal Disclaimer:</strong><br>This is an unofficial fan website and is not affiliated with IGG (I Got Games) or the official developers of Viking Rise. All brand names, graphics, and game content are the property of their respective owners. The information and tools provided here are for informational purposes only and are without guarantee.",
             catPikes: "Pikes",
             catInf: "Infantry",
             catArch: "Archers",
@@ -318,31 +316,37 @@
         }
     };
 
+    let currentLang = 'de';
+
     function setLang(lang) {
+        currentLang = lang;
         document.getElementById('btn-de').classList.toggle('active', lang==='de');
         document.getElementById('btn-en').classList.toggle('active', lang==='en');
 
-        document.getElementById('txt-title').innerText = trans[lang].title;
-        document.getElementById('txt-back').innerText = trans[lang].back;
-        document.getElementById('footer-text').innerHTML = trans[lang].legal;
+        const t = translations[lang];
+        document.getElementById('txt-title').innerText = t.title;
+        document.getElementById('txt-back').innerText = t.back;
+        document.getElementById('footer-text').innerHTML = t.legal;
 
-        document.getElementById('cat-pikes').innerText = trans[lang].catPikes;
-        document.getElementById('cat-inf').innerText = trans[lang].catInf;
-        document.getElementById('cat-arch').innerText = trans[lang].catArch;
+        document.getElementById('cat-pikes').innerText = t.catPikes;
+        document.getElementById('cat-inf').innerText = t.catInf;
+        document.getElementById('cat-arch').innerText = t.catArch;
 
         document.querySelectorAll('.hero-img').forEach(el => {
-            el.innerText = trans[lang].imgPlaceholder;
+            el.innerText = t.imgPlaceholder;
         });
         document.querySelectorAll('.hero-name').forEach((el, index) => {
-            el.innerText = trans[lang].hero + " " + (index % 2 + 1);
+            el.innerText = t.hero + " " + (index % 2 + 1);
         });
         document.querySelectorAll('.not-available').forEach(el => {
-            el.innerText = trans[lang].notAvail;
+            el.innerText = t.notAvail;
         });
         document.querySelectorAll('.skill-title').forEach((el, index) => {
-            el.innerText = trans[lang].skill + " " + (index % 2 + 1) + ":";
+            el.innerText = t.skill + " " + (index % 2 + 1) + ":";
         });
     }
+
+    setLang(currentLang); // Initial call
 </script>
 
 </body>

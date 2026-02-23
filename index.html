@@ -255,7 +255,16 @@
             <span class="btn" id="card3-b">Bald verfügbar</span>
         </a>
 
-        <a href="tipsandTricks" class="card">
+        <a href="events.html" class="card">
+            <div>
+                <span class="icon">🎉</span>
+                <h2 id="card6-h">Events</h2>
+                <p id="card6-p">Übersicht über aktuelle und kommende In-Game-Events.</p>
+            </div>
+            <span class="btn" id="card6-b">Zu den Events</span>
+        </a>
+
+        <a href="tipsandTricks.html" class="card">
             <div>
                 <span class="icon">📜</span>
                 <h2 id="card4-h">Tipps & Tricks</h2>
@@ -283,7 +292,7 @@
 </footer>
 
 <script>
-    const content = {
+    const translations = {
         de: {
             title: "Viking Rise - Inoffizielle Fan-Seite",
             sub: "Strategien, Tools und Guides für aufstrebende Häuptlinge.",
@@ -296,13 +305,16 @@
             c3h: "KvK Strategien",
             c3p: "Tipps für den Kampf um das Zentrum und effektives Zusammenspiel in der Allianz.",
             c3b: "Bald verfügbar",
+            c6h: "Events",
+            c6p: "Übersicht über aktuelle und kommende In-Game-Events.",
+            c6b: "Zu den Events",
             c4h: "Tipps & Tricks",
             c4p: "Alles über Ressourcen-Management, Macht-Aufbau und tägliche Aufgaben.",
             c4b: "Tipps & Tricks",
             c5h: "Migration & Kosten",
             c5p: "Informationen zum Königreich-Wechsel und eine Übersicht der benötigten Migrations-Pässe.",
             c5b: "Migration",
-            legal: "<strong>Rechtlicher Disclaimer:</strong><br>Dies ist eine inoffizielle Webseite von Fans für Fans. Diese Seite steht in keiner Verbindung zu IGG (I Got Games) oder den offiziellen Entwicklern von Viking Rise. Alle Markennamen, Grafiken und Spielinhalte sind Eigentum der jeweiligen Inhaber. Diese Seite dient ausschließlich Informations- und Unterhaltungszwecken."
+            legal: "<strong>Rechtlicher Disclaimer:</strong><br>Dies ist eine inoffizielle Webseite von Fans für Fans und steht in keiner Verbindung zu IGG (I Got Games) oder den offiziellen Entwicklern von Viking Rise. Alle Markennamen, Grafiken und Spielinhalte sind Eigentum der jeweiligen Inhaber. Die hier bereitgestellten Informationen und Tools dienen ausschließlich Informationszwecken und sind ohne Gewähr."
         },
         en: {
             title: "Viking Rise - Unofficial Fan Page",
@@ -312,39 +324,45 @@
             c1b: "Start Tool",
             c2h: "Hero Database",
             c2p: "Overview of all heroes, their best skills and talent tree recommendations.",
-            c2b: "Heros",
+            c2b: "Heroes",
             c3h: "KvK Strategies",
             c3p: "Tips for the fight for the center and effective cooperation in the alliance.",
             c3b: "Coming Soon",
+            c6h: "Events",
+            c6p: "Overview of current and upcoming in-game events.",
+            c6b: "To the Events",
             c4h: "Tips & Tricks",
             c4p: "All about resource management, power building and daily tasks.",
             c4b: "Tips & Tricks",
             c5h: "Migration & Costs",
             c5p: "Information on switching kingdoms and an overview of required migration passes.",
             c5b: "Migration",
-            legal: "<strong>Legal Disclaimer:</strong><br>This is an unofficial fan website. This site is not affiliated with IGG (I Got Games) or the official developers of Viking Rise. All brand names, graphics and game content are property of their respective owners. This site is for informational and entertainment purposes only."
+            legal: "<strong>Legal Disclaimer:</strong><br>This is an unofficial fan website and is not affiliated with IGG (I Got Games) or the official developers of Viking Rise. All brand names, graphics, and game content are the property of their respective owners. The information and tools provided here are for informational purposes only and are without guarantee."
         }
     };
 
     function setLang(lang) {
-        document.getElementById('main-title').innerText = content[lang].title;
-        document.getElementById('main-sub').innerText = content[lang].sub;
-        document.getElementById('card1-h').innerText = content[lang].c1h;
-        document.getElementById('card1-p').innerText = content[lang].c1p;
-        document.getElementById('card1-b').innerText = content[lang].c1b;
-        document.getElementById('card2-h').innerText = content[lang].c2h;
-        document.getElementById('card2-p').innerText = content[lang].c2p;
-        document.getElementById('card2-b').innerText = content[lang].c2b;
-        document.getElementById('card3-h').innerText = content[lang].c3h;
-        document.getElementById('card3-p').innerText = content[lang].c3p;
-        document.getElementById('card3-b').innerText = content[lang].c3b;
-        document.getElementById('card4-h').innerText = content[lang].c4h;
-        document.getElementById('card4-p').innerText = content[lang].c4p;
-        document.getElementById('card4-b').innerText = content[lang].c4b;
-        document.getElementById('card5-h').innerText = content[lang].c5h;
-        document.getElementById('card5-p').innerText = content[lang].c5p;
-        document.getElementById('card5-b').innerText = content[lang].c5b;
-        document.getElementById('footer-text').innerHTML = content[lang].legal;
+        document.getElementById('main-title').innerText = translations[lang].title;
+        document.getElementById('main-sub').innerText = translations[lang].sub;
+        document.getElementById('card1-h').innerText = translations[lang].c1h;
+        document.getElementById('card1-p').innerText = translations[lang].c1p;
+        document.getElementById('card1-b').innerText = translations[lang].c1b;
+        document.getElementById('card2-h').innerText = translations[lang].c2h;
+        document.getElementById('card2-p').innerText = translations[lang].c2p;
+        document.getElementById('card2-b').innerText = translations[lang].c2b;
+        document.getElementById('card3-h').innerText = translations[lang].c3h;
+        document.getElementById('card3-p').innerText = translations[lang].c3p;
+        document.getElementById('card3-b').innerText = translations[lang].c3b;
+        document.getElementById('card6-h').innerText = translations[lang].c6h;
+        document.getElementById('card6-p').innerText = translations[lang].c6p;
+        document.getElementById('card6-b').innerText = translations[lang].c6b;
+        document.getElementById('card4-h').innerText = translations[lang].c4h;
+        document.getElementById('card4-p').innerText = translations[lang].c4p;
+        document.getElementById('card4-b').innerText = translations[lang].c4b;
+        document.getElementById('card5-h').innerText = translations[lang].c5h;
+        document.getElementById('card5-p').innerText = translations[lang].c5p;
+        document.getElementById('card5-b').innerText = translations[lang].c5b;
+        document.getElementById('footer-text').innerHTML = translations[lang].legal;
 
         document.getElementById('btn-de').classList.toggle('active', lang === 'de');
         document.getElementById('btn-en').classList.toggle('active', lang === 'en');

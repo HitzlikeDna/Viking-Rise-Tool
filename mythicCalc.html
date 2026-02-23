@@ -296,8 +296,8 @@
 
 <header>
     <div class="lang-switch">
-        <button id="btn-de" class="lang-btn active" onclick="setLanguage('de')">DE</button>
-        <button id="btn-en" class="lang-btn" onclick="setLanguage('en')">EN</button>
+        <button id="btn-de" class="lang-btn active" onclick="setLang('de')">DE</button>
+        <button id="btn-en" class="lang-btn" onclick="setLang('en')">EN</button>
     </div>
     <h1 id="ui-title">Schmiede-Rechner</h1>
 </header>
@@ -343,9 +343,8 @@
 </div>
 
 <footer>
-    <div id="ui-footer-legal" style="max-width: 900px; margin: 0 auto; line-height: 1.8; font-style: italic;">
-        <strong>Rechtlicher Hinweis:</strong><br>
-        Dies ist eine inoffizielle Fan-Seite zum Spiel "Viking Rise". Alle Markennamen sind Eigentum ihrer jeweiligen Inhaber.
+    <div class="legal-box" id="footer-text">
+        <!-- Populated by script -->
     </div>
 </footer>
 
@@ -360,8 +359,8 @@
             labelTarget: "Ziel-Stufe (Upgrade):",
             thMat: "Material",
             btnCalc: "Bedarf berechnen",
-            btnClose: "Schließen",
-            legal: "<strong>Rechtlicher Hinweis:</strong><br>Dies ist eine inoffizielle Fan-Seite zum Spiel 'Viking Rise'. Alle Markennamen sind Eigentum ihrer jeweiligen Inhaber.",
+            btnClose: "X",
+            legal: "<strong>Rechtlicher Disclaimer:</strong><br>Dies ist eine inoffizielle Webseite von Fans für Fans und steht in keiner Verbindung zu IGG (I Got Games) oder den offiziellen Entwicklern von Viking Rise. Alle Markennamen, Grafiken und Spielinhalte sind Eigentum der jeweiligen Inhaber. Die hier bereitgestellten Informationen und Tools dienen ausschließlich Informationszwecken und sind ohne Gewähr.",
             items: ["Waffe", "Helm", "Rüstung", "Schuhe"],
             targets: ["Grau (Herstellung)", "Grün (Upgrade)", "Blau (Upgrade)", "Lila (Upgrade)", "Gold (Upgrade)"],
             rarities: ["Grau", "Grün", "Blau", "Lila", "Gold"],
@@ -381,8 +380,8 @@
             labelTarget: "Target Level (Upgrade):",
             thMat: "Material",
             btnCalc: "Calculate Demand",
-            btnClose: "Close",
-            legal: "<strong>Legal Notice:</strong><br>This is an unofficial fan site for the game 'Viking Rise'. All brand names are property of their respective owners.",
+            btnClose: "X",
+            legal: "<strong>Legal Disclaimer:</strong><br>This is an unofficial fan website and is not affiliated with IGG (I Got Games) or the official developers of Viking Rise. All brand names, graphics, and game content are the property of their respective owners. The information and tools provided here are for informational purposes only and are without guarantee.",
             items: ["Weapon", "Helm", "Armor", "Boots"],
             targets: ["Gray (Base)", "Green (Upgrade)", "Blue (Upgrade)", "Purple (Upgrade)", "Gold (Upgrade)"],
             rarities: ["Gray", "Green", "Blue", "Purple", "Gold"],
@@ -404,7 +403,7 @@
         3: [11, 13, 10, 11, 14]
     };
 
-    function setLanguage(lang) {
+    function setLang(lang) {
         currentLang = lang;
         document.getElementById('btn-de').classList.toggle('active', lang === 'de');
         document.getElementById('btn-en').classList.toggle('active', lang === 'en');
@@ -419,7 +418,8 @@
         document.getElementById('ui-label-target').innerText = t.labelTarget;
         document.getElementById('ui-th-mat').innerText = t.thMat;
         document.getElementById('ui-btn-calc').innerText = t.btnCalc;
-        document.getElementById('ui-footer-legal').innerHTML = t.legal;
+        document.getElementById('ui-btn-close').innerText = t.btnClose;
+        document.getElementById('footer-text').innerHTML = t.legal;
 
         for(let i=0; i<5; i++) {
             document.getElementById(`ui-th-r${i}`).innerText = t.rarities[i];
@@ -535,7 +535,7 @@
 
     function closeResult() { document.getElementById('resultBorder').style.display = 'none'; }
 
-    setLanguage('de');
+    setLang(currentLang); // Initial call
 </script>
 
 </body>

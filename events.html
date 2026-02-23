@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Viking Rise - Tipps & Tricks</title>
+    <title>Viking Rise - Events</title>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=MedievalSharp&family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -130,14 +130,14 @@
             margin-bottom: 60px;
         }
 
-        .tips-section {
+        .events-section {
             display: flex;
             flex-direction: column;
             gap: 15px;
             margin-top: 20px;
         }
 
-        .tip-card {
+        .event-card {
             background: rgba(255, 255, 255, 0.03);
             border: 1px solid rgba(212, 175, 55, 0.2);
             border-radius: 4px;
@@ -145,7 +145,7 @@
             transition: 0.3s;
         }
 
-        .tip-header {
+        .event-header {
             padding: 15px 20px;
             background: rgba(0, 0, 0, 0.4);
             cursor: pointer;
@@ -158,21 +158,21 @@
             transition: 0.3s;
         }
 
-        .tip-header:hover {
+        .event-header:hover {
             background: rgba(212, 175, 55, 0.1);
         }
 
-        .tip-header::after {
+        .event-header::after {
             content: '▼';
             font-size: 12px;
             transition: transform 0.3s;
         }
 
-        .tip-card.active .tip-header::after {
+        .event-card.active .event-header::after {
             transform: rotate(180deg);
         }
 
-        .tip-content {
+        .event-content {
             max-height: 0;
             overflow: hidden;
             transition: max-height 0.4s ease-out, padding 0.3s;
@@ -182,29 +182,10 @@
             font-size: 14px;
         }
 
-        .tip-card.active .tip-content {
+        .event-card.active .event-content {
             max-height: 1000px;
             padding: 20px;
             border-top: 1px solid rgba(212, 175, 55, 0.1);
-        }
-
-        .tip-content ol {
-            margin: 0;
-            padding-left: 20px;
-        }
-
-        .tip-content li {
-            margin-bottom: 8px;
-        }
-
-        .hero-list {
-            color: #ffffff;
-            font-weight: bold;
-        }
-
-        .highlight-text {
-            color: var(--gold-bright);
-            font-weight: bold;
         }
 
         footer {
@@ -240,7 +221,7 @@
         <button id="btn-de" class="lang-btn active" onclick="setLang('de')">DE</button>
         <button id="btn-en" class="lang-btn" onclick="setLang('en')">EN</button>
     </div>
-    <h1 id="main-title">Strategien & Tipps</h1>
+    <h1 id="main-title">Events</h1>
 </header>
 
 <div class="back-nav">
@@ -248,24 +229,52 @@
 </div>
 
 <div class="container">
-    <div class="tips-section" id="tips-container">
-        <div class="tip-card">
-            <div class="tip-header" id="tip1-header" onclick="toggleTip(this)">Wie man 20%-25% Trainingsgeschwindigkeit erhält</div>
-            <div class="tip-content" id="tip1-content"></div>
+    <div class="events-section" id="events-container">
+        <div class="event-card active">
+            <div class="event-header" id="event1-header" onclick="toggleEvent(this)"></div>
+            <div class="event-content" id="event1-content"></div>
         </div>
 
-        <div class="tip-card">
-            <div class="tip-header" id="tip2-header" onclick="toggleTip(this)">Beste Helden zum Goldsammeln in der Stammesmine</div>
-            <div class="tip-content" id="tip2-content"></div>
+        <div class="event-card active">
+            <div class="event-header" id="event2-header" onclick="toggleEvent(this)"></div>
+            <div class="event-content" id="event2-content"></div>
         </div>
 
-        <div class="tip-card">
-            <div class="tip-header" id="tip3-header" onclick="toggleTip(this)">Kostenloses Schmiedematerial erhalten</div>
-            <div class="tip-content" id="tip3-content"></div>
+        <div class="event-card active">
+            <div class="event-header" id="event3-header" onclick="toggleEvent(this)"></div>
+            <div class="event-content" id="event3-content"></div>
+        </div>
+
+        <div class="event-card active">
+            <div class="event-header" id="event4-header" onclick="toggleEvent(this)"></div>
+            <div class="event-content" id="event4-content"></div>
+        </div>
+
+        <div class="event-card active">
+            <div class="event-header" id="event5-header" onclick="toggleEvent(this)"></div>
+            <div class="event-content" id="event5-content"></div>
+        </div>
+
+        <div class="event-card active">
+            <div class="event-header" id="event6-header" onclick="toggleEvent(this)"></div>
+            <div class="event-content" id="event6-content"></div>
+        </div>
+
+        <div class="event-card active">
+            <div class="event-header" id="event7-header" onclick="toggleEvent(this)"></div>
+            <div class="event-content" id="event7-content"></div>
+        </div>
+
+        <div class="event-card active">
+            <div class="event-header" id="event8-header" onclick="toggleEvent(this)"></div>
+            <div class="event-content" id="event8-content"></div>
+        </div>
+
+        <div class="event-card active">
+            <div class="event-header" id="event9-header" onclick="toggleEvent(this)"></div>
+            <div class="event-content" id="event9-content"></div>
         </div>
     </div>
-
-    <p style="margin-top: 30px; font-size: 13px; color: var(--gold); text-align: center;"><strong id="today-label">Stand:</strong> <span id="today-date">23. Februar 2026</span></p>
 </div>
 
 <footer>
@@ -280,33 +289,53 @@
     const translations = {
         de: {
             back: "« Zurück zur Startseite",
-            title: "Strategien & Tipps",
-            today: "Stand:",
-            date: "23. Februar 2026",
+            title: "Event Übersicht",
             legal: "<strong>Rechtlicher Disclaimer:</strong><br>Dies ist eine inoffizielle Webseite von Fans für Fans und steht in keiner Verbindung zu IGG (I Got Games) oder den offiziellen Entwicklern von Viking Rise. Alle Markennamen, Grafiken und Spielinhalte sind Eigentum der jeweiligen Inhaber. Die hier bereitgestellten Informationen und Tools dienen ausschließlich Informationszwecken und sind ohne Gewähr.",
-            tip1Title: "Wie man 20%-25% Trainingsgeschwindigkeit erhält",
-            tip1Body: "<ol><li>Bereite T1-T3 Truppen vor (T3 empfohlen)</li><li>Warte auf das Event 'Vikinger Herrschaft'</li><li>Besorge dir eine Trainingsgeschwindigkeits-Rune</li><li>Gehe zur Wahrsagungshütte und hole dir den Trainings-Speedup</li><li>Nimm den Titel 'Aristokrat' an</li><li>Befördere die Truppen (Promote)</li></ol>",
-            tip2Title: "Beste Helden zum Goldsammeln in der Stammesmine",
-            tip2Body: "<span class='hero-list'>Varka, Lindy, Erik, Durin, Sveinn, Eugen</span>",
-            tip3Title: "Kostenloses Schmiedematerial durch Sammeln",
-            tip3Body: "Um zufällig kostenloses Basis-Schmiedematerial zu erhalten:<br><br>Rufe deine Sammler aus der Mine zurück und starte das Sammeln sofort neu, sobald folgende Mengen erreicht sind:<br>• Nahrung & Holz: ca. <span class='highlight-text'>300k</span><br>• Stein: <span class='highlight-text'>150k</span><br>• Gold: <span class='highlight-text'>75k</span><br><br>Meistens erhältst du graue Qualität, aber alle anderen Qualitäten bis hin zu Gold sind möglich."
+            event1Title: "Claw maschien",
+            event1Body: "Mindestens 12 Münzen",
+            event2Title: "Mobius-Gipfel",
+            event2Body: "Mindestens Runde 12 erreichen um ins Ranking &lt;200 zu kommen",
+            event3Title: "Tribe Mobilisation",
+            event3Body: "Mindestens 5250 Punkte",
+            event4Title: "Vermächtnis-Jagd",
+            event4Body: "Mindestens 550 Armbrüste, besser mehr haben",
+            event5Title: "„Heros mit gems“",
+            event5Body: "Mindestens 50.000 Gems haben (wenn kein Multiplikator nach Runde 2 erscheint --> aufhören)",
+            event6Title: "Sammle Vorräte",
+            event6Body: "Mit Sammler (max. Truppen) in Zone eins gehen um 40 zu erreichen",
+            event7Title: "Wikinger Herrschaft",
+            event7Body: "Mindest 8mio Punkte",
+            event8Title: "Flag Events",
+            event8Body: "900 bis 1200 Würfel um gemeinsam 4 Boote halb voll zu machen<br>(4500/2 = 2250 pro Boot. Würfeldurchschnitt 10.5 Punkte = ca. 225 Würfel im Optimalfall mal 4 Boote = 900 Würfel)",
+            event9Title: "Rad Der Ewigkeit",
+            event9Body: "Mindestens 39 Stück haben (6x6 +3)"
         },
         en: {
             back: "« Back to Home",
-            title: "Strategies & Tips",
-            today: "Last updated:",
-            date: "February 23, 2026",
+            title: "Event Overview",
             legal: "<strong>Legal Disclaimer:</strong><br>This is an unofficial fan website and is not affiliated with IGG (I Got Games) or the official developers of Viking Rise. All brand names, graphics, and game content are the property of their respective owners. The information and tools provided here are for informational purposes only and are without guarantee.",
-            tip1Title: "How to get 20%-25% Training Speed",
-            tip1Body: "<ol><li>Prepare t1-t3 troops (t3 recommended)</li><li>Wait for Vikings Reign</li><li>Get yourself a Training Speed Rune</li><li>Go to  Divination Shack and get yourself Training Speedup</li><li>Take the Title Aristocrat</li><li>Promote Troops</li></ol>",
-            tip2Title: "Best Troops to Gather Gold in the Tribe Mine",
-            tip2Body: "<span class='hero-list'>Varka, Lindy, Erik, Durin, Sveinn, Eugen</span>",
-            tip3Title: "To gain randomly a free basic forging material",
-            tip3Body: "Return your haulers from the mine and restart gathering immediately at these amounts:<br>• Food and Wood: approx. <span class='highlight-text'>300k</span><br>• Stone: <span class='highlight-text'>150k</span><br>• Gold: <span class='highlight-text'>75k</span><br><br>Mostly grey but all other quality up to gold possible."
+            event1Title: "Claw Machine",
+            event1Body: "At least 12 coins",
+            event2Title: "Mobius Peak",
+            event2Body: "Reach at least round 12 to get into the ranking &lt;200",
+            event3Title: "Tribe Mobilization",
+            event3Body: "At least 5250 points",
+            event4Title: "Legacy Hunt",
+            event4Body: "At least 550 crossbows, better to have more",
+            event5Title: "Heroes with Gems",
+            event5Body: "Have at least 50,000 gems (if no multiplier appears after round 2 --> stop)",
+            event6Title: "Gather Supplies",
+            event6Body: "Go to zone one with gatherers (max troops) to reach 40",
+            event7Title: "Viking's Reign",
+            event7Body: "Minimum 8 million points",
+            event8Title: "Flag Events",
+            event8Body: "900 to 1200 dice to half-fill 4 boats together<br>(4500/2 = 2250 per boat. Dice average 10.5 points = approx. 225 dice in the optimal case times 4 boats = 900 dice)",
+            event9Title: "Wheel Of Eternity",
+            event9Body: "Have at least 39 pieces (6x6 +3)"
         }
     };
 
-    function toggleTip(header) {
+    function toggleEvent(header) {
         const card = header.parentElement;
         card.classList.toggle('active');
     }
@@ -316,18 +345,17 @@
         document.getElementById('btn-de').classList.toggle('active', lang === 'de');
         document.getElementById('btn-en').classList.toggle('active', lang === 'en');
 
-        document.getElementById('nav-back').innerText = translations[lang].back;
-        document.getElementById('main-title').innerText = translations[lang].title;
-        document.getElementById('today-label').innerText = translations[lang].today;
-        document.getElementById('today-date').innerText = translations[lang].date;
-        document.getElementById('footer-text').innerHTML = translations[lang].legal;
+        const t = translations[lang];
+        document.getElementById('nav-back').innerText = t.back;
+        document.getElementById('main-title').innerText = t.title;
+        document.getElementById('footer-text').innerHTML = t.legal;
         
-        document.getElementById('tip1-header').innerText = translations[lang].tip1Title;
-        document.getElementById('tip1-content').innerHTML = translations[lang].tip1Body;
-        document.getElementById('tip2-header').innerText = translations[lang].tip2Title;
-        document.getElementById('tip2-content').innerHTML = translations[lang].tip2Body;
-        document.getElementById('tip3-header').innerText = translations[lang].tip3Title;
-        document.getElementById('tip3-content').innerHTML = translations[lang].tip3Body;
+        for (let i = 1; i <= 9; i++) {
+            const header = document.getElementById(`event${i}-header`);
+            const content = document.getElementById(`event${i}-content`);
+            if (header) header.innerText = t[`event${i}Title`];
+            if (content) content.innerHTML = t[`event${i}Body`];
+        }
     }
 
     setLang(currentLang); // Initial call
