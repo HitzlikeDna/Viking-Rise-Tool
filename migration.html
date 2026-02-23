@@ -307,7 +307,9 @@
             today: "Stand:",
             legalTitle: "Rechtlicher Hinweis:",
             legalText: "Dies ist eine inoffizielle Fan-Seite zum Spiel \"Viking Rise\". Wir stehen in keiner Verbindung zu den Entwicklern oder Publishern des Spiels. Alle Markennamen und Bilder sind Eigentum ihrer jeweiligen Inhaber. Die hier angegebenen Werte dienen nur der Orientierung und sind ohne Gewähr.",
-            date: "23. Februar 2026"
+            date: "23. Februar 2026",
+            mightPrefix: "≤ ",
+            mightSuffix: "M"
         },
         en: {
             back: "« Back to Home",
@@ -323,7 +325,9 @@
             today: "Last updated:",
             legalTitle: "Legal Notice:",
             legalText: "This is an unofficial fan page for the game \"Viking Rise\". We are not affiliated with the game's developers or publishers. All brand names and images are the property of their respective owners. The values provided here are for guidance only and are without guarantee.",
-            date: "February 23, 2026"
+            date: "February 23, 2026",
+            mightPrefix: "≤ ",
+            mightSuffix: "M"
         }
     };
 
@@ -368,7 +372,7 @@
             { p: "50M-60M", wk: "120", s1: "105", s2: "85", s3: "60", cs: "40" },
             { p: "60M-70M", wk: "180", s1: "150", s2: "120", s3: "90", cs: "70" },
             { p: "70M-80M", wk: "240", s1: "220", s2: "180", s3: "120", cs: "100" },
-            { p: "360", wk: "360", s1: "320", s2: "280", s3: "200", cs: "160" },
+            { p: "80M-90M", wk: "360", s1: "320", s2: "280", s3: "200", cs: "160" },
             { p: "90M-100M", wk: "480", s1: "420", s2: "380", s3: "280", cs: "220" },
             { p: "100M-200M", wk: "600", s1: "540", s2: "480", s3: "360", cs: "300" },
             { p: "200M-300M", wk: "720", s1: "660", s2: "600", s3: "480", cs: "380" },
@@ -383,20 +387,21 @@
         document.getElementById('btn-de').classList.toggle('active', lang === 'de');
         document.getElementById('btn-en').classList.toggle('active', lang === 'en');
 
-        document.getElementById('nav-back').innerText = translations[lang].back;
-        document.getElementById('main-title').innerText = translations[lang].title;
-        document.getElementById('info-h2').innerText = translations[lang].infoH2;
-        document.getElementById('info-p').innerHTML = translations[lang].infoP;
-        document.getElementById('th-power').innerText = translations[lang].thPower;
-        document.getElementById('th-wk').innerText = translations[lang].thWk;
-        document.getElementById('th-s1').innerText = translations[lang].thS1;
-        document.getElementById('th-s2').innerText = translations[lang].thS2;
-        document.getElementById('th-s3').innerText = translations[lang].thS3;
-        document.getElementById('th-cs').innerText = translations[lang].thCs;
-        document.getElementById('today-label').innerText = translations[lang].today;
-        document.getElementById('today-date').innerText = translations[lang].date;
-        document.getElementById('legal-title').innerText = translations[lang].legalTitle;
-        document.getElementById('legal-text').innerText = translations[lang].legalText;
+        const t = translations[lang];
+        document.getElementById('nav-back').innerText = t.back;
+        document.getElementById('main-title').innerText = t.title;
+        document.getElementById('info-h2').innerText = t.infoH2;
+        document.getElementById('info-p').innerHTML = t.infoP;
+        document.getElementById('th-power').innerText = t.thPower;
+        document.getElementById('th-wk').innerText = t.thWk;
+        document.getElementById('th-s1').innerText = t.thS1;
+        document.getElementById('th-s2').innerText = t.thS2;
+        document.getElementById('th-s3').innerText = t.thS3;
+        document.getElementById('th-cs').innerText = t.thCs;
+        document.getElementById('today-label').innerText = t.today;
+        document.getElementById('today-date').innerText = t.date;
+        document.getElementById('legal-title').innerText = t.legalTitle;
+        document.getElementById('legal-text').innerText = t.legalText;
 
         updateView(currentStatus);
     }
