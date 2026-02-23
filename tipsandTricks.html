@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Viking Rise - Migration & Tipps</title>
+    <title>Viking Rise - Tipps & Tricks</title>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -38,7 +38,7 @@
 
         .back-nav {
             width: 100%;
-            max-width: 1100px;
+            max-width: 800px;
             margin-bottom: 20px;
             display: flex;
             justify-content: flex-start;
@@ -65,7 +65,7 @@
 
         .container {
             width: 100%;
-            max-width: 1100px;
+            max-width: 800px;
             background: var(--card-bg);
             backdrop-filter: blur(15px);
             padding: 40px;
@@ -98,24 +98,24 @@
             color: black;
         }
 
-        h1, h2 {
+        h1 {
             font-family: 'Cinzel', serif;
             color: var(--gold);
             text-align: center;
             text-transform: uppercase;
             letter-spacing: 4px;
             text-shadow: 0 0 15px rgba(212, 175, 55, 0.2);
+            font-size: 32px;
+            margin-bottom: 40px;
+            border-bottom: 2px solid var(--gold);
+            padding-bottom: 20px;
         }
 
-        h1 { font-size: 32px; margin-bottom: 40px; border-bottom: 2px solid var(--gold); padding-bottom: 20px; }
-        h2 { font-size: 24px; margin: 50px 0 30px; }
-
-        /* Tipps & Tricks Akkordeon */
         .tips-section {
             display: flex;
             flex-direction: column;
             gap: 15px;
-            margin-bottom: 50px;
+            margin-bottom: 30px;
         }
 
         .tip-card {
@@ -164,62 +164,34 @@
         }
 
         .tip-card.active .tip-content {
-            max-height: 1000px; /* Großer Wert für flüssige Animation */
+            max-height: 1000px;
             padding: 20px;
             border-top: 1px solid rgba(212, 175, 55, 0.1);
         }
 
-        /* Migration Tabelle Styles */
-        .tab-bar {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            margin-bottom: 30px;
-            flex-wrap: wrap;
-        }
-
-        .tab-btn {
-            background: rgba(0,0,0,0.6);
-            color: var(--gold);
-            border: 1px solid var(--gold);
-            padding: 12px 25px;
-            cursor: pointer;
-            font-family: 'Cinzel', serif;
-            font-weight: bold;
-            transition: 0.3s;
-            min-width: 160px;
-            clip-path: polygon(10% 0, 100% 0, 90% 100%, 0 100%);
-        }
-
-        .tab-btn:hover, .tab-btn.active {
-            background: var(--gold);
-            color: black;
-            box-shadow: var(--rune-shadow);
-        }
-
-        .table-container { width: 100%; overflow: hidden; margin-top: 20px; }
-        .status-title { font-family: 'Cinzel', serif; color: var(--gold-bright); margin-bottom: 20px; text-align: center; font-size: 22px; }
-        
-        table { width: 100%; border-collapse: collapse; table-layout: fixed; }
-        th, td { padding: 12px 5px; text-align: center; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 13px; word-wrap: break-word; }
-        th { color: var(--gold); font-family: 'Cinzel', serif; background: rgba(212, 175, 55, 0.1); font-size: 12px; }
-        
-        .power-col { text-align: left; font-weight: bold; color: var(--text-light); width: 20%; padding-left: 10px; }
-        .cost-val { color: var(--gold-bright); font-weight: 700; }
-
         footer {
-            width: 100%; max-width: 1100px; margin-top: 50px; padding: 30px;
-            text-align: center; color: var(--text-muted); font-size: 12px;
-            background: var(--card-bg); border: 1px solid rgba(212, 175, 55, 0.2); box-sizing: border-box;
+            width: 100%;
+            max-width: 800px;
+            margin-top: 50px;
+            padding: 30px;
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 12px;
+            background: var(--card-bg);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            box-sizing: border-box;
         }
 
-        .disclaimer-box { margin-top: 20px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1); font-style: italic; }
+        .disclaimer-box {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-style: italic;
+        }
 
         @media (max-width: 768px) {
             .container { padding: 20px; }
-            th, td { font-size: 10px; }
             h1 { font-size: 22px; }
-            .tab-btn { min-width: 100px; font-size: 11px; }
         }
     </style>
 </head>
@@ -235,52 +207,27 @@
         <button id="btn-en" class="lang-btn" onclick="setLanguage('en')">EN</button>
     </div>
 
-    <h1 id="main-title">Königreich Migration</h1>
-
-    <div class="tab-bar">
-        <button class="tab-btn active" id="tab-rec" onclick="updateView('recommended')">Recommended</button>
-        <button class="tab-btn" id="tab-com" onclick="updateView('common')">Common</button>
-        <button class="tab-btn" id="tab-str" onclick="updateView('strong')">Strong</button>
-    </div>
-
-    <div class="table-container">
-        <div id="status-label" class="status-title">Status: RECOMMENDED</div>
-        <table id="migration-table">
-            <thead>
-                <tr>
-                    <th class="power-col" id="th-power">Macht</th>
-                    <th id="th-wk">Warring Kingdom</th>
-                    <th id="th-s1">Season 1</th>
-                    <th id="th-s2">Season 2</th>
-                    <th id="th-s3">Season 3</th>
-                    <th id="th-cs">Conquest Season</th>
-                </tr>
-            </thead>
-            <tbody id="table-body"></tbody>
-        </table>
-    </div>
-
-    <h2 id="tips-title">Strategien & Tipps</h2>
+    <h1 id="main-title">Strategien & Tipps</h1>
     
     <div class="tips-section" id="tips-container">
         <div class="tip-card">
-            <div class="tip-header" onclick="toggleTip(this)">Ressourcen-Management vor Migration</div>
+            <div class="tip-header" onclick="toggleTip(this)">Effizientes Farmen</div>
             <div class="tip-content">
-                Bevor du migrierst, solltest du alle Ressourcen in deinem Inventar (Rucksack) behalten. Alle Ressourcen, die bereits "geerntet" wurden und oben in der Leiste stehen, gehen bei der Migration verloren. Verbrauche sie für Forschung oder Gebäude, bevor du den Server wechselst!
+                Nutze Helden mit Sammel-Talenten, um die Geschwindigkeit und Kapazität deiner Truppen zu erhöhen. Achte darauf, die passenden Truppentypen für die jeweiligen Ressourcenknoten zu senden.
             </div>
         </div>
 
         <div class="tip-card">
-            <div class="tip-header" onclick="toggleTip(this)">Die Wahl des richtigen Zeitpunkts</div>
+            <div class="tip-header" onclick="toggleTip(this)">Helden-Kombinationen</div>
             <div class="tip-content">
-                Migrationen sind oft günstiger, wenn ein Königreich gerade in die "Conquest Season" eintritt oder den Status "Recommended" hat. Achte auf die Kingdom-Liste im Spiel, um den Status des Zielservers zu prüfen. Ein "Strong" Server verlangt fast das Dreifache an Pässen!
+                Kombiniere Helden, deren Fähigkeiten sich gegenseitig verstärken. Ein defensiver Anführer gepaart mit einem Heiler sorgt für deutlich längeres Überleben in langwierigen Schlachten.
             </div>
         </div>
 
         <div class="tip-card">
-            <div class="tip-header" onclick="toggleTip(this)">Stamm-Shop vs. Pakete</div>
+            <div class="tip-header" onclick="toggleTip(this)">Stamm-Vorteile nutzen</div>
             <div class="tip-content">
-                Migrationspässe können mühsam über den Stamm-Shop mit Stamm-Münzen gesammelt werden. Wenn es schnell gehen muss, bieten die "Weg des Kriegers"-Pakete im Shop oft die effizienteste Methode, um Pässe gegen Echtgeld zu erhalten.
+                Sei immer in einem aktiven Stamm. Die Stammes-Hilfe verkürzt Bau- und Forschungszeiten massiv, und die Stammes-Geschenke bieten wertvolle Ressourcen für dein Wachstum.
             </div>
         </div>
     </div>
@@ -293,97 +240,31 @@
     <div class="disclaimer-box">
         <strong id="legal-title">Rechtlicher Hinweis:</strong><br>
         <span id="legal-text">
-            Dies ist eine inoffizielle Fan-Seite zum Spiel "Viking Rise". Wir stehen in keiner Verbindung zu den Entwicklern oder Publishern des Spiels. Alle Markennamen und Bilder sind Eigentum ihrer jeweiligen Inhaber. Die hier angegebenen Werte dienen nur der Orientierung und sind ohne Gewähr.
+            Dies ist eine inoffizielle Fan-Seite zum Spiel "Viking Rise". Wir stehen in keiner Verbindung zu den Entwicklern oder Publishern des Spiels. Alle Markennamen und Bilder sind Eigentum ihrer jeweiligen Inhaber. Die hier angegebenen Tipps dienen nur der Orientierung.
         </span>
     </div>
 </footer>
 
 <script>
     let currentLang = 'de';
-    let currentStatus = 'recommended';
 
     const translations = {
         de: {
             back: "« Zurück zur Startseite",
-            title: "Königreich Migration",
-            tipsTitle: "Strategien & Tipps",
-            thPower: "Macht",
-            thWk: "Warring Kingdom",
-            thS1: "Season 1",
-            thS2: "Season 2",
-            thS3: "Season 3",
-            thCs: "Conquest Season",
+            title: "Strategien & Tipps",
             today: "Stand:",
             legalTitle: "Rechtlicher Hinweis:",
-            legalText: "Dies ist eine inoffizielle Fan-Seite zum Spiel \"Viking Rise\". Wir stehen in keiner Verbindung zu den Entwicklern oder Publishern des Spiels. Alle Markennamen und Bilder sind Eigentum ihrer jeweiligen Inhaber. Die hier angegebenen Werte dienen nur der Orientierung und sind ohne Gewähr.",
+            legalText: "Dies ist eine inoffizielle Fan-Seite zum Spiel \"Viking Rise\". Wir stehen in keiner Verbindung zu den Entwicklern oder Publishern des Spiels. Alle Markennamen und Bilder sind Eigentum ihrer jeweiligen Inhaber. Die hier angegebenen Tipps dienen nur der Orientierung.",
             date: "23. Februar 2026"
         },
         en: {
             back: "« Back to Home",
-            title: "Kingdom Migration",
-            tipsTitle: "Strategies & Tips",
-            thPower: "Might",
-            thWk: "Warring Kingdom",
-            thS1: "Season 1",
-            thS2: "Season 2",
-            thS3: "Season 3",
-            thCs: "Conquest Season",
+            title: "Strategies & Tips",
             today: "Last updated:",
             legalTitle: "Legal Notice:",
-            legalText: "This is an unofficial fan page for the game \"Viking Rise\". We are not affiliated with the game's developers or publishers. All brand names and images are the property of their respective owners. The values provided here are for guidance only and are without guarantee.",
+            legalText: "This is an unofficial fan page for the game \"Viking Rise\". We are not affiliated with the game's developers or publishers. All brand names and images are the property of their respective owners. The tips provided here are for guidance only.",
             date: "February 23, 2026"
         }
-    };
-
-    const migrationData = {
-        recommended: [
-            { p: "≤ 20M", wk: "2", s1: "2", s2: "1", s3: "1", cs: "0" },
-            { p: "20M-30M", wk: "4", s1: "3", s2: "2", s3: "1", cs: "1" },
-            { p: "30M-40M", wk: "7", s1: "5", s2: "4", s3: "3", cs: "2" },
-            { p: "40M-50M", wk: "10", s1: "7", s2: "6", s3: "5", cs: "3" },
-            { p: "50M-60M", wk: "15", s1: "12", s2: "10", s3: "8", cs: "5" },
-            { p: "60M-70M", wk: "20", s1: "18", s2: "15", s3: "12", cs: "8" },
-            { p: "70M-80M", wk: "30", s1: "26", s2: "22", s3: "16", cs: "12" }, 
-            { p: "80M-90M", wk: "43", s1: "38", s2: "32", s3: "25", cs: "18" },
-            { p: "90M-100M", wk: "56", s1: "50", s2: "43", s3: "35", cs: "25" },
-            { p: "100M-200M", wk: "70", s1: "63", s2: "55", s3: "45", cs: "35" },
-            { p: "200M-300M", wk: "85", s1: "76", s2: "68", s3: "55", cs: "45" },
-            { p: "300M-400M", wk: "100", s1: "90", s2: "82", s3: "70", cs: "55" },
-            { p: "400M-500M", wk: "115", s1: "105", s2: "95", s3: "85", cs: "70" },
-            { p: "> 500M", wk: "130", s1: "120", s2: "110", s3: "100", cs: "85" }
-        ],
-        common: [
-            { p: "≤ 20M", wk: "6", s1: "5", s2: "4", s3: "2", cs: "1" },
-            { p: "20M-30M", wk: "15", s1: "10", s2: "7", s3: "5", cs: "2" },
-            { p: "30M-40M", wk: "28", s1: "22", s2: "18", s3: "14", cs: "6" },
-            { p: "40M-50M", wk: "45", s1: "36", s2: "32", s3: "26", cs: "12" },
-            { p: "50M-60M", wk: "75", s1: "62", s2: "50", s3: "40", cs: "25" },
-            { p: "60M-70M", wk: "110", s1: "90", s2: "70", s3: "55", cs: "40" },
-            { p: "70M-80M", wk: "150", s1: "130", s2: "105", s3: "70", cs: "60" },
-            { p: "80M-90M", wk: "210", s1: "190", s2: "165", s3: "115", cs: "95" },
-            { p: "90M-100M", wk: "280", s1: "250", s2: "225", s3: "165", cs: "130" },
-            { p: "100M-200M", wk: "355", s1: "325", s2: "285", s3: "215", cs: "175" },
-            { p: "200M-300M", wk: "425", s1: "395", s2: "355", s3: "285", cs: "225" },
-            { p: "300M-400M", wk: "500", s1: "465", s2: "430", s3: "355", cs: "290" },
-            { p: "400M-500M", wk: "575", s1: "535", s2: "500", s3: "425", cs: "360" },
-            { p: "> 500M", wk: "650", s1: "610", s2: "570", s3: "500", cs: "430" }
-        ],
-        strong: [
-            { p: "≤ 20M", wk: "12", s1: "9", s2: "6", s3: "3", cs: "1" },
-            { p: "20M-30M", wk: "24", s1: "18", s2: "12", s3: "6", cs: "3" },
-            { p: "30M-40M", wk: "48", s1: "38", s2: "30", s3: "24", cs: "10" },
-            { p: "40M-50M", wk: "72", s1: "60", s2: "54", s3: "36", cs: "18" },
-            { p: "50M-60M", wk: "120", s1: "105", s2: "85", s3: "60", cs: "40" },
-            { p: "60M-70M", wk: "180", s1: "150", s2: "120", s3: "90", cs: "70" },
-            { p: "70M-80M", wk: "240", s1: "220", s2: "180", s3: "120", cs: "100" },
-            { p: "80M-90M", wk: "360", s1: "320", s2: "280", s3: "200", cs: "160" },
-            { p: "90M-100M", wk: "480", s1: "420", s2: "380", s3: "280", cs: "220" },
-            { p: "100M-200M", wk: "600", s1: "540", s2: "480", s3: "360", cs: "300" },
-            { p: "200M-300M", wk: "720", s1: "660", s2: "600", s3: "480", cs: "380" },
-            { p: "300M-400M", wk: "840", s1: "780", s2: "720", s3: "600", cs: "480" },
-            { p: "400M-500M", wk: "960", s1: "900", s2: "840", s3: "720", cs: "600" },
-            { p: "> 500M", wk: "1080", s1: "1020", s2: "960", s3: "840", cs: "720" }
-        ]
     };
 
     function toggleTip(header) {
@@ -398,45 +279,10 @@
 
         document.getElementById('nav-back').innerText = translations[lang].back;
         document.getElementById('main-title').innerText = translations[lang].title;
-        document.getElementById('tips-title').innerText = translations[lang].tipsTitle;
-        document.getElementById('th-power').innerText = translations[lang].thPower;
-        document.getElementById('th-wk').innerText = translations[lang].thWk;
-        document.getElementById('th-s1').innerText = translations[lang].thS1;
-        document.getElementById('th-s2').innerText = translations[lang].thS2;
-        document.getElementById('th-s3').innerText = translations[lang].thS3;
-        document.getElementById('th-cs').innerText = translations[lang].thCs;
         document.getElementById('today-label').innerText = translations[lang].today;
         document.getElementById('today-date').innerText = translations[lang].date;
         document.getElementById('legal-title').innerText = translations[lang].legalTitle;
         document.getElementById('legal-text').innerText = translations[lang].legalText;
-
-        updateView(currentStatus);
-    }
-
-    function updateView(status) {
-        currentStatus = status;
-        const body = document.getElementById('table-body');
-        const label = document.getElementById('status-label');
-        
-        document.querySelectorAll('.tab-btn').forEach(btn => {
-            btn.classList.toggle('active', btn.id.includes(status.substring(0,3)));
-        });
-
-        label.innerText = "Status: " + status.toUpperCase();
-        body.innerHTML = "";
-
-        migrationData[status].forEach(row => {
-            const tr = document.createElement('tr');
-            tr.innerHTML = `
-                <td class="power-col">${row.p}</td>
-                <td class="cost-val">${row.wk}</td>
-                <td class="cost-val">${row.s1}</td>
-                <td class="cost-val">${row.s2}</td>
-                <td class="cost-val">${row.s3}</td>
-                <td class="cost-val">${row.cs}</td>
-            `;
-            body.appendChild(tr);
-        });
     }
 
     setLanguage('de');
