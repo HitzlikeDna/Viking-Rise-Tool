@@ -252,22 +252,22 @@
     </div>
 
     <div class="tab-bar">
-        <button class="tab-btn active" id="tab-rec" onclick="updateView('recommended')">Recommended</button>
-        <button class="tab-btn" id="tab-com" onclick="updateView('common')">Common</button>
-        <button class="tab-btn" id="tab-str" onclick="updateView('strong')">Strong</button>
+        <button class="tab-btn active" id="tab-emp" onclick="updateView('empfohlen')">Empfohlen</button>
+        <button class="tab-btn" id="tab-gew" onclick="updateView('gewöhnlich')">Gewöhnlich</button>
+        <button class="tab-btn" id="tab-sta" onclick="updateView('stark')">Stark</button>
     </div>
 
     <div class="table-container">
-        <div id="status-label" class="status-title">Status: RECOMMENDED</div>
+        <div id="status-label" class="status-title">Status: EMPFOHLEN</div>
         <table id="migration-table">
             <thead>
                 <tr>
                     <th class="power-col" id="th-power">Macht</th>
-                    <th id="th-wk">Warring Kingdom</th>
-                    <th id="th-s1">Season 1</th>
-                    <th id="th-s2">Season 2</th>
-                    <th id="th-s3">Season 3</th>
-                    <th id="th-cs">Conquest Season</th>
+                    <th id="th-wk">Umkämpftes Reich</th>
+                    <th id="th-s1">Saison 1</th>
+                    <th id="th-s2">Saison 2</th>
+                    <th id="th-s3">Saison 3</th>
+                    <th id="th-cs">Eroberungs-Saison</th>
                 </tr>
             </thead>
             <tbody id="table-body"></tbody>
@@ -290,7 +290,7 @@
 
 <script>
     let currentLang = 'de';
-    let currentStatus = 'recommended';
+    let currentStatus = 'empfohlen';
 
     const translations = {
         de: {
@@ -299,17 +299,17 @@
             infoH2: "Voraussetzungen & Informationen",
             infoP: "Die Migrationskosten richten sich nach der aktuellen Macht deines Charakters und dem Status des Ziel-Königreichs. Pässe können im Stamm-Shop oder durch Pakete erworben werden.<br><br>Wichtig zu beachten ist, dass du beim Migrieren alle Ressourcen verlierst, die sich nicht im Rucksack befinden.",
             thPower: "Macht",
-            thWk: "Warring Kingdom",
-            thS1: "Season 1",
-            thS2: "Season 2",
-            thS3: "Season 3",
-            thCs: "Conquest Season",
+            thWk: "Umkämpftes Reich",
+            thS1: "Saison 1",
+            thS2: "Saison 2",
+            thS3: "Saison 3",
+            thCs: "Eroberungs-Saison",
             today: "Stand:",
             legalTitle: "Rechtlicher Hinweis:",
             legalText: "Dies ist eine inoffizielle Fan-Seite zum Spiel \"Viking Rise\". Wir stehen in keiner Verbindung zu den Entwicklern oder Publishern des Spiels. Alle Markennamen und Bilder sind Eigentum ihrer jeweiligen Inhaber. Die hier angegebenen Werte dienen nur der Orientierung und sind ohne Gewähr.",
             date: "23. Februar 2026",
-            mightPrefix: "≤ ",
-            mightSuffix: "M"
+            statusLabel: "Status: ",
+            tabs: { empfohlen: "Empfohlen", gewöhnlich: "Gewöhnlich", stark: "Stark" }
         },
         en: {
             back: "« Back to Home",
@@ -326,13 +326,13 @@
             legalTitle: "Legal Notice:",
             legalText: "This is an unofficial fan page for the game \"Viking Rise\". We are not affiliated with the game's developers or publishers. All brand names and images are the property of their respective owners. The values provided here are for guidance only and are without guarantee.",
             date: "February 23, 2026",
-            mightPrefix: "≤ ",
-            mightSuffix: "M"
+            statusLabel: "Status: ",
+            tabs: { empfohlen: "Recommended", gewöhnlich: "Common", stark: "Strong" }
         }
     };
 
     const migrationData = {
-        recommended: [
+        empfohlen: [
             { p: "≤ 20M", wk: "2", s1: "2", s2: "1", s3: "1", cs: "0" },
             { p: "20M-30M", wk: "4", s1: "3", s2: "2", s3: "1", cs: "1" },
             { p: "30M-40M", wk: "7", s1: "5", s2: "4", s3: "3", cs: "2" },
@@ -348,7 +348,7 @@
             { p: "400M-500M", wk: "115", s1: "105", s2: "95", s3: "85", cs: "70" },
             { p: "> 500M", wk: "130", s1: "120", s2: "110", s3: "100", cs: "85" }
         ],
-        common: [
+        gewöhnlich: [
             { p: "≤ 20M", wk: "6", s1: "5", s2: "4", s3: "2", cs: "1" },
             { p: "20M-30M", wk: "15", s1: "10", s2: "7", s3: "5", cs: "2" },
             { p: "30M-40M", wk: "28", s1: "22", s2: "18", s3: "14", cs: "6" },
@@ -364,7 +364,7 @@
             { p: "400M-500M", wk: "575", s1: "535", s2: "500", s3: "425", cs: "360" },
             { p: "> 500M", wk: "650", s1: "610", s2: "570", s3: "500", cs: "430" }
         ],
-        strong: [
+        stark: [
             { p: "≤ 20M", wk: "12", s1: "9", s2: "6", s3: "3", cs: "1" },
             { p: "20M-30M", wk: "24", s1: "18", s2: "12", s3: "6", cs: "3" },
             { p: "30M-40M", wk: "48", s1: "38", s2: "30", s3: "24", cs: "10" },
@@ -403,6 +403,10 @@
         document.getElementById('legal-title').innerText = t.legalTitle;
         document.getElementById('legal-text').innerText = t.legalText;
 
+        document.getElementById('tab-emp').innerText = t.tabs.empfohlen;
+        document.getElementById('tab-gew').innerText = t.tabs.gewöhnlich;
+        document.getElementById('tab-sta').innerText = t.tabs.stark;
+
         updateView(currentStatus);
     }
 
@@ -410,12 +414,13 @@
         currentStatus = status;
         const body = document.getElementById('table-body');
         const label = document.getElementById('status-label');
+        const t = translations[currentLang];
 
         document.querySelectorAll('.tab-btn').forEach(btn => {
             btn.classList.toggle('active', btn.id.includes(status.substring(0,3)));
         });
 
-        label.innerText = "Status: " + status.toUpperCase();
+        label.innerText = t.statusLabel + t.tabs[status].toUpperCase();
         body.innerHTML = "";
 
         migrationData[status].forEach(row => {
