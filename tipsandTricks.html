@@ -179,9 +179,13 @@
         }
 
         .hero-list {
+            color: #ffffff;
+            font-weight: bold;
+        }
+
+        .highlight-text {
             color: var(--gold-bright);
             font-weight: bold;
-            letter-spacing: 1px;
         }
 
         footer {
@@ -227,23 +231,17 @@
     <div class="tips-section" id="tips-container">
         <div class="tip-card">
             <div class="tip-header" id="tip1-header" onclick="toggleTip(this)">Wie man 20%-25% Trainingsgeschwindigkeit erhält</div>
-            <div class="tip-content" id="tip1-content">
-                <ol>
-                    <li>Bereite T1-T3 Truppen vor (T3 empfohlen)</li>
-                    <li>Warte auf das Event "Vikinger Herrschaft"</li>
-                    <li>Besorge dir eine Trainingsgeschwindigkeits-Rune</li>
-                    <li>Gehe zur Weissagungshütte und hole dir den Trainings-Speedup</li>
-                    <li>Nimm den Titel "Aristokrat" an</li>
-                    <li>Befördere die Truppen (Promote)</li>
-                </ol>
-            </div>
+            <div class="tip-content" id="tip1-content"></div>
         </div>
 
         <div class="tip-card">
             <div class="tip-header" id="tip2-header" onclick="toggleTip(this)">Beste Helden zum Goldsammeln in der Stammesmine</div>
-            <div class="tip-content" id="tip2-content">
-                <span class="hero-list">Varka, Lindy, Erik, Durin, Sveinn, Eugen</span>
-            </div>
+            <div class="tip-content" id="tip2-content"></div>
+        </div>
+
+        <div class="tip-card">
+            <div class="tip-header" id="tip3-header" onclick="toggleTip(this)">Kostenloses Schmiedematerial erhalten</div>
+            <div class="tip-content" id="tip3-content"></div>
         </div>
     </div>
 
@@ -272,9 +270,11 @@
             legalText: "Dies ist eine inoffizielle Fan-Seite zum Spiel \"Viking Rise\". Wir stehen in keiner Verbindung zu den Entwicklern oder Publishern des Spiels. Alle Markennamen und Bilder sind Eigentum ihrer jeweiligen Inhaber. Die hier angegebenen Tipps dienen nur der Orientierung.",
             date: "23. Februar 2026",
             tip1Title: "Wie man 20%-25% Trainingsgeschwindigkeit erhält",
-            tip1Body: "<ol><li>Bereite T1-T3 Truppen vor (T3 empfohlen)</li><li>Warte auf das Event 'Vikinger Herrschaft'</li><li>Besorge dir eine Trainingsgeschwindigkeits-Rune</li><li>Gehe zur Weissagungshütte (Divination) und hole dir den Trainings-Speedup</li><li>Nimm den Titel 'Aristokrat' an</li><li>Befördere die Truppen (Promote)</li></ol>",
+            tip1Body: "<ol><li>Bereite T1-T3 Truppen vor (T3 empfohlen)</li><li>Warte auf das Event 'Vikings Reign'</li><li>Besorge dir eine Trainingsgeschwindigkeits-Rune</li><li>Gehe zur Wahrsagerei (Divination) und hole dir den Trainings-Speedup</li><li>Nimm den Titel 'Aristokrat' an</li><li>Befördere die Truppen (Promote)</li></ol>",
             tip2Title: "Beste Helden zum Goldsammeln in der Stammesmine",
-            tip2Body: "<span class='hero-list'>Varka, Lindy, Erik, Durin, Sveinn, Eugen</span>"
+            tip2Body: "<span class='hero-list'>Varka, Lindy, Erik, Durin, Sveinn, Eugen</span>",
+            tip3Title: "Kostenloses Schmiedematerial durch Sammeln",
+            tip3Body: "Um zufällig kostenloses Basis-Schmiedematerial zu erhalten:<br><br>Rufe deine Sammler aus der Mine zurück und starte das Sammeln sofort neu, sobald folgende Mengen erreicht sind:<br>• Nahrung & Holz: ca. <span class='highlight-text'>300k</span><br>• Stein: <span class='highlight-text'>150k</span><br>• Gold: <span class='highlight-text'>75k</span><br><br>Meistens erhältst du graue Qualität, aber alle anderen Qualitäten bis hin zu Gold sind möglich."
         },
         en: {
             back: "« Back to Home",
@@ -286,7 +286,9 @@
             tip1Title: "How to get 20%-25% Training Speed",
             tip1Body: "<ol><li>Prepare t1-t3 troops (t3 recommended)</li><li>Wait for Vikings Reign</li><li>Get yourself a Training Speed Rune</li><li>Go to Divination and get yourself Training Speedup</li><li>Take the Title Aristocrat</li><li>Promote Troops</li></ol>",
             tip2Title: "Best Troops to Gather Gold in the Tribe Mine",
-            tip2Body: "<span class='hero-list'>Varka, Lindy, Erik, Durin, Sveinn, Eugen</span>"
+            tip2Body: "<span class='hero-list'>Varka, Lindy, Erik, Durin, Sveinn, Eugen</span>",
+            tip3Title: "To gain randomly a free basic forging material",
+            tip3Body: "Return your haulers from the mine and restart gathering immediately at these amounts:<br>• Food and Wood: approx. <span class='highlight-text'>300k</span><br>• Stone: <span class='highlight-text'>150k</span><br>• Gold: <span class='highlight-text'>75k</span><br><br>Mostly grey but all other quality up to gold possible."
         }
     };
 
@@ -307,13 +309,14 @@
         document.getElementById('legal-title').innerText = translations[lang].legalTitle;
         document.getElementById('legal-text').innerText = translations[lang].legalText;
         
-        // Update Tip 1
         document.getElementById('tip1-header').innerText = translations[lang].tip1Title;
         document.getElementById('tip1-content').innerHTML = translations[lang].tip1Body;
 
-        // Update Tip 2
         document.getElementById('tip2-header').innerText = translations[lang].tip2Title;
         document.getElementById('tip2-content').innerHTML = translations[lang].tip2Body;
+
+        document.getElementById('tip3-header').innerText = translations[lang].tip3Title;
+        document.getElementById('tip3-content').innerHTML = translations[lang].tip3Body;
     }
 
     setLanguage('de');
