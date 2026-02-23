@@ -178,6 +178,12 @@
             margin-bottom: 8px;
         }
 
+        .hero-list {
+            color: var(--gold-bright);
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
         footer {
             width: 100%;
             max-width: 800px;
@@ -224,12 +230,19 @@
             <div class="tip-content" id="tip1-content">
                 <ol>
                     <li>Bereite T1-T3 Truppen vor (T3 empfohlen)</li>
-                    <li>Warte auf das Event "Vikings Reign"</li>
+                    <li>Warte auf das Event "Vikinger Herrschaft"</li>
                     <li>Besorge dir eine Trainingsgeschwindigkeits-Rune</li>
-                    <li>Gehe zur Wahrsagerei (Divination) und hole dir den Trainings-Speedup</li>
+                    <li>Gehe zur Weissagungshütte und hole dir den Trainings-Speedup</li>
                     <li>Nimm den Titel "Aristokrat" an</li>
                     <li>Befördere die Truppen (Promote)</li>
                 </ol>
+            </div>
+        </div>
+
+        <div class="tip-card">
+            <div class="tip-header" id="tip2-header" onclick="toggleTip(this)">Beste Helden zum Goldsammeln in der Stammesmine</div>
+            <div class="tip-content" id="tip2-content">
+                <span class="hero-list">Varka, Lindy, Erik, Durin, Sveinn, Eugen</span>
             </div>
         </div>
     </div>
@@ -259,7 +272,9 @@
             legalText: "Dies ist eine inoffizielle Fan-Seite zum Spiel \"Viking Rise\". Wir stehen in keiner Verbindung zu den Entwicklern oder Publishern des Spiels. Alle Markennamen und Bilder sind Eigentum ihrer jeweiligen Inhaber. Die hier angegebenen Tipps dienen nur der Orientierung.",
             date: "23. Februar 2026",
             tip1Title: "Wie man 20%-25% Trainingsgeschwindigkeit erhält",
-            tip1Body: "<ol><li>Bereite T1-T3 Truppen vor (T3 empfohlen)</li><li>Warte auf das Event 'Vikings Reign'</li><li>Besorge dir eine Trainingsgeschwindigkeits-Rune</li><li>Gehe zur Wahrsagerei (Divination) und hole dir den Trainings-Speedup</li><li>Nimm den Titel 'Aristokrat' an</li><li>Befördere die Truppen (Promote)</li></ol>"
+            tip1Body: "<ol><li>Bereite T1-T3 Truppen vor (T3 empfohlen)</li><li>Warte auf das Event 'Vikinger Herrschaft'</li><li>Besorge dir eine Trainingsgeschwindigkeits-Rune</li><li>Gehe zur Weissagungshütte (Divination) und hole dir den Trainings-Speedup</li><li>Nimm den Titel 'Aristokrat' an</li><li>Befördere die Truppen (Promote)</li></ol>",
+            tip2Title: "Beste Helden zum Goldsammeln in der Stammesmine",
+            tip2Body: "<span class='hero-list'>Varka, Lindy, Erik, Durin, Sveinn, Eugen</span>"
         },
         en: {
             back: "« Back to Home",
@@ -269,7 +284,9 @@
             legalText: "This is an unofficial fan page for the game \"Viking Rise\". We are not affiliated with the game's developers or publishers. All brand names and images are the property of their respective owners. The tips provided here are for guidance only.",
             date: "February 23, 2026",
             tip1Title: "How to get 20%-25% Training Speed",
-            tip1Body: "<ol><li>Prepare t1-t3 troops (t3 recommended)</li><li>Wait for Vikings Reign</li><li>Get yourself a Training Speed Rune</li><li>Go to Divination and get yourself Training Speedup</li><li>Take the Title Aristocrat</li><li>Promote Troops</li></ol>"
+            tip1Body: "<ol><li>Prepare t1-t3 troops (t3 recommended)</li><li>Wait for Vikings Reign</li><li>Get yourself a Training Speed Rune</li><li>Go to Divination and get yourself Training Speedup</li><li>Take the Title Aristocrat</li><li>Promote Troops</li></ol>",
+            tip2Title: "Best Troops to Gather Gold in the Tribe Mine",
+            tip2Body: "<span class='hero-list'>Varka, Lindy, Erik, Durin, Sveinn, Eugen</span>"
         }
     };
 
@@ -290,9 +307,13 @@
         document.getElementById('legal-title').innerText = translations[lang].legalTitle;
         document.getElementById('legal-text').innerText = translations[lang].legalText;
         
-        // Update Tip Content
+        // Update Tip 1
         document.getElementById('tip1-header').innerText = translations[lang].tip1Title;
         document.getElementById('tip1-content').innerHTML = translations[lang].tip1Body;
+
+        // Update Tip 2
+        document.getElementById('tip2-header').innerText = translations[lang].tip2Title;
+        document.getElementById('tip2-content').innerHTML = translations[lang].tip2Body;
     }
 
     setLanguage('de');
