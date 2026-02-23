@@ -3,21 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MythicCalc - Schmiede-Rechner</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
+    <title>Viking Rise - Schmiede-Rechner</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=MedievalSharp&family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --gold: #d4af37;
             --gold-bright: #f1c40f;
+            --viking-blue: #1a3a4a;
             --dark-base: #050709;
             --card-bg: rgba(15, 20, 25, 0.95);
             --text-light: #f4f4f4;
+            --text-muted: #a0a0a0;
             --rune-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
         }
 
         body {
             background-color: var(--dark-base);
-            background-image: linear-gradient(rgba(5, 7, 9, 0.6), rgba(5, 7, 9, 0.9)), url('viking-bg.png');
+            background-image: 
+                linear-gradient(rgba(5, 7, 9, 0.6), rgba(5, 7, 9, 0.9)), 
+                url('viking-bg.png');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
@@ -28,155 +32,511 @@
             flex-direction: column;
             align-items: center;
             min-height: 100vh;
+            overflow-x: hidden;
         }
 
         header {
             width: 100%;
-            padding: 100px 0 120px;
+            padding: 100px 0 120px; 
             text-align: center;
-            background: linear-gradient(rgba(5, 7, 9, 0.3), rgba(5, 7, 9, 0.8)), url('viking-bg.png');
+            background: linear-gradient(rgba(5, 7, 9, 0.3), rgba(5, 7, 9, 0.8)), 
+                        url('viking-bg.png'); 
             background-size: cover;
+            background-position: center center;
             position: relative;
             border-bottom: 3px solid var(--gold);
             clip-path: polygon(0 0, 100% 0, 100% 90%, 50% 100%, 0 90%);
+            box-shadow: 0 15px 50px rgba(0,0,0,0.9);
             margin-bottom: 40px;
         }
 
-        .lang-switch { position: absolute; top: 30px; right: 40px; z-index: 20; }
-        .lang-btn {
-            background: rgba(0,0,0,0.8); color: var(--gold); border: 1px solid var(--gold);
-            padding: 10px 18px; cursor: pointer; font-family: 'Cinzel', serif;
-            clip-path: polygon(15% 0, 100% 0, 85% 100%, 0 100%); margin-left: 10px;
+        .lang-switch {
+            position: absolute;
+            top: 30px;
+            right: 40px;
+            z-index: 20;
         }
-        .lang-btn.active { background: var(--gold); color: black; box-shadow: var(--rune-shadow); }
 
-        .back-nav { width: 100%; max-width: 1100px; margin-bottom: 20px; padding: 0 20px; box-sizing: border-box; align-self: center; display: flex; }
-        .back-btn {
-            background: rgba(0,0,0,0.7); color: var(--gold); border: 1px solid var(--gold);
-            padding: 10px 20px; text-decoration: none; font-family: 'Cinzel', serif; font-weight: bold;
-            clip-path: polygon(10% 0, 100% 0, 90% 100%, 0 100%); transition: 0.3s;
+        .lang-btn {
+            background: rgba(0,0,0,0.8);
+            color: var(--gold);
+            border: 1px solid var(--gold);
+            padding: 10px 18px;
+            cursor: pointer;
+            font-family: 'Cinzel', serif;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            clip-path: polygon(15% 0, 100% 0, 85% 100%, 0 100%);
+            margin-left: 10px;
         }
-        .back-btn:hover { background: var(--gold); color: black; }
+
+        .lang-btn:hover {
+            background: var(--gold);
+            color: black;
+        }
+
+        .lang-btn.active {
+            background: var(--gold);
+            color: black;
+            box-shadow: var(--rune-shadow);
+        }
+
+        h1 {
+            font-family: 'Cinzel', serif;
+            color: var(--gold);
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            text-shadow: 0 0 20px rgba(0,0,0,1);
+            font-size: clamp(24px, 5vw, 42px);
+            margin: 0;
+        }
+
+        .back-nav {
+            width: 100%;
+            max-width: 1100px;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: flex-start;
+            z-index: 25;
+        }
+
+        .back-btn {
+            background: rgba(0,0,0,0.7);
+            color: var(--gold);
+            border: 1px solid var(--gold);
+            padding: 10px 20px;
+            text-decoration: none;
+            font-family: 'Cinzel', serif;
+            font-weight: bold;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            clip-path: polygon(10% 0, 100% 0, 90% 100%, 0 100%);
+        }
+
+        .back-btn:hover {
+            background: var(--gold);
+            color: black;
+            box-shadow: var(--rune-shadow);
+        }
 
         .container {
-            width: 100%; max-width: 1100px; background: var(--card-bg);
-            padding: 40px; border: 1px solid rgba(212, 175, 55, 0.3);
-            box-sizing: border-box; margin-bottom: 60px; backdrop-filter: blur(15px);
+            width: 100%;
+            max-width: 1100px;
+            background: var(--card-bg);
+            backdrop-filter: blur(15px);
+            padding: 40px;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.8);
+            position: relative;
+            box-sizing: border-box;
+            margin-bottom: 60px;
         }
 
-        h1 { font-family: 'Cinzel', serif; color: var(--gold); text-transform: uppercase; letter-spacing: 4px; margin: 0; }
-
-        .calc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
-        .input-section, .result-section { background: rgba(0,0,0,0.3); padding: 25px; border: 1px solid rgba(212, 175, 55, 0.1); }
-        h3 { font-family: 'Cinzel', serif; color: var(--gold); border-bottom: 1px solid var(--gold); padding-bottom: 10px; margin-top: 0; }
-        
-        .resource-row { display: flex; align-items: center; margin-bottom: 15px; justify-content: space-between; }
-        input { 
-            background: #000; border: 1px solid var(--gold); color: white; 
-            padding: 8px; width: 80px; text-align: center; font-family: 'Montserrat', sans-serif;
+        .selectors {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
         }
-        
-        .result-item { margin-bottom: 15px; font-size: 16px; }
-        .needed { color: #ff4444; font-weight: bold; }
-        .excess { color: #44ff44; font-weight: bold; }
+
+        .select-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            font-family: 'MedievalSharp', cursive;
+            color: var(--gold);
+            font-size: 18px;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+        }
+
+        select {
+            background-color: #111;
+            color: white;
+            border: 1px solid #444;
+            padding: 12px;
+            border-radius: 4px;
+            font-size: 18px;
+            cursor: pointer;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        select:focus {
+            border-color: var(--gold);
+            outline: none;
+        }
+
+        .table-container {
+            overflow-x: auto;
+            margin-bottom: 40px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th {
+            text-align: center;
+            padding: 15px;
+            font-size: 18px;
+            background-color: rgba(212, 175, 55, 0.1);
+            font-family: 'Cinzel', serif;
+        }
+
+        th.mat-head { text-align: left; color: var(--gold); width: 25%; }
+        .r0 { color: #aaaaaa; }
+        .r1 { color: #32cd32; }
+        .r2 { color: #00bfff; }
+        .r3 { color: #ba55d3; }
+        .r4 { color: #ffd700; }
+
+        td {
+            padding: 15px 10px;
+            border-bottom: 1px solid #222;
+        }
+
+        .mat-name-td {
+            font-size: 16px;
+            font-weight: bold;
+            color: var(--text-light);
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        input[type="number"] {
+            width: 90%;
+            background-color: #0c0c0c;
+            color: white;
+            border: 1px solid #333;
+            padding: 12px 5px;
+            text-align: center;
+            border-radius: 4px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        input[type="number"]:focus {
+            outline: none;
+            border-color: var(--gold);
+            background-color: #151515;
+        }
+
+        .calc-btn {
+            width: 100%;
+            background: linear-gradient(145deg, #b8860b 0%, #d4af37 50%, #b8860b 100%);
+            color: black;
+            border: none;
+            padding: 20px;
+            font-weight: 900;
+            font-size: 20px;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            font-family: 'Cinzel', serif;
+            letter-spacing: 2px;
+            clip-path: polygon(5% 0, 100% 0, 95% 100%, 0 100%);
+        }
+
+        .calc-btn:hover {
+            background: var(--gold-bright);
+            box-shadow: 0 0 20px var(--gold);
+            transform: scale(1.01);
+        }
+
+        #resultBorder {
+            display: none;
+            margin-top: 40px;
+            background-color: rgba(0, 0, 0, 0.8);
+            border: 2px solid var(--gold);
+            padding: 30px;
+            position: relative;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: #800;
+            color: white;
+            border: 1px solid var(--gold);
+            padding: 5px 12px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        #resultOutput {
+            font-family: 'Consolas', monospace;
+            white-space: pre-wrap;
+            font-size: 16px;
+            line-height: 1.6;
+            color: #efefef;
+        }
 
         footer {
-            width: 100%; background: #020304; padding: 60px 20px; text-align: center;
-            color: #666; font-size: 13px; border-top: 1px solid #1a1a1a; box-sizing: border-box;
+            width: 100%;
+            background: #020304;
+            padding: 60px 20px;
+            text-align: center;
+            color: #666;
+            font-size: 13px;
+            border-top: 1px solid #1a1a1a;
+            box-sizing: border-box;
         }
-        @media (max-width: 768px) { .calc-grid { grid-template-columns: 1fr; } }
+
+        @media (max-width: 768px) {
+            header { padding: 80px 0 100px; }
+            .lang-switch { top: 15px; right: 15px; }
+            .lang-btn { padding: 6px 12px; font-size: 12px; }
+            .container { padding: 20px; }
+            .selectors { grid-template-columns: 1fr; gap: 20px; }
+        }
     </style>
 </head>
 <body>
 
 <header>
     <div class="lang-switch">
-        <button id="btn-de" class="lang-btn active" onclick="setLang('de')">DE</button>
-        <button id="btn-en" class="lang-btn" onclick="setLang('en')">EN</button>
+        <button id="btn-de" class="lang-btn active" onclick="setLanguage('de')">DE</button>
+        <button id="btn-en" class="lang-btn" onclick="setLanguage('en')">EN</button>
     </div>
-    <h1 id="txt-title">MythicCalc Schmiede</h1>
+    <h1 id="ui-title">Schmiede-Rechner</h1>
 </header>
 
 <div class="back-nav">
-    <a href="index.html" class="back-btn" id="txt-back">« Zurück zur Startseite</a>
+    <a href="index.html" class="back-btn" id="nav-back">« Zurück zur Startseite</a>
 </div>
 
 <div class="container">
-    <div class="calc-grid">
-        <div class="input-section">
-            <h3 id="txt-input-h">Vorhandene Materialien</h3>
-            <div id="inputs">
-                <div class="resource-row"><span>Material A (Legendär):</span> <input type="number" id="matA" value="0" oninput="calc()"></div>
-                <div class="resource-row"><span>Material B (Legendär):</span> <input type="number" id="matB" value="0" oninput="calc()"></div>
-                <div class="resource-row"><span>Material C (Legendär):</span> <input type="number" id="matC" value="0" oninput="calc()"></div>
-                <div class="resource-row"><span>Material D (Legendär):</span> <input type="number" id="matD" value="0" oninput="calc()"></div>
-            </div>
-            <h3 style="margin-top:20px" id="txt-target-h">Ziel (Bedarf)</h3>
-            <div class="resource-row"><span>Zielmenge pro Material:</span> <input type="number" id="target" value="20" oninput="calc()"></div>
+    <div class="selectors">
+        <div class="select-group">
+            <label id="ui-label-item">Ausrüstung wählen:</label>
+            <select id="itemSelector" onchange="calculateIfVisible()"></select>
         </div>
+        <div class="select-group">
+            <label id="ui-label-target">Ziel-Stufe (Upgrade):</label>
+            <select id="targetSelector" onchange="calculateIfVisible()"></select>
+        </div>
+    </div>
 
-        <div class="result-section">
-            <h3 id="txt-result-h">Berechnung (2:1 Logik)</h3>
-            <div id="results">
-                </div>
-            <div id="summary" style="margin-top: 20px; padding-top: 15px; border-top: 1px solid var(--gold);"></div>
-        </div>
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th class="mat-head" id="ui-th-mat">Material</th>
+                    <th id="ui-th-r0" class="r0">Grau</th>
+                    <th id="ui-th-r1" class="r1">Grün</th>
+                    <th id="ui-th-r2" class="r2">Blau</th>
+                    <th id="ui-th-r3" class="r3">Lila</th>
+                    <th id="ui-th-r4" class="r4">Gold</th>
+                </tr>
+            </thead>
+            <tbody id="materialBody"></tbody>
+        </table>
+    </div>
+
+    <button id="ui-btn-calc" class="calc-btn" onclick="calculate()">Berechnen</button>
+
+    <div id="resultBorder">
+        <button id="ui-btn-close" class="close-btn" onclick="closeResult()">X</button>
+        <div id="resultOutput"></div>
     </div>
 </div>
 
 <footer>
-    <p>© 2026 Tasaro Technologies GmbH. Alle Rechte vorbehalten.</p>
+    <div style="max-width: 900px; margin: 0 auto; line-height: 1.8; font-style: italic;">
+        <strong>Rechtlicher Hinweis:</strong><br>
+        Dies ist eine inoffizielle Fan-Seite zum Spiel "Viking Rise". Alle Markennamen sind Eigentum ihrer jeweiligen Inhaber.
+    </div>
 </footer>
 
 <script>
-    const trans = {
-        de: { back: "« Zurück zur Startseite", title: "MythicCalc Schmiede", inputH: "Vorhandene Materialien", targetH: "Ziel (Bedarf)", resultH: "Berechnung (2:1 Logik)" },
-        en: { back: "« Back to Home", title: "MythicCalc Smithy", inputH: "Available Materials", targetH: "Target (Required)", resultH: "Calculation (2:1 Logic)" }
+    let currentLang = 'de';
+
+    const translations = {
+        de: {
+            back: "« Zurück zur Startseite",
+            title: "Schmiede-Rechner",
+            labelItem: "Ausrüstung wählen:",
+            labelTarget: "Ziel-Stufe (Upgrade):",
+            thMat: "Material",
+            btnCalc: "Bedarf berechnen",
+            btnClose: "Schließen",
+            items: ["Waffe", "Helm", "Rüstung", "Schuhe"],
+            targets: ["Grau (Herstellung)", "Grün (Upgrade)", "Blau (Upgrade)", "Lila (Upgrade)", "Gold (Upgrade)"],
+            rarities: ["Grau", "Grün", "Blau", "Lila", "Gold"],
+            materials: ["Spinnenseide", "Göttliches Blut", "Gegerbtes Leder", "Sternenstaub", "Asboth Mithril"],
+            resTitle: "ZIEL",
+            resRequired: "BASIS-BEDARF",
+            resReady: "BEREIT",
+            resMissing: "FEHLT",
+            resOr: "ODER",
+            resConvTitle: "MÖGLICHE KONVERTIERUNGEN (2:1):",
+            resConvLine: "Nutze {0} für {1}"
+        },
+        en: {
+            back: "« Back to Home",
+            title: "Forge Calculator",
+            labelItem: "Select Equipment:",
+            labelTarget: "Target Level (Upgrade):",
+            thMat: "Material",
+            btnCalc: "Calculate Demand",
+            btnClose: "Close",
+            items: ["Weapon", "Helm", "Armor", "Boots"],
+            targets: ["Gray (Base)", "Green (Upgrade)", "Blue (Upgrade)", "Purple (Upgrade)", "Gold (Upgrade)"],
+            rarities: ["Gray", "Green", "Blue", "Purple", "Gold"],
+            materials: ["Spider Silk", "Divine Blood", "Tanned Leather", "Stardust", "Asboth Mithril"],
+            resTitle: "TARGET",
+            resRequired: "BASE REQUIREMENT",
+            resReady: "READY",
+            resMissing: "MISSING",
+            resOr: "OR",
+            resConvTitle: "POSSIBLE CONVERSIONS (2:1):",
+            resConvLine: "Use {0} for {1}"
+        }
     };
 
-    function setLang(lang) {
-        document.getElementById('btn-de').classList.toggle('active', lang==='de');
-        document.getElementById('btn-en').classList.toggle('active', lang==='en');
-        document.getElementById('txt-back').innerText = trans[lang].back;
-        document.getElementById('txt-title').innerText = trans[lang].title;
-        document.getElementById('txt-input-h').innerText = trans[lang].inputH;
-        document.getElementById('txt-target-h').innerText = trans[lang].targetH;
-        document.getElementById('txt-result-h').innerText = trans[lang].resultH;
+    const baseRequirements = {
+        0: [17, 11, 13, 16, 11],
+        1: [11, 14, 13, 11, 10],
+        2: [10, 11, 13, 11, 14],
+        3: [11, 13, 10, 11, 14]
+    };
+
+    function setLanguage(lang) {
+        currentLang = lang;
+        document.getElementById('btn-de').classList.toggle('active', lang === 'de');
+        document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+        updateUI();
     }
 
-    function calc() {
-        const target = parseInt(document.getElementById('target').value) || 0;
-        const ids = ['matA', 'matB', 'matC', 'matD'];
-        let materials = ids.map(id => ({ id: id, val: parseInt(document.getElementById(id).value) || 0 }));
-        
-        let excessPool = 0;
-        let totalNeeded = 0;
-        let html = "";
+    function updateUI() {
+        const t = translations[currentLang];
+        document.getElementById('ui-title').innerText = t.title;
+        document.getElementById('nav-back').innerText = t.back;
+        document.getElementById('ui-label-item').innerText = t.labelItem;
+        document.getElementById('ui-label-target').innerText = t.labelTarget;
+        document.getElementById('ui-th-mat').innerText = t.thMat;
+        document.getElementById('ui-btn-calc').innerText = t.btnCalc;
 
-        materials.forEach(m => {
-            let diff = m.val - target;
-            if(diff > 0) {
-                excessPool += diff;
-                html += `<div class="result-item">${m.id.replace('mat', 'Material ')}: <span class="excess">+${diff} Überschuss</span></div>`;
+        for(let i=0; i<5; i++) {
+            document.getElementById(`ui-th-r${i}`).innerText = t.rarities[i];
+        }
+
+        const itemSel = document.getElementById('itemSelector');
+        const prevItemIdx = itemSel.selectedIndex !== -1 ? itemSel.selectedIndex : 0;
+        itemSel.innerHTML = t.items.map((item, i) => `<option value="${i}">${item}</option>`).join('');
+        itemSel.selectedIndex = prevItemIdx;
+
+        const targetSel = document.getElementById('targetSelector');
+        const prevTargetIdx = targetSel.selectedIndex !== -1 ? targetSel.selectedIndex : 4;
+        targetSel.innerHTML = t.targets.map((target, i) => `<option value="${i}">${target}</option>`).join('');
+        targetSel.selectedIndex = prevTargetIdx;
+
+        const body = document.getElementById('materialBody');
+        const currentInputs = [];
+        translations['en'].materials.forEach((name, i) => {
+            currentInputs[i] = [0,1,2,3,4].map(r => document.getElementById(`mat-${i}-${r}`)?.value || "0");
+        });
+
+        body.innerHTML = '';
+        t.materials.forEach((name, i) => {
+            const tr = document.createElement('tr');
+            tr.innerHTML = `
+                <td class="mat-name-td">${name}</td>
+                ${[0,1,2,3,4].map(r => `<td><input type="number" id="mat-${i}-${r}" value="${currentInputs[i] ? currentInputs[i][r] : '0'}" onfocus="handleFocus(this)" onblur="handleBlur(this)"></td>`).join('')}
+            `;
+            body.appendChild(tr);
+        });
+
+        if(document.getElementById('resultBorder').style.display === 'block') calculate();
+    }
+
+    function handleFocus(el) { if(el.value === "0") el.value = ""; }
+    function handleBlur(el) { if(el.value === "") el.value = "0"; }
+    function calculateIfVisible() { if(document.getElementById('resultBorder').style.display === 'block') calculate(); }
+
+    function calculate() {
+        const t = translations[currentLang];
+        const itemIdx = document.getElementById('itemSelector').value;
+        const targetIdx = parseInt(document.getElementById('targetSelector').value);
+        const neededArr = baseRequirements[itemIdx];
+        const reqRarityName = t.rarities[targetIdx];
+
+        let report = `${t.resTitle}: ${t.items[itemIdx].toUpperCase()} -> ${t.rarities[targetIdx].toUpperCase()}\n`;
+        report += `${t.resRequired} (${reqRarityName}):\n`;
+        
+        t.materials.forEach((name, i) => {
+            report += `${neededArr[i]}x ${name} | `;
+        });
+        report = report.slice(0, -3) + `\n${"=".repeat(60)}\n\n`;
+
+        let matsData = [];
+        t.materials.forEach((name, i) => {
+            let totalPoints = 0;
+            for(let r = 0; r < 5; r++) {
+                totalPoints += (parseInt(document.getElementById(`mat-${i}-${r}`).value) || 0) * Math.pow(4, r);
+            }
+            const targetPoints = neededArr[i] * Math.pow(4, targetIdx);
+            const diffPoints = totalPoints - targetPoints;
+            matsData.push({ name, diffPoints, targetPoints });
+        });
+
+        matsData.forEach(m => {
+            report += `${m.name.toUpperCase()}\n`;
+            if(m.diffPoints >= 0) {
+                report += `[✔] STATUS: ${t.resReady}\n`;
             } else {
-                totalNeeded += Math.abs(diff);
-                html += `<div class="result-item">${m.id.replace('mat', 'Material ')}: <span class="needed">${diff} Benötigt</span></div>`;
+                report += `[✘] STATUS: ${t.resMissing}:\n    >> ${formatMissing(Math.abs(m.diffPoints), targetIdx, t)}\n`;
+            }
+            report += "-".repeat(30) + "\n";
+        });
+
+        let conversionLines = [];
+        let unitValue = Math.pow(4, targetIdx);
+
+        matsData.forEach((targetMat, i) => {
+            if(targetMat.diffPoints < 0) {
+                let stillNeeded = Math.ceil(Math.abs(targetMat.diffPoints) / unitValue);
+                matsData.forEach((sourceMat, j) => {
+                    if(i !== j && sourceMat.diffPoints >= (unitValue * 2)) {
+                        let surplusUnits = Math.floor(sourceMat.diffPoints / unitValue);
+                        let pairsAvailable = Math.floor(surplusUnits / 2);
+                        if(pairsAvailable > 0 && stillNeeded > 0) {
+                            let takePairs = Math.min(pairsAvailable, stillNeeded);
+                            conversionLines.push(t.resConvLine.replace("{0}", `${takePairs*2}x ${sourceMat.name}`).replace("{1}", `${takePairs}x ${targetMat.name}`));
+                            stillNeeded -= takePairs;
+                            sourceMat.diffPoints -= (takePairs * 2 * unitValue);
+                        }
+                    }
+                });
             }
         });
 
-        const convertBenefit = Math.floor(excessPool / 2);
-        const finalMissing = Math.max(0, totalNeeded - convertBenefit);
+        if(conversionLines.length > 0) {
+            report += `\n${t.resConvTitle}\n`;
+            conversionLines.forEach(line => report += `💡 ${line}\n`);
+        }
 
-        document.getElementById('results').innerHTML = html;
-        document.getElementById('summary').innerHTML = `
-            <div>Überschuss-Pool: ${excessPool}</div>
-            <div>Möglich durch Tausch (2:1): <span class="excess">+${convertBenefit}</span></div>
-            <div style="font-size: 1.2em; font-weight: bold; color: var(--gold); margin-top:10px">
-                Noch zu sammeln: ${finalMissing}
-            </div>
-        `;
+        document.getElementById('resultOutput').innerText = report;
+        document.getElementById('resultBorder').style.display = 'block';
+        window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
     }
-    calc();
+
+    function formatMissing(points, targetIdx, t) {
+        let options = [];
+        for(let i = targetIdx; i >= 0; i--) {
+            options.push(`${Math.ceil(points / Math.pow(4, i))} ${t.rarities[i]}`);
+        }
+        return options.join(` ${t.resOr} `);
+    }
+
+    function closeResult() { document.getElementById('resultBorder').style.display = 'none'; }
+
+    setLanguage('de');
 </script>
+
 </body>
 </html>
