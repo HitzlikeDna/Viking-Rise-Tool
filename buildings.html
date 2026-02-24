@@ -1,342 +1,747 @@
-chiefHallRequirements: [
-  { ch: "CH 1",  r1: null, r2: null, r3: null },
-  { ch: "CH 2",  r1: "Lv.1 Infantry Barracks", r2: null, r3: null },
-  { ch: "CH 3",  r1: "Lv.2 Walls", r2: null, r3: null },
-  { ch: "CH 4",  r1: "Lv.3 Walls", r2: null, r3: null },
-  { ch: "CH 5",  r1: "Lv.4 Walls", r2: "Lv.5 Infirmary", r3: null },
-  { ch: "CH 6",  r1: "Lv.5 Walls", r2: "Lv.5 Warehouse", r3: null },
-  { ch: "CH 7",  r1: "Lv.6 Walls", r2: "Lv.6 Eagle's Nest", r3: null },
-  { ch: "CH 8",  r1: "Lv.7 Walls", r2: "Lv.7 Infantry Barracks", r3: null },
-  { ch: "CH 9",  r1: "Lv.8 Walls", r2: "Lv.8 Tribe Hall", r3: null },
-  { ch: "CH 10", r1: "Lv.9 Walls", r2: "Lv.9 Academy", r3: null },
-  { ch: "CH 11", r1: "Lv.10 Walls", r2: "Lv.10 Infirmary", r3: null },
-  { ch: "CH 12", r1: "Lv.11 Walls", r2: "Lv.11 Warehouse", r3: null },
-  { ch: "CH 13", r1: "Lv.12 Walls", r2: "Lv.12 Pikemen Barracks", r3: null },
-  { ch: "CH 14", r1: "Lv.13 Walls", r2: "Lv.13 Tribe Hall", r3: null },
-  { ch: "CH 15", r1: "Lv.14 Walls", r2: "Lv.14 Divination Shack", r3: null },
-  { ch: "CH 16", r1: "Lv.15 Walls", r2: "Lv.15 Academy", r3: null },
-  { ch: "CH 17", r1: "Lv.16 Walls", r2: "Lv.16 Infirmary", r3: null },
-  { ch: "CH 18", r1: "Lv.17 Walls", r2: "Lv.17 Warehouse", r3: null },
-  { ch: "CH 19", r1: "Lv.18 Walls", r2: "Lv.18 Archer Barracks", r3: null },
-  { ch: "CH 20", r1: "Lv.19 Walls", r2: "Lv.19 Tribe Hall", r3: null },
-  { ch: "CH 21", r1: "Lv.20 Walls", r2: "Lv.20 Academy", r3: "Lv.20 Hall of Valor" },
-  { ch: "CH 22", r1: "Lv.21 Walls", r2: "Lv.21 Infirmary", r3: "Lv.21 Pikemen Barracks" },
-  { ch: "CH 23", r1: "Lv.22 Walls", r2: "Lv.22 Warehouse", r3: null },
-  { ch: "CH 24", r1: "Lv.23 Walls", r2: "Lv.23 Hall of Valor", r3: "Lv.23 Porter Barracks" },
-  { ch: "CH 25", r1: "Lv.24 Walls", r2: "Lv.24 Divination Shack", r3: "Lv.24 Academy" }
-]
-chiefHallCosts: [
-  { level: 2,  food: 1800,      wood: 1800,      stone: 0 },
-  { level: 3,  food: 4000,      wood: 4000,      stone: 0 },
-  { level: 4,  food: 12700,     wood: 12700,     stone: 0 },
-  { level: 5,  food: 27600,     wood: 27600,     stone: 0 },
-  { level: 6,  food: 48800,     wood: 48800,     stone: 25100 },
-  { level: 7,  food: 72200,     wood: 72200,     stone: 37200 },
-  { level: 8,  food: 108300,    wood: 108300,    stone: 55800 },
-  { level: 9,  food: 150800,    wood: 150800,    stone: 77700 },
-  { level: 10, food: 212000,    wood: 212000,    stone: 109000 },
-  { level: 11, food: 297000,    wood: 297000,    stone: 153000 },
-  { level: 12, food: 416000,    wood: 416000,    stone: 214000 },
-  { level: 13, food: 582000,    wood: 582000,    stone: 300000 },
-  { level: 14, food: 815000,    wood: 815000,    stone: 420000 },
-  { level: 15, food: 1100000,   wood: 1100000,   stone: 589000 },
-  { level: 16, food: 1500000,   wood: 1500000,   stone: 820000 },
-  { level: 17, food: 3100000,   wood: 3100000,   stone: 1600000 },
-  { level: 18, food: 4600000,   wood: 4600000,   stone: 2300000 },
-  { level: 19, food: 6700000,   wood: 6700000,   stone: 3400000 },
-  { level: 20, food: 9700000,   wood: 9700000,   stone: 5000000 },
-  { level: 21, food: 19500000,  wood: 19500000,  stone: 10000000 },
-  { level: 22, food: 29200000,  wood: 29200000,  stone: 15000000 },
-  { level: 23, food: 43800000,  wood: 43800000,  stone: 22600000 },
-  { level: 24, food: 65800000,  wood: 65800000,  stone: 33900000 },
-  { level: 25, food: 131600000, wood: 131600000, stone: 67800000 }
-]
-hallOfValorCosts: [
-  { level: 2,  food: 100,      wood: 200,      stone: 0 },
-  { level: 3,  food: 300,      wood: 400,      stone: 0 },
-  { level: 4,  food: 500,      wood: 700,      stone: 0 },
-  { level: 5,  food: 1200,     wood: 1500,     stone: 0 },
-  { level: 6,  food: 2200,     wood: 2700,     stone: 8500 },
-  { level: 7,  food: 3300,     wood: 4000,     stone: 12600 },
-  { level: 8,  food: 5000,     wood: 6100,     stone: 19000 },
-  { level: 9,  food: 7000,     wood: 8500,     stone: 26500 },
-  { level: 10, food: 9000,     wood: 12000,    stone: 37000 },
-  { level: 11, food: 13000,    wood: 16000,    stone: 52000 },
-  { level: 12, food: 19000,    wood: 23000,    stone: 73000 },
-  { level: 13, food: 27000,    wood: 32000,    stone: 102000 },
-  { level: 14, food: 38000,    wood: 46000,    stone: 143000 },
-  { level: 15, food: 53000,    wood: 64000,    stone: 200000 },
-  { level: 16, food: 70000,    wood: 90000,    stone: 280000 },
-  { level: 17, food: 140000,   wood: 181200,   stone: 562300 },
-  { level: 18, food: 210000,   wood: 262900,   stone: 815400 },
-  { level: 19, food: 310000,   wood: 381200,   stone: 1100000 },
-  { level: 20, food: 450000,   wood: 550000,   stone: 1700000 },
-  { level: 21, food: 900000,   wood: 1100000,  stone: 3400000 },
-  { level: 22, food: 1800000,  wood: 2200000,  stone: 6800000 },
-  { level: 23, food: 3600000,  wood: 4400000,  stone: 13600000 },
-  { level: 24, food: 7200000,  wood: 8800000,  stone: 27200000 },
-  { level: 25, food: 14400000, wood: 17600000, stone: 54400000 }
-]
-academyCosts: [
-  { level: 2,  food: 1400,      wood: 1800,      stone: 0 },
-  { level: 3,  food: 2900,      wood: 3600,      stone: 0 },
-  { level: 4,  food: 4300,      wood: 5500,      stone: 0 },
-  { level: 5,  food: 9400,      wood: 11900,     stone: 0 },
-  { level: 6,  food: 16700,     wood: 21100,     stone: 7400 },
-  { level: 7,  food: 24800,     wood: 31200,     stone: 11000 },
-  { level: 8,  food: 37200,     wood: 46900,     stone: 16500 },
-  { level: 9,  food: 51800,     wood: 65300,     stone: 22900 },
-  { level: 10, food: 73000,     wood: 92000,     stone: 32000 },
-  { level: 11, food: 102000,    wood: 128000,    stone: 45000 },
-  { level: 12, food: 143000,    wood: 180000,    stone: 63000 },
-  { level: 13, food: 200000,    wood: 252000,    stone: 88000 },
-  { level: 14, food: 280000,    wood: 353000,    stone: 124000 },
-  { level: 15, food: 392000,    wood: 495000,    stone: 174000 },
-  { level: 16, food: 540000,    wood: 690000,    stone: 240000 },
-  { level: 17, food: 1000000,   wood: 1300000,   stone: 487300 },
-  { level: 18, food: 1500000,   wood: 2000000,   stone: 706700 },
-  { level: 19, food: 2300000,   wood: 2900000,   stone: 1000000 },
-  { level: 20, food: 3300000,   wood: 4200000,   stone: 1400000 },
-  { level: 21, food: 6700000,   wood: 8400000,   stone: 2900000 },
-  { level: 22, food: 10700000,  wood: 13500000,  stone: 4600000 },
-  { level: 23, food: 17200000,  wood: 21500000,  stone: 7400000 },
-  { level: 24, food: 27500000,  wood: 34400000,  stone: 12000000 },
-  { level: 25, food: 54800000,  wood: 68800000,  stone: 23800000 }
-]
-wallCosts: [
-  { level: 2,  food: 900,       wood: 900,       stone: 0 },
-  { level: 3,  food: 4200,      wood: 4200,      stone: 0 },
-  { level: 4,  food: 6300,      wood: 7200,      stone: 0 },
-  { level: 5,  food: 13800,     wood: 15600,     stone: 0 },
-  { level: 6,  food: 24400,     wood: 27600,     stone: 52600 },
-  { level: 7,  food: 36100,     wood: 40900,     stone: 77800 },
-  { level: 8,  food: 54100,     wood: 61300,     stone: 116700 },
-  { level: 9,  food: 75400,     wood: 85400,     stone: 162600 },
-  { level: 10, food: 106000,    wood: 120000,    stone: 229000 },
-  { level: 11, food: 148000,    wood: 168000,    stone: 320000 },
-  { level: 12, food: 208000,    wood: 235000,    stone: 448000 },
-  { level: 13, food: 291000,    wood: 329000,    stone: 627000 },
-  { level: 14, food: 407000,    wood: 462000,    stone: 879000 },
-  { level: 15, food: 571000,    wood: 647000,    stone: 1200000 },
-  { level: 16, food: 790000,    wood: 900000,    stone: 1700000 },
-  { level: 17, food: 1500000,   wood: 1800000,   stone: 3400000 },
-  { level: 18, food: 2300000,   wood: 2600000,   stone: 5000000 },
-  { level: 19, food: 3300000,   wood: 3800000,   stone: 7200000 },
-  { level: 20, food: 4800000,   wood: 5500000,   stone: 10500000 },
-  { level: 21, food: 9700000,   wood: 11000000,  stone: 21000000 },
-  { level: 22, food: 14600000,  wood: 16500000,  stone: 31500000 },
-  { level: 23, food: 21900000,  wood: 24800000,  stone: 47300000 },
-  { level: 24, food: 32900000,  wood: 37300000,  stone: 70900000 },
-  { level: 25, food: 65800000,  wood: 74600000,  stone: 141900000 }
-]
-tribeHallCosts: [
-  { level: 2,  food: 1300,     wood: 1300,     stone: 0 },
-  { level: 3,  food: 2600,     wood: 2600,     stone: 0 },
-  { level: 4,  food: 3900,     wood: 4000,     stone: 0 },
-  { level: 5,  food: 8600,     wood: 8700,     stone: 0 },
-  { level: 6,  food: 15200,    wood: 15400,    stone: 9700 },
-  { level: 7,  food: 22500,    wood: 22800,    stone: 14300 },
-  { level: 8,  food: 33800,    wood: 34300,    stone: 21500 },
-  { level: 9,  food: 47100,    wood: 47700,    stone: 30000 },
-  { level: 10, food: 66000,    wood: 67000,    stone: 42000 },
-  { level: 11, food: 92000,    wood: 94000,    stone: 59000 },
-  { level: 12, food: 130000,   wood: 131000,   stone: 82000 },
-  { level: 13, food: 181000,   wood: 184000,   stone: 115000 },
-  { level: 14, food: 254000,   wood: 258000,   stone: 162000 },
-  { level: 15, food: 357000,   wood: 361000,   stone: 227000 },
-  { level: 16, food: 490000,   wood: 500000,   stone: 310000 },
-  { level: 17, food: 990000,   wood: 1000000,  stone: 637300 },
-  { level: 18, food: 1400000,  wood: 1400000,  stone: 924200 },
-  { level: 19, food: 2100000,  wood: 2100000,  stone: 1300000 },
-  { level: 20, food: 3000000,  wood: 3000000,  stone: 1900000 },
-  { level: 21, food: 6000000,  wood: 6100000,  stone: 3800000 },
-  { level: 22, food: 9100000,  wood: 9200000,  stone: 5800000 },
-  { level: 23, food: 13700000, wood: 13800000, stone: 8700000 },
-  { level: 24, food: 20500000, wood: 20800000, stone: 13100000 },
-  { level: 25, food: 41100000, wood: 41600000, stone: 26200000 }
-]
-battleHallCosts: [
-  { level: 2,  food: 700,      wood: 700,      stone: 0,       warHorn: 2 },
-  { level: 3,  food: 1500,     wood: 1500,     stone: 0,       warHorn: 5 },
-  { level: 4,  food: 2200,     wood: 2300,     stone: 0,       warHorn: 8 },
-  { level: 5,  food: 4900,     wood: 5000,     stone: 0,       warHorn: 14 },
-  { level: 6,  food: 8700,     wood: 8900,     stone: 6800,    warHorn: 20 },
-  { level: 7,  food: 12800,    wood: 13200,    stone: 10100,   warHorn: 30 },
-  { level: 8,  food: 19200,    wood: 19800,    stone: 15200,   warHorn: 40 },
-  { level: 9,  food: 26800,    wood: 27600,    stone: 21200,   warHorn: 50 },
-  { level: 10, food: 37000,    wood: 38000,    stone: 29000,   warHorn: 60 },
-  { level: 11, food: 52000,    wood: 54000,    stone: 41000,   warHorn: 75 },
-  { level: 12, food: 74000,    wood: 76000,    stone: 58000,   warHorn: 95 },
-  { level: 13, food: 103000,   wood: 106000,   stone: 81000,   warHorn: 120 },
-  { level: 14, food: 145000,   wood: 149000,   stone: 114000,  warHorn: 170 },
-  { level: 15, food: 203000,   wood: 209000,   stone: 160000,  warHorn: 260 },
-  { level: 16, food: 280000,   wood: 290000,   stone: 220000,  warHorn: 440 },
-  { level: 17, food: 560000,   wood: 586500,   stone: 449800,  warHorn: 640 },
-  { level: 18, food: 820000,   wood: 850500,   stone: 652300,  warHorn: 870 },
-  { level: 19, food: 1100000,  wood: 1200000,  stone: 946000,  warHorn: 1100 },
-  { level: 20, food: 1700000,  wood: 1700000,  stone: 1300000, warHorn: 1400 },
-  { level: 21, food: 3400000,  wood: 3500000,  stone: 2700000, warHorn: 1700 },
-  { level: 22, food: 5200000,  wood: 5300000,  stone: 4100000, warHorn: 2000 },
-  { level: 23, food: 7800000,  wood: 8000000,  stone: 6100000, warHorn: 2600 },
-  { level: 24, food: 11700000, wood: 12000000, stone: 9200000, warHorn: 3500 },
-  { level: 25, food: 23400000, wood: 24100000, stone: 18500000, warHorn: 4800 }
-]
-defenceTowerCosts: [
-  { level: 2,  food: 1000,     wood: 1000,     stone: 0,       thornySpike: 2 },
-  { level: 3,  food: 2100,     wood: 2100,     stone: 0,       thornySpike: 5 },
-  { level: 4,  food: 3100,     wood: 3100,     stone: 0,       thornySpike: 8 },
-  { level: 5,  food: 6900,     wood: 6900,     stone: 0,       thornySpike: 14 },
-  { level: 6,  food: 12200,    wood: 12200,    stone: 3400,    thornySpike: 20 },
-  { level: 7,  food: 18000,    wood: 18000,    stone: 5000,    thornySpike: 30 },
-  { level: 8,  food: 27000,    wood: 27000,    stone: 7600,    thornySpike: 40 },
-  { level: 9,  food: 37700,    wood: 37700,    stone: 10600,   thornySpike: 50 },
-  { level: 10, food: 53000,    wood: 53000,    stone: 14000,   thornySpike: 60 },
-  { level: 11, food: 74000,    wood: 74000,    stone: 20000,   thornySpike: 75 },
-  { level: 12, food: 104000,   wood: 104000,   stone: 29000,   thornySpike: 95 },
-  { level: 13, food: 145000,   wood: 145000,   stone: 40000,   thornySpike: 120 },
-  { level: 14, food: 203000,   wood: 203000,   stone: 57000,   thornySpike: 170 },
-  { level: 15, food: 285000,   wood: 285000,   stone: 80000,   thornySpike: 260 },
-  { level: 16, food: 390000,   wood: 390000,   stone: 110000,  thornySpike: 440 },
-  { level: 17, food: 790000,   wood: 799800,   stone: 224900,  thornySpike: 640 },
-  { level: 18, food: 1100000,  wood: 1100000,  stone: 326100,  thornySpike: 870 },
-  { level: 19, food: 1600000,  wood: 1600000,  stone: 473000,  thornySpike: 1100 },
-  { level: 20, food: 2400000,  wood: 2400000,  stone: 680000,  thornySpike: 1400 },
-  { level: 21, food: 4800000,  wood: 4800000,  stone: 1300000, thornySpike: 1700 },
-  { level: 22, food: 7300000,  wood: 7300000,  stone: 2000000, thornySpike: 2000 },
-  { level: 23, food: 10700000, wood: 10900000, stone: 3000000, thornySpike: 2600 },
-  { level: 24, food: 16400000, wood: 16400000, stone: 4600000, thornySpike: 3500 },
-  { level: 25, food: 32900000, wood: 32900000, stone: 9200000, thornySpike: 4800 }
-]
-BarracksCosts: [
-  { level: 2,  food: 800,      wood: 1000,     stone: 0 },
-  { level: 3,  food: 1700,     wood: 2100,     stone: 0 },
-  { level: 4,  food: 2500,     wood: 3100,     stone: 0 },
-  { level: 5,  food: 5600,     wood: 6900,     stone: 0 },
-  { level: 6,  food: 9900,     wood: 12200,    stone: 8000 },
-  { level: 7,  food: 14600,    wood: 18000,    stone: 11800 },
-  { level: 8,  food: 22000,    wood: 27000,    stone: 17700 },
-  { level: 9,  food: 30600,    wood: 37700,    stone: 24700 },
-  { level: 10, food: 43000,    wood: 53000,    stone: 34000 },
-  { level: 11, food: 60000,    wood: 74000,    stone: 48000 },
-  { level: 12, food: 84000,    wood: 104000,   stone: 68000 },
-  { level: 13, food: 118000,   wood: 145000,   stone: 95000 },
-  { level: 14, food: 165000,   wood: 203000,   stone: 133000 },
-  { level: 15, food: 232000,   wood: 285000,   stone: 187000 },
-  { level: 16, food: 320000,   wood: 390000,   stone: 260000 },
-  { level: 17, food: 640000,   wood: 799800,   stone: 524800 },
-  { level: 18, food: 940000,   wood: 1100000,  stone: 761100 },
-  { level: 19, food: 1300000,  wood: 1600000,  stone: 1100000 },
-  { level: 20, food: 1900000,  wood: 2400000,  stone: 1600000 },
-  { level: 21, food: 3900000,  wood: 4800000,  stone: 3200000 },
-  { level: 22, food: 6200000,  wood: 7600000,  stone: 5100000 },
-  { level: 23, food: 10000000, wood: 12300000, stone: 8200000 },
-  { level: 24, food: 16000000, wood: 19600000, stone: 13100000 },
-  { level: 25, food: 32000000, wood: 39300000, stone: 26200000 }
-]
-smithyCosts: [
-  { level: 2,  food: 500,      wood: 400,      stone: 0 },
-  { level: 3,  food: 1000,     wood: 900,      stone: 0 },
-  { level: 4,  food: 1500,     wood: 1400,     stone: 0 },
-  { level: 5,  food: 3400,     wood: 3200,     stone: 0 },
-  { level: 6,  food: 6100,     wood: 5700,     stone: 3400 },
-  { level: 7,  food: 9000,     wood: 8400,     stone: 5000 },
-  { level: 8,  food: 13500,    wood: 12600,    stone: 7600 },
-  { level: 9,  food: 18800,    wood: 17500,    stone: 10600 },
-  { level: 10, food: 26000,    wood: 24000,    stone: 14000 },
-  { level: 11, food: 37000,    wood: 34000,    stone: 20000 },
-  { level: 12, food: 52000,    wood: 48000,    stone: 29000 },
-  { level: 13, food: 72000,    wood: 67000,    stone: 40000 },
-  { level: 14, food: 101000,   wood: 95000,    stone: 57000 },
-  { level: 15, food: 142000,   wood: 133000,   stone: 80000 },
-  { level: 16, food: 190000,   wood: 180000,   stone: 110000 },
-  { level: 17, food: 390000,   wood: 373200,   stone: 224900 },
-  { level: 18, food: 570000,   wood: 541200,   stone: 326100 },
-  { level: 19, food: 840000,   wood: 784800,   stone: 473000 },
-  { level: 20, food: 1200000,  wood: 1100000,  stone: 680000 },
-  { level: 21, food: 2400000,  wood: 2200000,  stone: 1300000 },
-  { level: 22, food: 3600000,  wood: 3400000,  stone: 2000000 },
-  { level: 23, food: 5400000,  wood: 5100000,  stone: 3000000 },
-  { level: 24, food: 8200000,  wood: 7600000,  stone: 4600000 },
-  { level: 25, food: 16400000, wood: 15300000, stone: 9200000 }
-]
-eaglesNestCosts: [
-  { level: 2,  food: 50,       wood: 50,       stone: 0 },
-  { level: 3,  food: 100,      wood: 100,      stone: 0 },
-  { level: 4,  food: 200,      wood: 150,      stone: 0 },
-  { level: 5,  food: 300,      wood: 200,      stone: 0 },
-  { level: 6,  food: 600,      wood: 400,      stone: 0 },
-  { level: 7,  food: 900,      wood: 700,      stone: 0 },
-  { level: 8,  food: 1300,     wood: 1000,     stone: 0 },
-  { level: 9,  food: 1800,     wood: 1500,     stone: 0 },
-  { level: 10, food: 2000,     wood: 2000,     stone: 0 },
-  { level: 11, food: 3000,     wood: 2000,     stone: 0 },
-  { level: 12, food: 5000,     wood: 4000,     stone: 0 },
-  { level: 13, food: 7000,     wood: 5000,     stone: 0 },
-  { level: 14, food: 10000,    wood: 8000,     stone: 0 },
-  { level: 15, food: 14000,    wood: 11000,    stone: 0 },
-  { level: 16, food: 10000,    wood: 10000,    stone: 0 },
-  { level: 17, food: 30000,    wood: 31900,    stone: 0 },
-  { level: 18, food: 50000,    wood: 46300,    stone: 0 },
-  { level: 19, food: 80000,    wood: 67200,    stone: 0 },
-  { level: 20, food: 120000,   wood: 90000,    stone: 0 },
-  { level: 21, food: 200000,   wood: 100000,   stone: 0 },
-  { level: 22, food: 500000,   wood: 250000,   stone: 0 },
-  { level: 23, food: 1000000,  wood: 620000,   stone: 0 },
-  { level: 24, food: 2500000,  wood: 1600000,  stone: 0 },
-  { level: 25, food: 5000000,  wood: 3200000,  stone: 0 }
-]
-warehouseCosts: [
-  { level: 2,  food: 700,       wood: 800,       stone: 0 },
-  { level: 3,  food: 1500,      wood: 1600,      stone: 0 },
-  { level: 4,  food: 2300,      wood: 2500,      stone: 0 },
-  { level: 5,  food: 5100,      wood: 5500,      stone: 0 },
-  { level: 6,  food: 9100,      wood: 9700,      stone: 6200 },
-  { level: 7,  food: 13500,     wood: 14400,     stone: 9300 },
-  { level: 8,  food: 20300,     wood: 21600,     stone: 13900 },
-  { level: 9,  food: 28200,     wood: 30100,     stone: 19400 },
-  { level: 10, food: 39000,     wood: 42000,     stone: 27000 },
-  { level: 11, food: 55000,     wood: 59000,     stone: 38000 },
-  { level: 12, food: 78000,     wood: 83000,     stone: 53000 },
-  { level: 13, food: 109000,    wood: 116000,    stone: 75000 },
-  { level: 14, food: 152000,    wood: 163000,    stone: 105000 },
-  { level: 15, food: 214000,    wood: 228000,    stone: 147000 },
-  { level: 16, food: 290000,    wood: 310000,    stone: 200000 },
-  { level: 17, food: 590000,    wood: 639800,    stone: 412300 },
-  { level: 18, food: 860000,    wood: 927800,    stone: 598000 },
-  { level: 19, food: 1200000,   wood: 1300000,   stone: 867100 },
-  { level: 20, food: 1800000,   wood: 1900000,   stone: 1200000 },
-  { level: 21, food: 3600000,   wood: 3900000,   stone: 2500000 },
-  { level: 22, food: 5400000,   wood: 5800000,   stone: 3700000 },
-  { level: 23, food: 8200000,   wood: 8700000,   stone: 5600000 },
-  { level: 24, food: 12300000,  wood: 13100000,  stone: 8400000 },
-  { level: 25, food: 24600000,  wood: 26300000,  stone: 16900000 }
-]
-divinationShackCosts: [
-  { level: 2,  food: 600,       wood: 600,       stone: 0 },
-  { level: 3,  food: 1300,      wood: 1200,      stone: 0 },
-  { level: 4,  food: 1900,      wood: 1800,      stone: 0 },
-  { level: 5,  food: 4200,      wood: 3900,      stone: 0 },
-  { level: 6,  food: 7400,      wood: 7000,      stone: 4000 },
-  { level: 7,  food: 11000,     wood: 10300,     stone: 5900 },
-  { level: 8,  food: 16500,     wood: 15500,     stone: 8800 },
-  { level: 9,  food: 23000,     wood: 21600,     stone: 12300 },
-  { level: 10, food: 32000,     wood: 30000,     stone: 17000 },
-  { level: 11, food: 45000,     wood: 42000,     stone: 24000 },
-  { level: 12, food: 63000,     wood: 59000,     stone: 34000 },
-  { level: 13, food: 89000,     wood: 83000,     stone: 47000 },
-  { level: 14, food: 124000,    wood: 116000,    stone: 66000 },
-  { level: 15, food: 174000,    wood: 163000,    stone: 93000 },
-  { level: 16, food: 240000,    wood: 220000,    stone: 130000 },
-  { level: 17, food: 480000,    wood: 458500,    stone: 262400 },
-  { level: 18, food: 710000,    wood: 664900,    stone: 380500 },
-  { level: 19, food: 1000000,   wood: 964300,    stone: 551800 },
-  { level: 20, food: 1400000,   wood: 1300000,   stone: 800000 },
-  { level: 21, food: 2900000,   wood: 2700000,   stone: 1600000 },
-  { level: 22, food: 4400000,   wood: 4100000,   stone: 2400000 },
-  { level: 23, food: 6700000,   wood: 6200000,   stone: 3600000 },
-  { level: 24, food: 10000000,  wood: 9400000,   stone: 5400000 },
-  { level: 25, food: 20100000,  wood: 18800000,  stone: 10800000 }
-]
-Total: [
-{ food: 2347594000, wood: 2476896000, stone:1731235000}
-]
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Viking Rise - Gebäude Kosten</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --gold: #d4af37;
+            --gold-bright: #f1c40f;
+            --dark-base: #050709;
+            --card-bg: rgba(15, 20, 25, 0.95);
+            --text-light: #f4f4f4;
+            --text-muted: #a0a0a0;
+            --sidebar-bg: rgba(10, 12, 16, 0.95);
+            --active-item: rgba(212, 175, 55, 0.15);
+        }
+
+        body {
+            background-color: var(--dark-base);
+            background-image: linear-gradient(rgba(5, 7, 9, 0.7), rgba(5, 7, 9, 0.9)), url('viking-bg.png');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: var(--text-light);
+            font-family: 'Montserrat', sans-serif;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* Header Compact for this page */
+        header {
+            width: 100%;
+            padding: 20px 40px;
+            background: rgba(0,0,0,0.8);
+            border-bottom: 2px solid var(--gold);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-sizing: border-box;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        h1 {
+            font-family: 'Cinzel', serif;
+            color: var(--gold);
+            margin: 0;
+            font-size: 24px;
+            text-transform: uppercase;
+        }
+
+        .back-btn {
+            background: rgba(0,0,0,0.7);
+            color: var(--gold);
+            border: 1px solid var(--gold);
+            padding: 10px 20px;
+            text-decoration: none;
+            font-family: 'Cinzel', serif;
+            font-weight: bold;
+            clip-path: polygon(10% 0, 100% 0, 90% 100%, 0 100%);
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        .back-btn:hover {
+            background: var(--gold);
+            color: black;
+        }
+
+        .lang-switch button {
+            background: transparent;
+            border: 1px solid var(--gold);
+            color: var(--gold);
+            padding: 5px 10px;
+            cursor: pointer;
+            font-family: 'Cinzel', serif;
+            transition: 0.3s;
+        }
+
+        .lang-switch button.active {
+            background: var(--gold);
+            color: black;
+        }
+
+        /* Layout */
+        .main-wrapper {
+            display: flex;
+            flex: 1;
+            max-width: 1600px;
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            width: 280px;
+            background: var(--sidebar-bg);
+            border-right: 1px solid rgba(212, 175, 55, 0.2);
+            padding: 20px 0;
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+            height: calc(100vh - 80px);
+            position: sticky;
+            top: 80px;
+        }
+
+        .nav-item {
+            padding: 15px 25px;
+            cursor: pointer;
+            color: var(--text-muted);
+            font-family: 'Cinzel', serif;
+            transition: 0.3s;
+            border-left: 3px solid transparent;
+        }
+
+        .nav-item:hover {
+            background: rgba(255,255,255,0.05);
+            color: var(--text-light);
+        }
+
+        .nav-item.active {
+            background: var(--active-item);
+            color: var(--gold);
+            border-left-color: var(--gold);
+        }
+
+        /* Content */
+        .content-area {
+            flex: 1;
+            padding: 40px;
+            overflow-x: hidden;
+        }
+
+        .mobile-select {
+            display: none;
+            width: 100%;
+            padding: 15px;
+            background: #111;
+            color: var(--gold);
+            border: 1px solid var(--gold);
+            font-family: 'Cinzel', serif;
+            margin-bottom: 20px;
+            font-size: 16px;
+        }
+
+        h2 {
+            font-family: 'Cinzel', serif;
+            color: var(--gold-bright);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+            padding-bottom: 10px;
+            margin-top: 0;
+        }
+
+        .table-wrapper {
+            overflow-x: auto;
+            background: rgba(0,0,0,0.4);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 4px;
+            margin-bottom: 40px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 600px;
+        }
+
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+        th {
+            background: rgba(212, 175, 55, 0.1);
+            color: var(--gold);
+            font-family: 'Cinzel', serif;
+            font-weight: bold;
+            white-space: nowrap;
+        }
+
+        tr:hover {
+            background: rgba(212, 175, 55, 0.05);
+        }
+
+        .res-val { font-family: monospace; font-size: 1.1em; }
+        .res-food { color: #ff7f50; }
+        .res-wood { color: #deb887; }
+        .res-stone { color: #a9a9a9; }
+        .res-special { color: #00bfff; font-weight: bold; }
+
+        footer {
+            background: #020304;
+            padding: 20px;
+            text-align: center;
+            font-size: 12px;
+            color: #555;
+            border-top: 1px solid #1a1a1a;
+        }
+
+        @media (max-width: 900px) {
+            .main-wrapper { flex-direction: column; }
+            .sidebar { display: none; }
+            .mobile-select { display: block; }
+            .content-area { padding: 20px; }
+            header { padding: 15px 20px; flex-direction: column; gap: 15px; }
+            .header-left { flex-direction: column; gap: 10px; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="header-left">
+        <a href="index.html" class="back-btn" id="nav-back">« Zurück</a>
+        <h1 id="page-title">Gebäude Kosten</h1>
+    </div>
+    <div class="lang-switch">
+        <button id="btn-de" class="active" onclick="setLang('de')">DE</button>
+        <button id="btn-en" onclick="setLang('en')">EN</button>
+    </div>
+</header>
+
+<div class="main-wrapper">
+    <!-- Desktop Sidebar -->
+    <div class="sidebar" id="sidebar-nav">
+        <!-- Populated by JS -->
+    </div>
+
+    <div class="content-area">
+        <!-- Mobile Dropdown -->
+        <select class="mobile-select" id="mobile-select" onchange="selectBuilding(this.value)">
+            <!-- Populated by JS -->
+        </select>
+
+        <div id="content-display">
+            <!-- Tables go here -->
+        </div>
+    </div>
+</div>
+
+<footer>
+    <div id="footer-text"></div>
+</footer>
+
+<script>
+    // Data provided by user
+    const rawData = {
+        chiefHallRequirements: [
+            { ch: "CH 1",  r1: null, r2: null, r3: null },
+            { ch: "CH 2",  r1: "Lv.1 Infantry Barracks", r2: null, r3: null },
+            { ch: "CH 3",  r1: "Lv.2 Walls", r2: null, r3: null },
+            { ch: "CH 4",  r1: "Lv.3 Walls", r2: null, r3: null },
+            { ch: "CH 5",  r1: "Lv.4 Walls", r2: "Lv.5 Infirmary", r3: null },
+            { ch: "CH 6",  r1: "Lv.5 Walls", r2: "Lv.5 Warehouse", r3: null },
+            { ch: "CH 7",  r1: "Lv.6 Walls", r2: "Lv.6 Eagle's Nest", r3: null },
+            { ch: "CH 8",  r1: "Lv.7 Walls", r2: "Lv.7 Infantry Barracks", r3: null },
+            { ch: "CH 9",  r1: "Lv.8 Walls", r2: "Lv.8 Tribe Hall", r3: null },
+            { ch: "CH 10", r1: "Lv.9 Walls", r2: "Lv.9 Academy", r3: null },
+            { ch: "CH 11", r1: "Lv.10 Walls", r2: "Lv.10 Infirmary", r3: null },
+            { ch: "CH 12", r1: "Lv.11 Walls", r2: "Lv.11 Warehouse", r3: null },
+            { ch: "CH 13", r1: "Lv.12 Walls", r2: "Lv.12 Pikemen Barracks", r3: null },
+            { ch: "CH 14", r1: "Lv.13 Walls", r2: "Lv.13 Tribe Hall", r3: null },
+            { ch: "CH 15", r1: "Lv.14 Walls", r2: "Lv.14 Divination Shack", r3: null },
+            { ch: "CH 16", r1: "Lv.15 Walls", r2: "Lv.15 Academy", r3: null },
+            { ch: "CH 17", r1: "Lv.16 Walls", r2: "Lv.16 Infirmary", r3: null },
+            { ch: "CH 18", r1: "Lv.17 Walls", r2: "Lv.17 Warehouse", r3: null },
+            { ch: "CH 19", r1: "Lv.18 Walls", r2: "Lv.18 Archer Barracks", r3: null },
+            { ch: "CH 20", r1: "Lv.19 Walls", r2: "Lv.19 Tribe Hall", r3: null },
+            { ch: "CH 21", r1: "Lv.20 Walls", r2: "Lv.20 Academy", r3: "Lv.20 Hall of Valor" },
+            { ch: "CH 22", r1: "Lv.21 Walls", r2: "Lv.21 Infirmary", r3: "Lv.21 Pikemen Barracks" },
+            { ch: "CH 23", r1: "Lv.22 Walls", r2: "Lv.22 Warehouse", r3: null },
+            { ch: "CH 24", r1: "Lv.23 Walls", r2: "Lv.23 Hall of Valor", r3: "Lv.23 Porter Barracks" },
+            { ch: "CH 25", r1: "Lv.24 Walls", r2: "Lv.24 Divination Shack", r3: "Lv.24 Academy" }
+        ],
+        chiefHallCosts: [
+            { level: 2,  food: 1800,      wood: 1800,      stone: 0 },
+            { level: 3,  food: 4000,      wood: 4000,      stone: 0 },
+            { level: 4,  food: 12700,     wood: 12700,     stone: 0 },
+            { level: 5,  food: 27600,     wood: 27600,     stone: 0 },
+            { level: 6,  food: 48800,     wood: 48800,     stone: 25100 },
+            { level: 7,  food: 72200,     wood: 72200,     stone: 37200 },
+            { level: 8,  food: 108300,    wood: 108300,    stone: 55800 },
+            { level: 9,  food: 150800,    wood: 150800,    stone: 77700 },
+            { level: 10, food: 212000,    wood: 212000,    stone: 109000 },
+            { level: 11, food: 297000,    wood: 297000,    stone: 153000 },
+            { level: 12, food: 416000,    wood: 416000,    stone: 214000 },
+            { level: 13, food: 582000,    wood: 582000,    stone: 300000 },
+            { level: 14, food: 815000,    wood: 815000,    stone: 420000 },
+            { level: 15, food: 1100000,   wood: 1100000,   stone: 589000 },
+            { level: 16, food: 1500000,   wood: 1500000,   stone: 820000 },
+            { level: 17, food: 3100000,   wood: 3100000,   stone: 1600000 },
+            { level: 18, food: 4600000,   wood: 4600000,   stone: 2300000 },
+            { level: 19, food: 6700000,   wood: 6700000,   stone: 3400000 },
+            { level: 20, food: 9700000,   wood: 9700000,   stone: 5000000 },
+            { level: 21, food: 19500000,  wood: 19500000,  stone: 10000000 },
+            { level: 22, food: 29200000,  wood: 29200000,  stone: 15000000 },
+            { level: 23, food: 43800000,  wood: 43800000,  stone: 22600000 },
+            { level: 24, food: 65800000,  wood: 65800000,  stone: 33900000 },
+            { level: 25, food: 131600000, wood: 131600000, stone: 67800000 }
+        ],
+        hallOfValorCosts: [
+            { level: 2,  food: 100,      wood: 200,      stone: 0 },
+            { level: 3,  food: 300,      wood: 400,      stone: 0 },
+            { level: 4,  food: 500,      wood: 700,      stone: 0 },
+            { level: 5,  food: 1200,     wood: 1500,     stone: 0 },
+            { level: 6,  food: 2200,     wood: 2700,     stone: 8500 },
+            { level: 7,  food: 3300,     wood: 4000,     stone: 12600 },
+            { level: 8,  food: 5000,     wood: 6100,     stone: 19000 },
+            { level: 9,  food: 7000,     wood: 8500,     stone: 26500 },
+            { level: 10, food: 9000,     wood: 12000,    stone: 37000 },
+            { level: 11, food: 13000,    wood: 16000,    stone: 52000 },
+            { level: 12, food: 19000,    wood: 23000,    stone: 73000 },
+            { level: 13, food: 27000,    wood: 32000,    stone: 102000 },
+            { level: 14, food: 38000,    wood: 46000,    stone: 143000 },
+            { level: 15, food: 53000,    wood: 64000,    stone: 200000 },
+            { level: 16, food: 70000,    wood: 90000,    stone: 280000 },
+            { level: 17, food: 140000,   wood: 181200,   stone: 562300 },
+            { level: 18, food: 210000,   wood: 262900,   stone: 815400 },
+            { level: 19, food: 310000,   wood: 381200,   stone: 1100000 },
+            { level: 20, food: 450000,   wood: 550000,   stone: 1700000 },
+            { level: 21, food: 900000,   wood: 1100000,  stone: 3400000 },
+            { level: 22, food: 1800000,  wood: 2200000,  stone: 6800000 },
+            { level: 23, food: 3600000,  wood: 4400000,  stone: 13600000 },
+            { level: 24, food: 7200000,  wood: 8800000,  stone: 27200000 },
+            { level: 25, food: 14400000, wood: 17600000, stone: 54400000 }
+        ],
+        academyCosts: [
+            { level: 2,  food: 1400,      wood: 1800,      stone: 0 },
+            { level: 3,  food: 2900,      wood: 3600,      stone: 0 },
+            { level: 4,  food: 4300,      wood: 5500,      stone: 0 },
+            { level: 5,  food: 9400,      wood: 11900,     stone: 0 },
+            { level: 6,  food: 16700,     wood: 21100,     stone: 7400 },
+            { level: 7,  food: 24800,     wood: 31200,     stone: 11000 },
+            { level: 8,  food: 37200,     wood: 46900,     stone: 16500 },
+            { level: 9,  food: 51800,     wood: 65300,     stone: 22900 },
+            { level: 10, food: 73000,     wood: 92000,     stone: 32000 },
+            { level: 11, food: 102000,    wood: 128000,    stone: 45000 },
+            { level: 12, food: 143000,    wood: 180000,    stone: 63000 },
+            { level: 13, food: 200000,    wood: 252000,    stone: 88000 },
+            { level: 14, food: 280000,    wood: 353000,    stone: 124000 },
+            { level: 15, food: 392000,    wood: 495000,    stone: 174000 },
+            { level: 16, food: 540000,    wood: 690000,    stone: 240000 },
+            { level: 17, food: 1000000,   wood: 1300000,   stone: 487300 },
+            { level: 18, food: 1500000,   wood: 2000000,   stone: 706700 },
+            { level: 19, food: 2300000,   wood: 2900000,   stone: 1000000 },
+            { level: 20, food: 3300000,   wood: 4200000,   stone: 1400000 },
+            { level: 21, food: 6700000,   wood: 8400000,   stone: 2900000 },
+            { level: 22, food: 10700000,  wood: 13500000,  stone: 4600000 },
+            { level: 23, food: 17200000,  wood: 21500000,  stone: 7400000 },
+            { level: 24, food: 27500000,  wood: 34400000,  stone: 12000000 },
+            { level: 25, food: 54800000,  wood: 68800000,  stone: 23800000 }
+        ],
+        wallCosts: [
+            { level: 2,  food: 900,       wood: 900,       stone: 0 },
+            { level: 3,  food: 4200,      wood: 4200,      stone: 0 },
+            { level: 4,  food: 6300,      wood: 7200,      stone: 0 },
+            { level: 5,  food: 13800,     wood: 15600,     stone: 0 },
+            { level: 6,  food: 24400,     wood: 27600,     stone: 52600 },
+            { level: 7,  food: 36100,     wood: 40900,     stone: 77800 },
+            { level: 8,  food: 54100,     wood: 61300,     stone: 116700 },
+            { level: 9,  food: 75400,     wood: 85400,     stone: 162600 },
+            { level: 10, food: 106000,    wood: 120000,    stone: 229000 },
+            { level: 11, food: 148000,    wood: 168000,    stone: 320000 },
+            { level: 12, food: 208000,    wood: 235000,    stone: 448000 },
+            { level: 13, food: 291000,    wood: 329000,    stone: 627000 },
+            { level: 14, food: 407000,    wood: 462000,    stone: 879000 },
+            { level: 15, food: 571000,    wood: 647000,    stone: 1200000 },
+            { level: 16, food: 790000,    wood: 900000,    stone: 1700000 },
+            { level: 17, food: 1500000,   wood: 1800000,   stone: 3400000 },
+            { level: 18, food: 2300000,   wood: 2600000,   stone: 5000000 },
+            { level: 19, food: 3300000,   wood: 3800000,   stone: 7200000 },
+            { level: 20, food: 4800000,   wood: 5500000,   stone: 10500000 },
+            { level: 21, food: 9700000,   wood: 11000000,  stone: 21000000 },
+            { level: 22, food: 14600000,  wood: 16500000,  stone: 31500000 },
+            { level: 23, food: 21900000,  wood: 24800000,  stone: 47300000 },
+            { level: 24, food: 32900000,  wood: 37300000,  stone: 70900000 },
+            { level: 25, food: 65800000,  wood: 74600000,  stone: 141900000 }
+        ],
+        tribeHallCosts: [
+            { level: 2,  food: 1300,     wood: 1300,     stone: 0 },
+            { level: 3,  food: 2600,     wood: 2600,     stone: 0 },
+            { level: 4,  food: 3900,     wood: 4000,     stone: 0 },
+            { level: 5,  food: 8600,     wood: 8700,     stone: 0 },
+            { level: 6,  food: 15200,    wood: 15400,    stone: 9700 },
+            { level: 7,  food: 22500,    wood: 22800,    stone: 14300 },
+            { level: 8,  food: 33800,    wood: 34300,    stone: 21500 },
+            { level: 9,  food: 47100,    wood: 47700,    stone: 30000 },
+            { level: 10, food: 66000,    wood: 67000,    stone: 42000 },
+            { level: 11, food: 92000,    wood: 94000,    stone: 59000 },
+            { level: 12, food: 130000,   wood: 131000,   stone: 82000 },
+            { level: 13, food: 181000,   wood: 184000,   stone: 115000 },
+            { level: 14, food: 254000,   wood: 258000,   stone: 162000 },
+            { level: 15, food: 357000,   wood: 361000,   stone: 227000 },
+            { level: 16, food: 490000,   wood: 500000,   stone: 310000 },
+            { level: 17, food: 990000,   wood: 1000000,  stone: 637300 },
+            { level: 18, food: 1400000,  wood: 1400000,  stone: 924200 },
+            { level: 19, food: 2100000,  wood: 2100000,  stone: 1300000 },
+            { level: 20, food: 3000000,  wood: 3000000,  stone: 1900000 },
+            { level: 21, food: 6000000,  wood: 6100000,  stone: 3800000 },
+            { level: 22, food: 9100000,  wood: 9200000,  stone: 5800000 },
+            { level: 23, food: 13700000, wood: 13800000, stone: 8700000 },
+            { level: 24, food: 20500000, wood: 20800000, stone: 13100000 },
+            { level: 25, food: 41100000, wood: 41600000, stone: 26200000 }
+        ],
+        battleHallCosts: [
+            { level: 2,  food: 700,      wood: 700,      stone: 0,       warHorn: 2 },
+            { level: 3,  food: 1500,     wood: 1500,     stone: 0,       warHorn: 5 },
+            { level: 4,  food: 2200,     wood: 2300,     stone: 0,       warHorn: 8 },
+            { level: 5,  food: 4900,     wood: 5000,     stone: 0,       warHorn: 14 },
+            { level: 6,  food: 8700,     wood: 8900,     stone: 6800,    warHorn: 20 },
+            { level: 7,  food: 12800,    wood: 13200,    stone: 10100,   warHorn: 30 },
+            { level: 8,  food: 19200,    wood: 19800,    stone: 15200,   warHorn: 40 },
+            { level: 9,  food: 26800,    wood: 27600,    stone: 21200,   warHorn: 50 },
+            { level: 10, food: 37000,    wood: 38000,    stone: 29000,   warHorn: 60 },
+            { level: 11, food: 52000,    wood: 54000,    stone: 41000,   warHorn: 75 },
+            { level: 12, food: 74000,    wood: 76000,    stone: 58000,   warHorn: 95 },
+            { level: 13, food: 103000,   wood: 106000,   stone: 81000,   warHorn: 120 },
+            { level: 14, food: 145000,   wood: 149000,   stone: 114000,  warHorn: 170 },
+            { level: 15, food: 203000,   wood: 209000,   stone: 160000,  warHorn: 260 },
+            { level: 16, food: 280000,   wood: 290000,   stone: 220000,  warHorn: 440 },
+            { level: 17, food: 560000,   wood: 586500,   stone: 449800,  warHorn: 640 },
+            { level: 18, food: 820000,   wood: 850500,   stone: 652300,  warHorn: 870 },
+            { level: 19, food: 1100000,  wood: 1200000,  stone: 946000,  warHorn: 1100 },
+            { level: 20, food: 1700000,  wood: 1700000,  stone: 1300000, warHorn: 1400 },
+            { level: 21, food: 3400000,  wood: 3500000,  stone: 2700000, warHorn: 1700 },
+            { level: 22, food: 5200000,  wood: 5300000,  stone: 4100000, warHorn: 2000 },
+            { level: 23, food: 7800000,  wood: 8000000,  stone: 6100000, warHorn: 2600 },
+            { level: 24, food: 11700000, wood: 12000000, stone: 9200000, warHorn: 3500 },
+            { level: 25, food: 23400000, wood: 24100000, stone: 18500000, warHorn: 4800 }
+        ],
+        defenceTowerCosts: [
+            { level: 2,  food: 1000,     wood: 1000,     stone: 0,       thornySpike: 2 },
+            { level: 3,  food: 2100,     wood: 2100,     stone: 0,       thornySpike: 5 },
+            { level: 4,  food: 3100,     wood: 3100,     stone: 0,       thornySpike: 8 },
+            { level: 5,  food: 6900,     wood: 6900,     stone: 0,       thornySpike: 14 },
+            { level: 6,  food: 12200,    wood: 12200,    stone: 3400,    thornySpike: 20 },
+            { level: 7,  food: 18000,    wood: 18000,    stone: 5000,    thornySpike: 30 },
+            { level: 8,  food: 27000,    wood: 27000,    stone: 7600,    thornySpike: 40 },
+            { level: 9,  food: 37700,    wood: 37700,    stone: 10600,   thornySpike: 50 },
+            { level: 10, food: 53000,    wood: 53000,    stone: 14000,   thornySpike: 60 },
+            { level: 11, food: 74000,    wood: 74000,    stone: 20000,   thornySpike: 75 },
+            { level: 12, food: 104000,   wood: 104000,   stone: 29000,   thornySpike: 95 },
+            { level: 13, food: 145000,   wood: 145000,   stone: 40000,   thornySpike: 120 },
+            { level: 14, food: 203000,   wood: 203000,   stone: 57000,   thornySpike: 170 },
+            { level: 15, food: 285000,   wood: 285000,   stone: 80000,   thornySpike: 260 },
+            { level: 16, food: 390000,   wood: 390000,   stone: 110000,  thornySpike: 440 },
+            { level: 17, food: 790000,   wood: 799800,   stone: 224900,  thornySpike: 640 },
+            { level: 18, food: 1100000,  wood: 1100000,  stone: 326100,  thornySpike: 870 },
+            { level: 19, food: 1600000,  wood: 1600000,  stone: 473000,  thornySpike: 1100 },
+            { level: 20, food: 2400000,  wood: 2400000,  stone: 680000,  thornySpike: 1400 },
+            { level: 21, food: 4800000,  wood: 4800000,  stone: 1300000, thornySpike: 1700 },
+            { level: 22, food: 7300000,  wood: 7300000,  stone: 2000000, thornySpike: 2000 },
+            { level: 23, food: 10700000, wood: 10900000, stone: 3000000, thornySpike: 2600 },
+            { level: 24, food: 16400000, wood: 16400000, stone: 4600000, thornySpike: 3500 },
+            { level: 25, food: 32900000, wood: 32900000, stone: 9200000, thornySpike: 4800 }
+        ],
+        barracksCosts: [
+            { level: 2,  food: 800,      wood: 1000,     stone: 0 },
+            { level: 3,  food: 1700,     wood: 2100,     stone: 0 },
+            { level: 4,  food: 2500,     wood: 3100,     stone: 0 },
+            { level: 5,  food: 5600,     wood: 6900,     stone: 0 },
+            { level: 6,  food: 9900,     wood: 12200,    stone: 8000 },
+            { level: 7,  food: 14600,    wood: 18000,    stone: 11800 },
+            { level: 8,  food: 22000,    wood: 27000,    stone: 17700 },
+            { level: 9,  food: 30600,    wood: 37700,    stone: 24700 },
+            { level: 10, food: 43000,    wood: 53000,    stone: 34000 },
+            { level: 11, food: 60000,    wood: 74000,    stone: 48000 },
+            { level: 12, food: 84000,    wood: 104000,   stone: 68000 },
+            { level: 13, food: 118000,   wood: 145000,   stone: 95000 },
+            { level: 14, food: 165000,   wood: 203000,   stone: 133000 },
+            { level: 15, food: 232000,   wood: 285000,   stone: 187000 },
+            { level: 16, food: 320000,   wood: 390000,   stone: 260000 },
+            { level: 17, food: 640000,   wood: 799800,   stone: 524800 },
+            { level: 18, food: 940000,   wood: 1100000,  stone: 761100 },
+            { level: 19, food: 1300000,  wood: 1600000,  stone: 1100000 },
+            { level: 20, food: 1900000,  wood: 2400000,  stone: 1600000 },
+            { level: 21, food: 3900000,  wood: 4800000,  stone: 3200000 },
+            { level: 22, food: 6200000,  wood: 7600000,  stone: 5100000 },
+            { level: 23, food: 10000000, wood: 12300000, stone: 8200000 },
+            { level: 24, food: 16000000, wood: 19600000, stone: 13100000 },
+            { level: 25, food: 32000000, wood: 39300000, stone: 26200000 }
+        ],
+        smithyCosts: [
+            { level: 2,  food: 500,      wood: 400,      stone: 0 },
+            { level: 3,  food: 1000,     wood: 900,      stone: 0 },
+            { level: 4,  food: 1500,     wood: 1400,     stone: 0 },
+            { level: 5,  food: 3400,     wood: 3200,     stone: 0 },
+            { level: 6,  food: 6100,     wood: 5700,     stone: 3400 },
+            { level: 7,  food: 9000,     wood: 8400,     stone: 5000 },
+            { level: 8,  food: 13500,    wood: 12600,    stone: 7600 },
+            { level: 9,  food: 18800,    wood: 17500,    stone: 10600 },
+            { level: 10, food: 26000,    wood: 24000,    stone: 14000 },
+            { level: 11, food: 37000,    wood: 34000,    stone: 20000 },
+            { level: 12, food: 52000,    wood: 48000,    stone: 29000 },
+            { level: 13, food: 72000,    wood: 67000,    stone: 40000 },
+            { level: 14, food: 101000,   wood: 95000,    stone: 57000 },
+            { level: 15, food: 142000,   wood: 133000,   stone: 80000 },
+            { level: 16, food: 190000,   wood: 180000,   stone: 110000 },
+            { level: 17, food: 390000,   wood: 373200,   stone: 224900 },
+            { level: 18, food: 570000,   wood: 541200,   stone: 326100 },
+            { level: 19, food: 840000,   wood: 784800,   stone: 473000 },
+            { level: 20, food: 1200000,  wood: 1100000,  stone: 680000 },
+            { level: 21, food: 2400000,  wood: 2200000,  stone: 1300000 },
+            { level: 22, food: 3600000,  wood: 3400000,  stone: 2000000 },
+            { level: 23, food: 5400000,  wood: 5100000,  stone: 3000000 },
+            { level: 24, food: 8200000,  wood: 7600000,  stone: 4600000 },
+            { level: 25, food: 16400000, wood: 15300000, stone: 9200000 }
+        ],
+        eaglesNestCosts: [
+            { level: 2,  food: 50,       wood: 50,       stone: 0 },
+            { level: 3,  food: 100,      wood: 100,      stone: 0 },
+            { level: 4,  food: 200,      wood: 150,      stone: 0 },
+            { level: 5,  food: 300,      wood: 200,      stone: 0 },
+            { level: 6,  food: 600,      wood: 400,      stone: 0 },
+            { level: 7,  food: 900,      wood: 700,      stone: 0 },
+            { level: 8,  food: 1300,     wood: 1000,     stone: 0 },
+            { level: 9,  food: 1800,     wood: 1500,     stone: 0 },
+            { level: 10, food: 2000,     wood: 2000,     stone: 0 },
+            { level: 11, food: 3000,     wood: 2000,     stone: 0 },
+            { level: 12, food: 5000,     wood: 4000,     stone: 0 },
+            { level: 13, food: 7000,     wood: 5000,     stone: 0 },
+            { level: 14, food: 10000,    wood: 8000,     stone: 0 },
+            { level: 15, food: 14000,    wood: 11000,    stone: 0 },
+            { level: 16, food: 10000,    wood: 10000,    stone: 0 },
+            { level: 17, food: 30000,    wood: 31900,    stone: 0 },
+            { level: 18, food: 50000,    wood: 46300,    stone: 0 },
+            { level: 19, food: 80000,    wood: 67200,    stone: 0 },
+            { level: 20, food: 120000,   wood: 90000,    stone: 0 },
+            { level: 21, food: 200000,   wood: 100000,   stone: 0 },
+            { level: 22, food: 500000,   wood: 250000,   stone: 0 },
+            { level: 23, food: 1000000,  wood: 620000,   stone: 0 },
+            { level: 24, food: 2500000,  wood: 1600000,  stone: 0 },
+            { level: 25, food: 5000000,  wood: 3200000,  stone: 0 }
+        ],
+        warehouseCosts: [
+            { level: 2,  food: 700,       wood: 800,       stone: 0 },
+            { level: 3,  food: 1500,      wood: 1600,      stone: 0 },
+            { level: 4,  food: 2300,      wood: 2500,      stone: 0 },
+            { level: 5,  food: 5100,      wood: 5500,      stone: 0 },
+            { level: 6,  food: 9100,      wood: 9700,      stone: 6200 },
+            { level: 7,  food: 13500,     wood: 14400,     stone: 9300 },
+            { level: 8,  food: 20300,     wood: 21600,     stone: 13900 },
+            { level: 9,  food: 28200,     wood: 30100,     stone: 19400 },
+            { level: 10, food: 39000,     wood: 42000,     stone: 27000 },
+            { level: 11, food: 55000,     wood: 59000,     stone: 38000 },
+            { level: 12, food: 78000,     wood: 83000,     stone: 53000 },
+            { level: 13, food: 109000,    wood: 116000,    stone: 75000 },
+            { level: 14, food: 152000,    wood: 163000,    stone: 105000 },
+            { level: 15, food: 214000,    wood: 228000,    stone: 147000 },
+            { level: 16, food: 290000,    wood: 310000,    stone: 200000 },
+            { level: 17, food: 590000,    wood: 639800,    stone: 412300 },
+            { level: 18, food: 860000,    wood: 927800,    stone: 598000 },
+            { level: 19, food: 1200000,   wood: 1300000,   stone: 867100 },
+            { level: 20, food: 1800000,   wood: 1900000,   stone: 1200000 },
+            { level: 21, food: 3600000,   wood: 3900000,   stone: 2500000 },
+            { level: 22, food: 5400000,   wood: 5800000,   stone: 3700000 },
+            { level: 23, food: 8200000,   wood: 8700000,   stone: 5600000 },
+            { level: 24, food: 12300000,  wood: 13100000,  stone: 8400000 },
+            { level: 25, food: 24600000,  wood: 26300000,  stone: 16900000 }
+        ],
+        divinationShackCosts: [
+            { level: 2,  food: 600,       wood: 600,       stone: 0 },
+            { level: 3,  food: 1300,      wood: 1200,      stone: 0 },
+            { level: 4,  food: 1900,      wood: 1800,      stone: 0 },
+            { level: 5,  food: 4200,      wood: 3900,      stone: 0 },
+            { level: 6,  food: 7400,      wood: 7000,      stone: 4000 },
+            { level: 7,  food: 11000,     wood: 10300,     stone: 5900 },
+            { level: 8,  food: 16500,     wood: 15500,     stone: 8800 },
+            { level: 9,  food: 23000,     wood: 21600,     stone: 12300 },
+            { level: 10, food: 32000,     wood: 30000,     stone: 17000 },
+            { level: 11, food: 45000,     wood: 42000,     stone: 24000 },
+            { level: 12, food: 63000,     wood: 59000,     stone: 34000 },
+            { level: 13, food: 89000,     wood: 83000,     stone: 47000 },
+            { level: 14, food: 124000,    wood: 116000,    stone: 66000 },
+            { level: 15, food: 174000,    wood: 163000,    stone: 93000 },
+            { level: 16, food: 240000,    wood: 220000,    stone: 130000 },
+            { level: 17, food: 480000,    wood: 458500,    stone: 262400 },
+            { level: 18, food: 710000,    wood: 664900,    stone: 380500 },
+            { level: 19, food: 1000000,   wood: 964300,    stone: 551800 },
+            { level: 20, food: 1400000,   wood: 1300000,   stone: 800000 },
+            { level: 21, food: 2900000,   wood: 2700000,   stone: 1600000 },
+            { level: 22, food: 4400000,   wood: 4100000,   stone: 2400000 },
+            { level: 23, food: 6700000,   wood: 6200000,   stone: 3600000 },
+            { level: 24, food: 10000000,  wood: 9400000,   stone: 5400000 },
+            { level: 25, food: 20100000,  wood: 18800000,  stone: 10800000 }
+        ]
+    };
+
+    const buildingKeys = [
+        "chiefHall", "hallOfValor", "academy", "wall", "tribeHall", 
+        "battleHall", "defenceTower", "barracks", "smithy", 
+        "eaglesNest", "warehouse", "divinationShack"
+    ];
+
+    const dataMap = {
+        chiefHall: { costs: rawData.chiefHallCosts, req: rawData.chiefHallRequirements },
+        hallOfValor: { costs: rawData.hallOfValorCosts },
+        academy: { costs: rawData.academyCosts },
+        wall: { costs: rawData.wallCosts },
+        tribeHall: { costs: rawData.tribeHallCosts },
+        battleHall: { costs: rawData.battleHallCosts },
+        defenceTower: { costs: rawData.defenceTowerCosts },
+        barracks: { costs: rawData.barracksCosts }, // Note: rawData key is BarracksCosts but we map it here
+        smithy: { costs: rawData.smithyCosts },
+        eaglesNest: { costs: rawData.eaglesNestCosts },
+        warehouse: { costs: rawData.warehouseCosts },
+        divinationShack: { costs: rawData.divinationShackCosts }
+    };
+
+    let currentLang = localStorage.getItem('lang') || 'de';
+    let translations = {};
+    let currentBuilding = 'chiefHall';
+
+    async function loadTranslations() {
+        const response = await fetch('lang.json');
+        translations = await response.json();
+        setLang(currentLang);
+    }
+
+    function setLang(lang) {
+        localStorage.setItem('lang', lang);
+        currentLang = lang;
+        document.getElementById('btn-de').classList.toggle('active', lang === 'de');
+        document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+
+        const t = translations[lang].buildings;
+        document.getElementById('page-title').innerText = t.title;
+        document.getElementById('nav-back').innerText = t.back;
+        document.getElementById('footer-text').innerHTML = t.legal;
+
+        renderNavigation();
+        renderContent();
+    }
+
+    function renderNavigation() {
+        const t = translations[currentLang].buildings;
+        const sidebar = document.getElementById('sidebar-nav');
+        const mobileSel = document.getElementById('mobile-select');
+
+        sidebar.innerHTML = '';
+        mobileSel.innerHTML = '';
+
+        buildingKeys.forEach(key => {
+            // Sidebar Item
+            const div = document.createElement('div');
+            div.className = `nav-item ${key === currentBuilding ? 'active' : ''}`;
+            div.innerText = t.names[key];
+            div.onclick = () => selectBuilding(key);
+            sidebar.appendChild(div);
+
+            // Mobile Option
+            const opt = document.createElement('option');
+            opt.value = key;
+            opt.innerText = t.names[key];
+            opt.selected = key === currentBuilding;
+            mobileSel.appendChild(opt);
+        });
+    }
+
+    function selectBuilding(key) {
+        currentBuilding = key;
+        renderNavigation();
+        renderContent();
+    }
+
+    function formatNum(num) {
+        if (num >= 1000000) return (num / 1000000).toFixed(1).replace('.0', '') + 'M';
+        if (num >= 1000) return (num / 1000).toFixed(1).replace('.0', '') + 'k';
+        return num;
+    }
+
+    function renderContent() {
+        const t = translations[currentLang].buildings;
+        const container = document.getElementById('content-display');
+        const data = dataMap[currentBuilding];
+        
+        container.innerHTML = `<h2>${t.names[currentBuilding]}</h2>`;
+
+        // Requirements Table (Only for Chief Hall)
+        if (data.req) {
+            let reqHtml = `<h3>${t.req}</h3><div class="table-wrapper"><table><thead><tr>
+                <th>${t.level}</th><th>Req 1</th><th>Req 2</th><th>Req 3</th>
+            </tr></thead><tbody>`;
+            
+            data.req.forEach(row => {
+                reqHtml += `<tr>
+                    <td>${row.ch}</td>
+                    <td>${row.r1 || '-'}</td>
+                    <td>${row.r2 || '-'}</td>
+                    <td>${row.r3 || '-'}</td>
+                </tr>`;
+            });
+            reqHtml += '</tbody></table></div>';
+            container.innerHTML += reqHtml;
+        }
+
+        // Costs Table
+        let costHtml = `<h3>${t.title}</h3><div class="table-wrapper"><table><thead><tr>
+            <th>${t.level}</th>
+            <th>${t.food}</th>
+            <th>${t.wood}</th>
+            <th>${t.stone}</th>`;
+        
+        // Check for special columns
+        const hasWarHorn = data.costs.some(r => r.warHorn);
+        const hasSpike = data.costs.some(r => r.thornySpike);
+
+        if (hasWarHorn) costHtml += `<th>${t.special}</th>`;
+        if (hasSpike) costHtml += `<th>${t.special}</th>`;
+
+        costHtml += `</tr></thead><tbody>`;
+
+        data.costs.forEach(row => {
+            costHtml += `<tr>
+                <td>${row.level}</td>
+                <td class="res-val res-food">${formatNum(row.food)}</td>
+                <td class="res-val res-wood">${formatNum(row.wood)}</td>
+                <td class="res-val res-stone">${formatNum(row.stone)}</td>`;
+            
+            if (hasWarHorn) costHtml += `<td class="res-val res-special">${row.warHorn || '-'}</td>`;
+            if (hasSpike) costHtml += `<td class="res-val res-special">${row.thornySpike || '-'}</td>`;
+
+            costHtml += `</tr>`;
+        });
+
+        costHtml += '</tbody></table></div>';
+        container.innerHTML += costHtml;
+    }
+
+    loadTranslations();
+</script>
+
+</body>
+</html>

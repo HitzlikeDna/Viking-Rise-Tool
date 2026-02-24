@@ -24,6 +24,9 @@
       "c5h": "Migration & Kosten",
       "c5p": "Informationen zum Königreich-Wechsel und eine Übersicht der benötigten Migrations-Pässe.",
       "c5b": "Migration",
+      "c8h": "Gebäude & Kosten",
+      "c8p": "Detaillierte Baukosten und Anforderungen für alle wichtigen Gebäude.",
+      "c8b": "Tabelle ansehen",
       "legal": "<strong>Rechtlicher Disclaimer:</strong><br>Dies ist eine inoffizielle Webseite von Fans für Fans und steht in keiner Verbindung zu IGG (I Got Games) oder den offiziellen Entwicklern von Viking Rise. Alle Markennamen, Grafiken und Spielinhalte sind Eigentum der jeweiligen Inhaber. Die hier bereitgestellten Informationen und Tools dienen ausschließlich Informationszwecken und sind ohne Gewähr."
     },
     "heros": {
@@ -155,6 +158,31 @@
       "tip2Title": "Wie lösche ich Truppen",
       "tip2Body": "<ol><li>Gehen Sie zu der Kaserne, von welcher Sie die Truppen löschen möchten.</li><li>Drücken Sie auf das <strong>i</strong> (Info-Symbol).</li><li>Nun sehen Sie alle Truppen, welche Sie von diesem Typ besitzen.</li><li>Drücken Sie oben auf das Minus (<strong>-</strong>) und wählen Sie aus, wie viele Sie nun löschen möchten.</li></ol><p><strong>Wichtig!</strong> Die Truppen müssen zuhause sein.</p>"
     }
+    ,"buildings": {
+      "title": "Gebäude Baukosten",
+      "back": "« Zurück zur Startseite",
+      "legal": "<strong>Rechtlicher Disclaimer:</strong><br>Dies ist eine inoffizielle Webseite von Fans für Fans und steht in keiner Verbindung zu IGG (I Got Games) oder den offiziellen Entwicklern von Viking Rise. Alle Markennamen, Grafiken und Spielinhalte sind Eigentum der jeweiligen Inhaber. Die hier bereitgestellten Informationen und Tools dienen ausschließlich Informationszwecken und sind ohne Gewähr.",
+      "level": "Stufe",
+      "food": "Nahrung",
+      "wood": "Holz",
+      "stone": "Stein",
+      "special": "Spezial",
+      "req": "Voraussetzungen",
+      "names": {
+        "chiefHall": "Häuptlingshalle",
+        "hallOfValor": "Halle der Tapferkeit",
+        "academy": "Akademie",
+        "wall": "Mauer",
+        "tribeHall": "Stammeshalle",
+        "battleHall": "Kampfhalle",
+        "defenceTower": "Verteidigungsturm",
+        "barracks": "Kaserne",
+        "smithy": "Schmiede",
+        "eaglesNest": "Adlerhorst",
+        "warehouse": "Lagerhaus",
+        "divinationShack": "Wahrsagungshütte"
+      }
+    }
   },
   "en": {
     "index": {
@@ -181,6 +209,9 @@
       "c5h": "Migration & Costs",
       "c5p": "Information on switching kingdoms and an overview of required migration passes.",
       "c5b": "Migration",
+      "c8h": "Buildings & Costs",
+      "c8p": "Detailed construction costs and requirements for all major buildings.",
+      "c8b": "View Table",
       "legal": "<strong>Legal Disclaimer:</strong><br>This is an unofficial fan website and is not affiliated with IGG (I Got Games) or the official developers of Viking Rise. All brand names, graphics, and game content are the property of their respective owners. The information and tools provided here are for informational purposes only and are without guarantee."
     },
     "heros": {
@@ -311,6 +342,31 @@
       "tip1Body": "<div class='discord-meta'>Viking Rise — 20.11.2025 08:37 <br>@everyone Greetings, Chief!</div><p>Following the conclusion of several KvK battlefields and the announcement of KvK 8, we have noted the lively discussions and numerous questions regarding KvK migration rules and, in particular, the calculation of Kingdom Might. To provide clarity, we would like to outline the official rules for calculating Kingdom Might:</p><ul><li><strong>Kingdom Might</strong> = The average of the sum of the top 100 Chiefs' Might (by Personal Might ranking) within 60 days (excludes Kingdom Mayhem battle period).</li><li>Kingdom Might updates every 1 hour.</li><li>Kingdom Might will also be updated when a Chief migrates in or out.</li></ul><p><strong>Note:</strong> Since Kingdom Might is calculated as the average Might over 60 days, short-term changes in login activity will not affect the calculation. A character will only be excluded from the Kingdom Might calculation if they have not logged in for more than 60 consecutive days. </p>",
       "tip2Title": "How to delete troops",
       "tip2Body": "<ol><li>Go to the barracks from which you want to delete the troops.</li><li>Press the <strong>i</strong> (info symbol).</li><li>Now you will see all troops of this type that you own.</li><li>Press the minus (<strong>-</strong>) at the top and select how many you want to delete.</li></ol><p><strong>Important!</strong> The troops must be at home.</p>"
+    }
+    ,"buildings": {
+      "title": "Building Costs",
+      "back": "« Back to Home",
+      "legal": "<strong>Legal Disclaimer:</strong><br>This is an unofficial fan website and is not affiliated with IGG (I Got Games) or the official developers of Viking Rise. All brand names, graphics, and game content are the property of their respective owners. The information and tools provided here are for informational purposes only and are without guarantee.",
+      "level": "Level",
+      "food": "Food",
+      "wood": "Wood",
+      "stone": "Stone",
+      "special": "Special",
+      "req": "Requirements",
+      "names": {
+        "chiefHall": "Chief's Hall",
+        "hallOfValor": "Hall of Valor",
+        "academy": "Academy",
+        "wall": "Wall",
+        "tribeHall": "Tribe Hall",
+        "battleHall": "Battle Hall",
+        "defenceTower": "Defence Tower",
+        "barracks": "Barracks",
+        "smithy": "Smithy",
+        "eaglesNest": "Eagle's Nest",
+        "warehouse": "Warehouse",
+        "divinationShack": "Divination Shack"
+      }
     }
   }
 }

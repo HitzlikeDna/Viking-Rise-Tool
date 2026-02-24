@@ -290,6 +290,15 @@
             </div>
             <span class="btn" id="card5-b">Migration</span>
         </a>
+
+        <a href="buildings.html" class="card">
+            <div>
+                <span class="icon">🏗️</span>
+                <h2 id="card8-h">Gebäude & Kosten</h2>
+                <p id="card8-p">Detaillierte Baukosten und Anforderungen für alle wichtigen Gebäude.</p>
+            </div>
+            <span class="btn" id="card8-b">Tabelle ansehen</span>
+        </a>
     </div>
 </div>
 
@@ -334,6 +343,9 @@
         document.getElementById('card5-h').innerText = translations[lang].index.c5h;
         document.getElementById('card5-p').innerText = translations[lang].index.c5p;
         document.getElementById('card5-b').innerText = translations[lang].index.c5b;
+        document.getElementById('card8-h').innerText = translations[lang].index.c8h;
+        document.getElementById('card8-p').innerText = translations[lang].index.c8p;
+        document.getElementById('card8-b').innerText = translations[lang].index.c8b;
         document.getElementById('footer-text').innerHTML = translations[lang].index.legal;
 
         document.getElementById('btn-de').classList.toggle('active', lang === 'de');
