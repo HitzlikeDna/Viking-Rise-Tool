@@ -188,6 +188,15 @@
             border-top: 1px solid rgba(212, 175, 55, 0.1);
         }
 
+        .event-content ul {
+            margin: 0;
+            padding-left: 20px;
+        }
+
+        .event-content li {
+            margin-bottom: 5px;
+        }
+
         footer {
             width: 100%;
             background: #020304;
@@ -274,6 +283,11 @@
             <div class="event-header" id="event9-header" onclick="toggleEvent(this)"></div>
             <div class="event-content" id="event9-content"></div>
         </div>
+
+        <div class="event-card active">
+            <div class="event-header" id="event10-header" onclick="toggleEvent(this)"></div>
+            <div class="event-content" id="event10-content"></div>
+        </div>
     </div>
 </div>
 
@@ -308,7 +322,9 @@
             event8Title: "Flag Events",
             event8Body: "900 bis 1200 Würfel um gemeinsam 4 Boote halb voll zu machen<br>(4500/2 = 2250 pro Boot. Würfeldurchschnitt 10.5 Punkte = ca. 225 Würfel im Optimalfall mal 4 Boote = 900 Würfel)",
             event9Title: "Rad Der Ewigkeit",
-            event9Body: "Mindestens 39 Stück haben (6x6 +3)"
+            event9Body: "Mindestens 39 Stück haben (6x6 +3)",
+            event10Title: "S Splitter",
+            event10Body: "<ul><li>Flaggen-Event (Boote)</li><li>Wikinger-Triathlon</li><li>Eskortiere Händlerkarawanen</li><li>Glücksrad</li><li>Kochevent</li><li>Tägliches Paket</li><li>Wikinger-Horn</li><li>Schlangen-Trank Event</li><li>Helden-Rettung</li></ul>"
         },
         en: {
             back: "« Back to Home",
@@ -331,7 +347,9 @@
             event8Title: "Flag Events",
             event8Body: "900 to 1200 dice to half-fill 4 boats together<br>(4500/2 = 2250 per boat. Dice average 10.5 points = approx. 225 dice in the optimal case times 4 boats = 900 dice)",
             event9Title: "Wheel Of Eternity",
-            event9Body: "Have at least 39 pieces (6x6 +3)"
+            event9Body: "Have at least 39 pieces (6x6 +3)",
+            event10Title: "S Shards",
+            event10Body: "<ul><li>Flag Event (Boats)</li><li>Viking Triathlon</li><li>Escort Merchant Caravans</li><li>Wheel of Fortune</li><li>Cooking Event</li><li>Daily Pack</li><li>Viking Horn</li><li>Snake Potion Event</li><li>Hero Rescue</li></ul>"
         }
     };
 
@@ -350,7 +368,7 @@
         document.getElementById('main-title').innerText = t.title;
         document.getElementById('footer-text').innerHTML = t.legal;
         
-        for (let i = 1; i <= 9; i++) {
+        for (let i = 1; i <= 10; i++) {
             const header = document.getElementById(`event${i}-header`);
             const content = document.getElementById(`event${i}-content`);
             if (header) header.innerText = t[`event${i}Title`];
