@@ -381,62 +381,14 @@
 </footer>
 
 <script>
-    let currentLang = 'de';
+    let currentLang = localStorage.getItem('lang') || 'de';
+    let translations = {};
 
-    const translations = {
-        de: {
-            back: "« Zurück zur Startseite",
-            title: "Schmiede-Rechner",
-            labelItem: "Ausrüstung wählen:",
-            labelTarget: "Ziel-Stufe (Upgrade):",
-            thMat: "Material",
-            btnCalc: "Bedarf berechnen",
-            btnSave: "Speichern",
-            btnLoad: "Laden",
-            saved: "Daten erfolgreich gespeichert!",
-            loaded: "Daten erfolgreich geladen!",
-            noData: "Keine gespeicherten Daten gefunden.",
-            btnClose: "X",
-            legal: "<strong>Rechtlicher Disclaimer:</strong><br>Dies ist eine inoffizielle Webseite von Fans für Fans und steht in keiner Verbindung zu IGG (I Got Games) oder den offiziellen Entwicklern von Viking Rise. Alle Markennamen, Grafiken und Spielinhalte sind Eigentum der jeweiligen Inhaber. Die hier bereitgestellten Informationen und Tools dienen ausschließlich Informationszwecken und sind ohne Gewähr.",
-            items: ["Waffe", "Helm", "Rüstung", "Schuhe"],
-            targets: ["Grau (Herstellung)", "Grün (Upgrade)", "Blau (Upgrade)", "Lila (Upgrade)", "Gold (Upgrade)"],
-            rarities: ["Grau", "Grün", "Blau", "Lila", "Gold"],
-            materials: ["Spinnenseide", "Göttliches Blut", "Gegerbtes Leder", "Sternenstaub", "Asboth Mithril"],
-            resTitle: "ZIEL",
-            resRequired: "BASIS-BEDARF",
-            resReady: "BEREIT",
-            resMissing: "FEHLT",
-            resOr: "ODER",
-            resConvTitle: "MÖGLICHE KONVERTIERUNGEN (2:1):",
-            resConvLine: "Nutze {0} für {1}"
-        },
-        en: {
-            back: "« Back to Home",
-            title: "Forge Calculator",
-            labelItem: "Select Equipment:",
-            labelTarget: "Target Level (Upgrade):",
-            thMat: "Material",
-            btnCalc: "Calculate Demand",
-            btnSave: "Save",
-            btnLoad: "Load",
-            saved: "Data saved successfully!",
-            loaded: "Data loaded successfully!",
-            noData: "No saved data found.",
-            btnClose: "X",
-            legal: "<strong>Legal Disclaimer:</strong><br>This is an unofficial fan website and is not affiliated with IGG (I Got Games) or the official developers of Viking Rise. All brand names, graphics, and game content are the property of their respective owners. The information and tools provided here are for informational purposes only and are without guarantee.",
-            items: ["Weapon", "Helm", "Armor", "Boots"],
-            targets: ["Gray (Base)", "Green (Upgrade)", "Blue (Upgrade)", "Purple (Upgrade)", "Gold (Upgrade)"],
-            rarities: ["Gray", "Green", "Blue", "Purple", "Gold"],
-            materials: ["Spider Silk", "Divine Blood", "Tanned Leather", "Stardust", "Asboth Mithril"],
-            resTitle: "TARGET",
-            resRequired: "BASE REQUIREMENT",
-            resReady: "READY",
-            resMissing: "MISSING",
-            resOr: "OR",
-            resConvTitle: "POSSIBLE CONVERSIONS (2:1):",
-            resConvLine: "Use {0} for {1}"
-        }
-    };
+    async function loadTranslations() {
+        const response = await fetch('lang.json');
+        translations = await response.json();
+        setLang(currentLang);
+    }
 
     const baseRequirements = {
         0: [17, 11, 13, 16, 11],
@@ -446,6 +398,7 @@
     };
 
     function setLang(lang) {
+        localStorage.setItem('lang', lang);
         currentLang = lang;
         document.getElementById('btn-de').classList.toggle('active', lang === 'de');
         document.getElementById('btn-en').classList.toggle('active', lang === 'en');
@@ -453,7 +406,7 @@
     }
 
     function updateUI() {
-        const t = translations[currentLang];
+        const t = translations[currentLang].mythicCalc;
         document.getElementById('ui-title').innerText = t.title;
         document.getElementById('nav-back').innerText = t.back;
         document.getElementById('ui-label-item').innerText = t.labelItem;
@@ -503,7 +456,7 @@
     function calculateIfVisible() { if(document.getElementById('resultBorder').style.display === 'block') calculate(); }
 
     function calculate() {
-        const t = translations[currentLang];
+        const t = translations[currentLang].mythicCalc;
         const itemIdx = document.getElementById('itemSelector').value;
         const targetIdx = parseInt(document.getElementById('targetSelector').value);
         const neededArr = baseRequirements[itemIdx];
@@ -583,13 +536,13 @@
             data.mats.push(row);
         }
         localStorage.setItem('vr_forge_data', JSON.stringify(data));
-        alert(translations[currentLang].saved);
+        alert(translations[currentLang].mythicCalc.saved);
     }
 
     function loadData() {
         const raw = localStorage.getItem('vr_forge_data');
         if(!raw) {
-            alert(translations[currentLang].noData);
+            alert(translations[currentLang].mythicCalc.noData);
             return;
         }
         const data = JSON.parse(raw);
@@ -602,7 +555,7 @@
                 if(el) el.value = data.mats[i][r];
             }
         }
-        alert(translations[currentLang].loaded);
+        alert(translations[currentLang].mythicCalc.loaded);
         calculateIfVisible();
     }
 
@@ -616,7 +569,7 @@
 
     function closeResult() { document.getElementById('resultBorder').style.display = 'none'; }
 
-    setLang(currentLang); // Initial call
+    loadTranslations();
 </script>
 
 </body>

@@ -316,9 +316,10 @@
         }
     };
 
-    let currentLang = 'de';
+    let currentLang = localStorage.getItem('lang') || 'de';
 
     function setLang(lang) {
+        localStorage.setItem('lang', lang);
         currentLang = lang;
         document.getElementById('btn-de').classList.toggle('active', lang==='de');
         document.getElementById('btn-en').classList.toggle('active', lang==='en');

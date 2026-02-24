@@ -286,45 +286,15 @@
 </footer>
 
 <script>
-    let currentLang = 'de';
+    let currentLang = localStorage.getItem('lang') || 'de';
     let currentStatus = 'empfohlen';
+    let translations = {};
 
-    const translations = {
-        de: {
-            back: "« Zurück zur Startseite",
-            title: "Königreich Migration",
-            infoH2: "Voraussetzungen & Informationen",
-            infoP: "Die Migrationskosten richten sich nach der aktuellen Macht deines Charakters und dem Status des Ziel-Königreichs. Pässe können im Stamm-Shop oder durch Pakete erworben werden.<br><br>Wichtig zu beachten ist, dass du beim Migrieren alle Ressourcen verlierst, die sich nicht im Rucksack befinden.",
-            thPower: "Macht",
-            thWk: "Umkämpftes Reich",
-            thS1: "Saison 1",
-            thS2: "Saison 2",
-            thS3: "Saison 3",
-            thCs: "Eroberungs-Saison",
-            today: "Stand:",
-            legal: "<strong>Rechtlicher Disclaimer:</strong><br>Dies ist eine inoffizielle Webseite von Fans für Fans und steht in keiner Verbindung zu IGG (I Got Games) oder den offiziellen Entwicklern von Viking Rise. Alle Markennamen, Grafiken und Spielinhalte sind Eigentum der jeweiligen Inhaber. Die hier bereitgestellten Informationen und Tools dienen ausschließlich Informationszwecken und sind ohne Gewähr.",
-            date: "23. Februar 2026",
-            statusLabel: "Status: ",
-            tabs: { empfohlen: "Empfohlen", gewöhnlich: "Gewöhnlich", stark: "Stark" }
-        },
-        en: {
-            back: "« Back to Home",
-            title: "Kingdom Migration",
-            infoH2: "Requirements & Information",
-            infoP: "Migration costs are based on your character's current might and the status of the destination kingdom. Migration scrolls can be purchased in the Tribe Shop or through packs.<br><br>It is important to note that when you migrate, you will lose all resources that are not in your backpack.",
-            thPower: "Might",
-            thWk: "Warring Kingdom",
-            thS1: "Season 1",
-            thS2: "Season 2",
-            thS3: "Season 3",
-            thCs: "Conquest Season",
-            today: "Last updated:",
-            legal: "<strong>Legal Disclaimer:</strong><br>This is an unofficial fan website and is not affiliated with IGG (I Got Games) or the official developers of Viking Rise. All brand names, graphics, and game content are the property of their respective owners. The information and tools provided here are for informational purposes only and are without guarantee.",
-            date: "February 23, 2026",
-            statusLabel: "Status: ",
-            tabs: { empfohlen: "Recommended", gewöhnlich: "Common", stark: "Strong" }
-        }
-    };
+    async function loadTranslations() {
+        const response = await fetch('lang.json');
+        translations = await response.json();
+        setLang(currentLang);
+    }
 
     const migrationData = {
         empfohlen: [
@@ -378,11 +348,12 @@
     };
 
     function setLang(lang) {
+        localStorage.setItem('lang', lang);
         currentLang = lang;
         document.getElementById('btn-de').classList.toggle('active', lang === 'de');
         document.getElementById('btn-en').classList.toggle('active', lang === 'en');
 
-        const t = translations[lang];
+        const t = translations[lang].migration;
         document.getElementById('nav-back').innerText = t.back;
         document.getElementById('main-title').innerText = t.title;
         document.getElementById('info-h2').innerText = t.infoH2;
@@ -408,7 +379,7 @@
         currentStatus = status;
         const body = document.getElementById('table-body');
         const label = document.getElementById('status-label');
-        const t = translations[currentLang];
+        const t = translations[currentLang].migration;
 
         document.querySelectorAll('.tab-btn').forEach(btn => {
             btn.classList.toggle('active', btn.id.includes(status.substring(0,3)));
@@ -431,7 +402,7 @@
         });
     }
 
-    setLang(currentLang); // Initial call
+    loadTranslations();
 </script>
 
 </body>

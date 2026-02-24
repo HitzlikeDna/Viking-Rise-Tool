@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Viking Rise - Events</title>
+    <title>Viking Rise - Wissenswertes</title>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=MedievalSharp&family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -130,14 +130,14 @@
             margin-bottom: 60px;
         }
 
-        .events-section {
+        .tips-section {
             display: flex;
             flex-direction: column;
             gap: 15px;
             margin-top: 20px;
         }
 
-        .event-card {
+        .tip-card {
             background: rgba(255, 255, 255, 0.03);
             border: 1px solid rgba(212, 175, 55, 0.2);
             border-radius: 4px;
@@ -145,7 +145,7 @@
             transition: 0.3s;
         }
 
-        .event-header {
+        .tip-header {
             padding: 15px 20px;
             background: rgba(0, 0, 0, 0.4);
             cursor: pointer;
@@ -158,21 +158,21 @@
             transition: 0.3s;
         }
 
-        .event-header:hover {
+        .tip-header:hover {
             background: rgba(212, 175, 55, 0.1);
         }
 
-        .event-header::after {
+        .tip-header::after {
             content: '▼';
             font-size: 12px;
             transition: transform 0.3s;
         }
 
-        .event-card.active .event-header::after {
+        .tip-card.active .tip-header::after {
             transform: rotate(180deg);
         }
 
-        .event-content {
+        .tip-content {
             max-height: 0;
             overflow: hidden;
             transition: max-height 0.4s ease-out, padding 0.3s;
@@ -182,45 +182,32 @@
             font-size: 14px;
         }
 
-        .event-card.active .event-content {
+        .tip-card.active .tip-content {
             max-height: 1000px;
             padding: 20px;
             border-top: 1px solid rgba(212, 175, 55, 0.1);
         }
-
-        .event-content ul {
-            margin: 0;
+        
+        .tip-content p, .tip-content ul {
+            margin: 0 0 1em 0;
+        }
+        
+        .tip-content ul {
             padding-left: 20px;
         }
-
-        .event-content li {
-            margin-bottom: 5px;
+        
+        .tip-content li {
+            margin-bottom: 0.5em;
+        }
+        
+        .discord-meta {
+            font-size: 0.9em;
+            color: var(--text-muted);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+            padding-bottom: 10px;
+            margin-bottom: 15px;
         }
 
-        footer {
-            width: 100%;
-            background: #020304;
-            padding: 60px 20px;
-            text-align: center;
-            color: #666;
-            font-size: 13px;
-            border-top: 1px solid #1a1a1a;
-            box-sizing: border-box;
-        }
-
-        .legal-box {
-            max-width: 900px;
-            margin: 0 auto;
-            line-height: 1.8;
-            font-style: italic;
-        }
-
-        @media (max-width: 768px) {
-            header { padding: 80px 0 100px; }
-            .lang-switch { top: 15px; right: 15px; }
-            .lang-btn { padding: 6px 12px; font-size: 12px; }
-            .container { padding: 20px; }
-        }
     </style>
 </head>
 <body>
@@ -230,7 +217,7 @@
         <button id="btn-de" class="lang-btn active" onclick="setLang('de')">DE</button>
         <button id="btn-en" class="lang-btn" onclick="setLang('en')">EN</button>
     </div>
-    <h1 id="main-title">Events</h1>
+    <h1 id="main-title">Wissenswertes</h1>
 </header>
 
 <div class="back-nav">
@@ -238,61 +225,23 @@
 </div>
 
 <div class="container">
-    <div class="events-section" id="events-container">
-        <div class="event-card active">
-            <div class="event-header" id="event1-header" onclick="toggleEvent(this)"></div>
-            <div class="event-content" id="event1-content"></div>
+    <div class="tips-section">
+
+        <div class="tip-card">
+            <div class="tip-header" id="tip1-header" onclick="toggleTip(this)">Berechnung Königreichsmacht</div>
+            <div class="tip-content" id="tip1-content"></div>
         </div>
 
-        <div class="event-card active">
-            <div class="event-header" id="event2-header" onclick="toggleEvent(this)"></div>
-            <div class="event-content" id="event2-content"></div>
+        <div class="tip-card">
+            <div class="tip-header" id="tip2-header" onclick="toggleTip(this)">Wie lösche ich Truppen</div>
+            <div class="tip-content" id="tip2-content"></div>
         </div>
 
-        <div class="event-card active">
-            <div class="event-header" id="event3-header" onclick="toggleEvent(this)"></div>
-            <div class="event-content" id="event3-content"></div>
-        </div>
-
-        <div class="event-card active">
-            <div class="event-header" id="event4-header" onclick="toggleEvent(this)"></div>
-            <div class="event-content" id="event4-content"></div>
-        </div>
-
-        <div class="event-card active">
-            <div class="event-header" id="event5-header" onclick="toggleEvent(this)"></div>
-            <div class="event-content" id="event5-content"></div>
-        </div>
-
-        <div class="event-card active">
-            <div class="event-header" id="event6-header" onclick="toggleEvent(this)"></div>
-            <div class="event-content" id="event6-content"></div>
-        </div>
-
-        <div class="event-card active">
-            <div class="event-header" id="event7-header" onclick="toggleEvent(this)"></div>
-            <div class="event-content" id="event7-content"></div>
-        </div>
-
-        <div class="event-card active">
-            <div class="event-header" id="event8-header" onclick="toggleEvent(this)"></div>
-            <div class="event-content" id="event8-content"></div>
-        </div>
-
-        <div class="event-card active">
-            <div class="event-header" id="event9-header" onclick="toggleEvent(this)"></div>
-            <div class="event-content" id="event9-content"></div>
-        </div>
-
-        <div class="event-card active">
-            <div class="event-header" id="event10-header" onclick="toggleEvent(this)"></div>
-            <div class="event-content" id="event10-content"></div>
-        </div>
     </div>
 </div>
 
 <footer>
-    <div class="legal-box" id="footer-text">
+    <div class="legal-box" id="footer-text" style="max-width: 900px; margin: 0 auto; line-height: 1.8; font-style: italic; text-align: center; font-size: 13px; color: #666; padding: 20px;">
         <!-- Populated by script -->
     </div>
 </footer>
@@ -307,7 +256,7 @@
         setLang(currentLang);
     }
 
-    function toggleEvent(header) {
+    function toggleTip(header) {
         const card = header.parentElement;
         card.classList.toggle('active');
     }
@@ -318,17 +267,16 @@
         document.getElementById('btn-de').classList.toggle('active', lang === 'de');
         document.getElementById('btn-en').classList.toggle('active', lang === 'en');
 
-        const t = translations[lang].events;
+        const t = translations[lang].goodtoknow;
+
         document.getElementById('nav-back').innerText = t.back;
         document.getElementById('main-title').innerText = t.title;
         document.getElementById('footer-text').innerHTML = t.legal;
         
-        for (let i = 1; i <= 10; i++) {
-            const header = document.getElementById(`event${i}-header`);
-            const content = document.getElementById(`event${i}-content`);
-            if (header) header.innerText = t[`event${i}Title`];
-            if (content) content.innerHTML = t[`event${i}Body`];
-        }
+        document.getElementById('tip1-header').innerText = t.tip1Title;
+        document.getElementById('tip1-content').innerHTML = t.tip1Body;
+        document.getElementById('tip2-header').innerText = t.tip2Title;
+        document.getElementById('tip2-content').innerHTML = t.tip2Body;
     }
 
     loadTranslations();
