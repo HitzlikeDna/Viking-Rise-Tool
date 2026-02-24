@@ -221,6 +221,33 @@
             background-color: #151515;
         }
 
+        .button-group {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .action-btn {
+            flex: 1;
+            background: rgba(0,0,0,0.6);
+            color: var(--gold);
+            border: 1px solid var(--gold);
+            padding: 15px;
+            font-family: 'Cinzel', serif;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+            text-transform: uppercase;
+            font-size: 16px;
+            clip-path: polygon(5% 0, 100% 0, 95% 100%, 0 100%);
+        }
+
+        .action-btn:hover {
+            background: var(--gold);
+            color: black;
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.3);
+        }
+
         .calc-btn {
             width: 100%;
             background: linear-gradient(145deg, #b8860b 0%, #d4af37 50%, #b8860b 100%);
@@ -334,6 +361,11 @@
         </table>
     </div>
 
+    <div class="button-group">
+        <button id="ui-btn-save" class="action-btn" onclick="saveData()">Speichern</button>
+        <button id="ui-btn-load" class="action-btn" onclick="loadData()">Laden</button>
+    </div>
+
     <button id="ui-btn-calc" class="calc-btn" onclick="calculate()">Berechnen</button>
 
     <div id="resultBorder">
@@ -359,6 +391,11 @@
             labelTarget: "Ziel-Stufe (Upgrade):",
             thMat: "Material",
             btnCalc: "Bedarf berechnen",
+            btnSave: "Speichern",
+            btnLoad: "Laden",
+            saved: "Daten erfolgreich gespeichert!",
+            loaded: "Daten erfolgreich geladen!",
+            noData: "Keine gespeicherten Daten gefunden.",
             btnClose: "X",
             legal: "<strong>Rechtlicher Disclaimer:</strong><br>Dies ist eine inoffizielle Webseite von Fans für Fans und steht in keiner Verbindung zu IGG (I Got Games) oder den offiziellen Entwicklern von Viking Rise. Alle Markennamen, Grafiken und Spielinhalte sind Eigentum der jeweiligen Inhaber. Die hier bereitgestellten Informationen und Tools dienen ausschließlich Informationszwecken und sind ohne Gewähr.",
             items: ["Waffe", "Helm", "Rüstung", "Schuhe"],
@@ -380,6 +417,11 @@
             labelTarget: "Target Level (Upgrade):",
             thMat: "Material",
             btnCalc: "Calculate Demand",
+            btnSave: "Save",
+            btnLoad: "Load",
+            saved: "Data saved successfully!",
+            loaded: "Data loaded successfully!",
+            noData: "No saved data found.",
             btnClose: "X",
             legal: "<strong>Legal Disclaimer:</strong><br>This is an unofficial fan website and is not affiliated with IGG (I Got Games) or the official developers of Viking Rise. All brand names, graphics, and game content are the property of their respective owners. The information and tools provided here are for informational purposes only and are without guarantee.",
             items: ["Weapon", "Helm", "Armor", "Boots"],
@@ -418,6 +460,8 @@
         document.getElementById('ui-label-target').innerText = t.labelTarget;
         document.getElementById('ui-th-mat').innerText = t.thMat;
         document.getElementById('ui-btn-calc').innerText = t.btnCalc;
+        document.getElementById('ui-btn-save').innerText = t.btnSave;
+        document.getElementById('ui-btn-load').innerText = t.btnLoad;
         document.getElementById('ui-btn-close').innerText = t.btnClose;
         document.getElementById('footer-text').innerHTML = t.legal;
 
@@ -523,6 +567,43 @@
         document.getElementById('resultOutput').innerText = report;
         document.getElementById('resultBorder').style.display = 'block';
         window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+    }
+
+    function saveData() {
+        const data = {
+            item: document.getElementById('itemSelector').value,
+            target: document.getElementById('targetSelector').value,
+            mats: []
+        };
+        for(let i=0; i<5; i++) {
+            let row = [];
+            for(let r=0; r<5; r++) {
+                row.push(document.getElementById(`mat-${i}-${r}`).value);
+            }
+            data.mats.push(row);
+        }
+        localStorage.setItem('vr_forge_data', JSON.stringify(data));
+        alert(translations[currentLang].saved);
+    }
+
+    function loadData() {
+        const raw = localStorage.getItem('vr_forge_data');
+        if(!raw) {
+            alert(translations[currentLang].noData);
+            return;
+        }
+        const data = JSON.parse(raw);
+        document.getElementById('itemSelector').value = data.item;
+        document.getElementById('targetSelector').value = data.target;
+        
+        for(let i=0; i<5; i++) {
+            for(let r=0; r<5; r++) {
+                const el = document.getElementById(`mat-${i}-${r}`);
+                if(el) el.value = data.mats[i][r];
+            }
+        }
+        alert(translations[currentLang].loaded);
+        calculateIfVisible();
     }
 
     function formatMissing(points, targetIdx, t) {
