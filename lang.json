@@ -45,7 +45,7 @@
       "back": "« Zurück zur Startseite",
       "title": "Event Übersicht",
       "legal": "<strong>Rechtlicher Disclaimer:</strong><br>Dies ist eine inoffizielle Webseite von Fans für Fans und steht in keiner Verbindung zu IGG (I Got Games) oder den offiziellen Entwicklern von Viking Rise. Alle Markennamen, Grafiken und Spielinhalte sind Eigentum der jeweiligen Inhaber. Die hier bereitgestellten Informationen und Tools dienen ausschließlich Informationszwecken und sind ohne Gewähr.",
-      "event1Title": "Claw maschien",
+      "event1Title": "Glückliche Spielzeugmaschine",
       "event1Body": "Mindestens 12 Münzen",
       "event2Title": "Mobius-Gipfel",
       "event2Body": "Mindestens Runde 12 erreichen um ins Ranking &lt;200 zu kommen",
@@ -59,12 +59,12 @@
       "event6Body": "Mit Sammler (max. Truppen) in Zone eins gehen um 40 zu erreichen",
       "event7Title": "Wikinger Herrschaft",
       "event7Body": "Mindest 8mio Punkte",
-      "event8Title": "Flag Events",
+      "event8Title": "Feste Bindung",
       "event8Body": "900 bis 1200 Würfel um gemeinsam 4 Boote halb voll zu machen<br>(4500/2 = 2250 pro Boot. Würfeldurchschnitt 10.5 Punkte = ca. 225 Würfel im Optimalfall mal 4 Boote = 900 Würfel)",
       "event9Title": "Rad Der Ewigkeit",
       "event9Body": "Mindestens 39 Stück haben (6x6 +3)",
       "event10Title": "S Splitter",
-      "event10Body": "<ul><li>Flaggen-Event (Boote)</li><li>Wikinger-Triathlon</li><li>Eskortiere Händlerkarawanen</li><li>Glücksrad</li><li>Kochevent</li><li>Tägliches Paket</li><li>Wikinger-Horn</li><li>Schlangen-Trank Event</li><li>Helden-Rettung</li></ul>"
+      "event10Body": "<ul><li>Feste-Bindung (Boote)</li><li>Wikinger-Triathlon</li><li>Eskortiere Händlerkarawanen</li><li>Glücksrad</li><li>Kochevent</li><li>Tägliches Paket</li><li>Wikinger-Horn</li><li>Schlangen-Trank Event</li><li>Helden-Rettung</li></ul>"
     },
     "migration": {
       "back": "« Zurück zur Startseite",
@@ -230,7 +230,7 @@
       "back": "« Back to Home",
       "title": "Event Overview",
       "legal": "<strong>Legal Disclaimer:</strong><br>This is an unofficial fan website and is not affiliated with IGG (I Got Games) or the official developers of Viking Rise. All brand names, graphics, and game content are the property of their respective owners. The information and tools provided here are for informational purposes only and are without guarantee.",
-      "event1Title": "Claw Machine",
+      "event1Title": "Happy Toy Machine",
       "event1Body": "At least 12 coins",
       "event2Title": "Mobius Peak",
       "event2Body": "Reach at least round 12 to get into the ranking &lt;200",
@@ -244,12 +244,12 @@
       "event6Body": "Go to zone one with gatherers (max troops) to reach 40",
       "event7Title": "Viking's Reign",
       "event7Body": "Minimum 8 million points",
-      "event8Title": "Flag Events",
+      "event8Title": "Tight Bound",
       "event8Body": "900 to 1200 dice to half-fill 4 boats together<br>(4500/2 = 2250 per boat. Dice average 10.5 points = approx. 225 dice in the optimal case times 4 boats = 900 dice)",
       "event9Title": "Wheel Of Eternity",
       "event9Body": "Have at least 39 pieces (6x6 +3)",
       "event10Title": "S Shards",
-      "event10Body": "<ul><li>Flag Event (Boats)</li><li>Viking Triathlon</li><li>Escort Merchant Caravans</li><li>Wheel of Fortune</li><li>Cooking Event</li><li>Daily Pack</li><li>Viking Horn</li><li>Snake Potion Event</li><li>Hero Rescue</li></ul>"
+      "event10Body": "<ul><li>Tight-Bound (Boats)</li><li>Viking Triathlon</li><li>Escort Merchant Caravans</li><li>Wheel of Fortune</li><li>Cooking Event</li><li>Daily Pack</li><li>Viking Horn</li><li>Snake Potion Event</li><li>Hero Rescue</li></ul>"
     },
     "migration": {
       "back": "« Back to Home",
