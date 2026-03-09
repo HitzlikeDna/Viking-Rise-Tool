@@ -64,7 +64,11 @@
       "event9Title": "Rad Der Ewigkeit",
       "event9Body": "Mindestens 39 Stück haben (6x6 +3)",
       "event10Title": "S Splitter",
-      "event10Body": "<ul><li>Feste-Bindung (Boote)</li><li>Wikinger-Triathlon</li><li>Eskortiere Händlerkarawanen</li><li>Glücksrad</li><li>Kochevent</li><li>Tägliches Paket</li><li>Wikinger-Horn</li><li>Schlangen-Trank Event</li><li>Helden-Rettung</li></ul>"
+      "event10Body": "<ul><li>Feste-Bindung (Boote)</li><li>Wikinger-Triathlon</li><li>Eskortiere Händlerkarawanen</li><li>Glücksrad</li><li>Kochevent</li><li>Tägliches Paket</li><li>Wikinger-Horn</li><li>Schlangen-Trank Event</li><li>Helden-Rettung</li></ul>",
+      "event11Title": "Bestien-Duell",
+      "event11Body": "Sie brauchen mindestens 50 Schwerter um in den Top 200 zu landen",
+      "event12Title": "Emote Matching",
+      "event12Body": "Sie benötigen Mindestens 23-25K Punkte um in den Top 300 zu landen"
     },
     "migration": {
       "back": "« Zurück zur Startseite",
@@ -249,7 +253,11 @@
       "event9Title": "Wheel Of Eternity",
       "event9Body": "Have at least 39 pieces (6x6 +3)",
       "event10Title": "S Shards",
-      "event10Body": "<ul><li>Tight-Bound (Boats)</li><li>Viking Triathlon</li><li>Escort Merchant Caravans</li><li>Wheel of Fortune</li><li>Cooking Event</li><li>Daily Pack</li><li>Viking Horn</li><li>Snake Potion Event</li><li>Hero Rescue</li></ul>"
+      "event10Body": "<ul><li>Tight-Bound (Boats)</li><li>Viking Triathlon</li><li>Escort Merchant Caravans</li><li>Wheel of Fortune</li><li>Cooking Event</li><li>Daily Pack</li><li>Viking Horn</li><li>Snake Potion Event</li><li>Hero Rescue</li></ul>",
+      "event11Title": "Beast Wars",
+      "event11Body": "You need atleast 50 Swords to get into the top 200",
+      "event12Title": "Emote Matching",
+      "event12Body": "You need atleast 23-25K points to get into the top 300"
     },
     "migration": {
       "back": "« Back to Home",
