@@ -333,11 +333,12 @@
         document.getElementById('main-title').innerText = t.title;
         document.getElementById('footer-text').innerHTML = t.legal;
         
-        for (let i = 1; i <= 10; i++) {
+        const eventCount = Object.keys(t).filter(k => k.startsWith('event') && k.endsWith('Title')).length;
+        for (let i = 1; i <= eventCount; i++) {
             const header = document.getElementById(`event${i}-header`);
             const content = document.getElementById(`event${i}-content`);
-            if (header) header.innerText = t[`event${i}Title`];
-            if (content) content.innerHTML = t[`event${i}Body`];
+            if (header && t[`event${i}Title`]) header.innerText = t[`event${i}Title`];
+            if (content && t[`event${i}Body`]) content.innerHTML = t[`event${i}Body`];
         }
     }
 
